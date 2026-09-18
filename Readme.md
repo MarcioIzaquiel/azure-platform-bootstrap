@@ -238,5 +238,20 @@ Criar arquivos/subpastas via Windows (\docs\architecture.md) ; `git status` ; `g
 O Git não rastreia diretórios vazios, então:
 Criar subpasta ; criar arquivo .gitkeep
 
+---
+---
+---
+---
+---
+---
 
+## Multi-device workflow test
+
+Repository successfully cloned and edited from the SPGG notebook.
+---
+---
+---
+---
+---
+---
 
