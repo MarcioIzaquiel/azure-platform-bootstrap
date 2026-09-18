@@ -214,6 +214,11 @@ Instância: 001, 002, 003...
 # Git+GitHub Notes
 Exemplo: arquivo Readme.md
 
+Best practice: 
+- Sempre ao começar: `git pull`
+- Sempre ao terminar: `git push`
+
+
 Alterações, partindo do notebook, depois: 
 
 Editar ; `git status` ; `git diff`; q ; `git add Readme.md` ; `git status` ; `git commit -m "docs: update README"` ; `git push` ; 
