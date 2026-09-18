@@ -215,7 +215,7 @@ Instância: 001, 002, 003...
 Exemplo: arquivo Readme.md
 
 Best practice: 
-- Sempre ao começar: `git pull`
+- Sempre ao começar: `git pull` (`git status` ; `git fetch` ; `git status`)
 - Sempre ao terminar: `git push`
 
 
