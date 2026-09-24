@@ -114,11 +114,21 @@ Atalhos:
 ---
 
 # Git+GitHub Notes
-Exemplo: arquivo Readme.md
 
-Best practice: 
-- Sempre ao começar: `git pull` (`git status` ; `git fetch` ; `git status`)
-- Sempre ao terminar: `git push`
+**Sequência rápida:**
+
+Antes:
+`git status` -> `git fetch` -> `git status` -> `git pull`
+
+Editar/Salvar -> `git status` -> `git diff` -> `q` 
+
+Commit: `git add nomedoarquivo.ext` -> `git status` -> `git commit -m "docs: descrição alteração"`
+
+Enviar: `git push` -> `git status`
+
+
+---
+
 
 Alterações, partindo do notebook, depois: 
 
@@ -138,6 +148,10 @@ Criar arquivos/subpastas via Windows (\docs\architecture.md) ; `git status` ; `g
 
 O Git não rastreia diretórios vazios, então:
 Criar subpasta ; criar arquivo .gitkeep
+
+
+---
+
 
 Nomenclatura para Commit:
 
@@ -183,7 +197,7 @@ The environment is being developed incrementally:
 
 Portal -> Azure CLI / PowerShell -> Bicep -> Terraform
 
-## Current environment
+# Current environment
 
 - Microsoft Account (MSA): marcioizaquiel@outlook.com
 - Microsoft Entra ID
