@@ -138,13 +138,13 @@ Alterações feitas no GitHub, para passar para o notebook:
 Editar ; `git pull`
 
 Verificar histórico de alterações e rollback de versão:
-`git diff` ; `git diff Readme.md` ; `git log --oneline` ; `git log --oneline --Readme.md` ; `git show iddaalteração` ; `git restore --source=iddaalteração Readme.md` ; `git status` ; `git diff` ; `git add Readme.md` ; `git commit -m "docs: restore previous README version"` ; `git push` 
+`git diff` ; `git diff Readme.md` ; `git log --oneline` ; `git log --oneline -- Readme.md` ; `git show iddaalteração` ; `git restore --source=iddaalteração Readme.md` ; `git status` ; `git diff` ; `git add Readme.md` ; `git commit -m "docs: restore previous README version"` ; `git push` 
 
 Excluir arquivos
 Excluir via Windows ; `git status` ; `git add .` ; `git commit -m "chore: remove obsolete test file"` ; `git push` ; `
 
 Criar arquivos e subpastas:
-Criar arquivos/subpastas via Windows (\docs\architecture.md) ; `git status` ; `git add docs` ; `git commit -m "add architecture documentation"` ; `git push`
+Criar arquivos/subpastas via Windows (\docs\architecture.md) ; `git status` ; `git add docs` ; `git commit -m "docs: add architecture documentation"` ; `git push`
 
 O Git não rastreia diretórios vazios, então:
 Criar subpasta ; criar arquivo .gitkeep
@@ -158,13 +158,13 @@ Nomenclatura para Commit:
 | Prefixo | Significado | Exemplo |
 |---------|-------------|---------|
 | docs: | Documentação | docs: update README |
-| feat: |Nova funcionalidade/recurso | feat: add resource group deployment |
-| fix: | Correção| fix: correct resource group naming |
+| feat: | Nova funcionalidade/recurso | feat: add resource group deployment |
+| fix: | Correção | fix: correct resource group naming |
 | refactor: | Reorganização sem mudar a finalidade | refactor: reorganize terraform modules | 
-chore: | Manutenção/organização do projeto | chore: create repository structure |
-test: | Testes | test: validate policy assignment |
-ci: | Pipeline/automação de integração | ci: add GitHub Actions validation |
-build: | Build/dependências | menos importante por enquanto |
+| chore: | Manutenção/organização do projeto | chore: create repository structure |
+| test: | Testes | test: validate policy assignment |
+| ci: | Pipeline/automação de integração | ci: add GitHub Actions validation |
+| build: | Build/dependências | menos importante por enquanto |
 
 
 ---
@@ -199,23 +199,23 @@ Portal -> Azure CLI / PowerShell -> Bicep -> Terraform
 
 # Current environment
 
-- Microsoft Account (MSA): marcioizaquiel@outlook.com
+- Microsoft Account (MSA): e-mail pessoal
 - Microsoft Entra ID
 - Apenas 1 Directory: 
 - Tenant name: Default Directory 
-- Tenant ID: 1f2a2423-d5f2-4a59-908f-c9189962f533 
+- Tenant ID: 
 - Primary domain: marcioizaquieloutlook.onmicrosoft.com 
 - Tenant type: License:  Microsoft Entra ID Free 
 - User name: Marcio Izaquiel de Oliveira 
 - User UPN: marcioizaquiel_outlook.com#EXT#@marcioizaquieloutlook.onmicrosoft.com  
 - Management Group: MG-MarcioLab
 - Subscription: SUB-MarcioLab
-- Subscription ID: 648516db-b4cc-4b09-8ee0-bde2c80ccd36
+- Subscription ID: 
 - Subscription Plan: Azure Plan
 - Subscription Parent management group: MG-MarcioLab
 - Cost Management and Budget
 - Billing account: Marcio Izaquiel de Oliveira
-- Billing profile: Marcio Izaquiel de Oliveira (ID: AAD2-5QHJ-BG7-PGB)
+- Billing profile: Marcio Izaquiel de Oliveira
 - Billing scope: Marcio Izaquiel de Oliveira
 - Credit remaining:
 - Credit expiration:
@@ -264,7 +264,9 @@ AZURE
 ---
 ---
 
-# Name Convention: TIPO-PROJETO-DEV-BRS-001
+# GOV: Name Convention: 
+
+TIPO-PROJETO-AMBIENTE-REGIAO-INSTANCIA
 
 | Nome | Opção |  
 |-----------|--------------------------|
@@ -291,7 +293,7 @@ AZURE
 ---
 ---
 
-# Tagging Strategy
+# GOV: Tagging Strategy
 
 | TAG | Opção |
 |-----|----------------------------|
