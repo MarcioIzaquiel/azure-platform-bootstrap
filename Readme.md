@@ -347,9 +347,20 @@ WORKLOAD 001 — Storage Static Website
 
 Internet -> HTTPS -> Azure Storage Static Website Endpoint -> Storage Account
 
-Tenant Root Group -> MG-MarcioLab -> SUB-MarcioLab -> RG-AZLAB-LAB -> stazlablabbrs001
+Tenant Root Group
+- MG-MarcioLab
+  - SUB-MarcioLab
+    - RG-AZLAB-LAB
+      - Storage Account (stazlablabbrs001)
+        - Blob Service
+          - $Web
+            - index.html
+            - 404.html
+            - outros arquivos do site (CSS, JS, Imagens)
 
-st(Storage Account), azlab(projeto), lab(ambiente), brs(BrazilSouth), 001(instancia)
+*stazlablabbrs001 = st(Storage Account), azlab(projeto), lab(ambiente), brs(BrazilSouth), 001(instancia)
+
+### 3 e 4. Gov e Cost Gate
 
 Tag:
 - Env: Lab
@@ -358,4 +369,45 @@ Tag:
 - CostCenter: Learning
 - ManagedBy: Manual
 - Lifecycle: Temporary
+
+Azure Policy: MarcioLab - Tag Governance v1.0 (Effect: Audit; Scope: MG-MarcioLab)
+
+RBAC: Permissões
+
+Storage Account:
+- Region: ~~Brazil South~~ East US
+- Performance: Standard
+- Redundancy: LRS
+- Account type: StorageV2 / GPv2
+- Access tier: Hot
+- Capacity: ~0.01 GB ou menos
+- Traffic: mínimo
+- Transactions: mínimo
+- Static Website: Enabled
+- CDN: Não
+- Custom domain: Não
+
+Azure Cost Management (Estimado e Realizado):
+- Resource
+- Resource Group
+- Project = Azlab
+- CostCenter = Learning
+
+Azure Pricing Calculator (https://azure.microsoft.com/en-gb/pricing/calculator/):
+
+
+Diferença entre Worload sugerido primeiro (sem storage)
+Serviços envolvidos no workload sugerido e no que está sendo feito
+Sugerido 1:
+- Azure Static Web Apps
+
+Realizado:
+- Web Endpoint
+- Storage Account
+  - Static Website
+  - Block Blob Storage
+- Azure Monitor / Metrics
+- Cost Management
+
+
 
