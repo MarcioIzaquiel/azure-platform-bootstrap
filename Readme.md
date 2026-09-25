@@ -338,7 +338,7 @@ WORKLOAD 001 — Storage Static Website
 - Name:             Storage Static Website
 - Project:          AZLAB
 - Environment:      LAB
-- Region:           Brazil South
+- Region:           East US
 - Purpose:          Validate the Azure Platform Bootstrap
 - Lifecycle:        Temporary
 - Deployment:       Manual / Azure Portal
@@ -351,7 +351,7 @@ Tenant Root Group
 - MG-MarcioLab
   - SUB-MarcioLab
     - RG-AZLAB-LAB
-      - Storage Account (stazlablabbrs001)
+      - Storage Account (stazlablabeus001)
         - Blob Service
           - $Web
             - index.html
@@ -360,7 +360,7 @@ Tenant Root Group
 
 *stazlablabbrs001 = st(Storage Account), azlab(projeto), lab(ambiente), brs(BrazilSouth), 001(instancia)
 
-### 3 e 4. Gov e Cost Gate
+### 3. e 4. Gov e Cost Gate
 
 Tag:
 - Env: Lab
@@ -396,18 +396,31 @@ Azure Cost Management (Estimado e Realizado):
 Azure Pricing Calculator (https://azure.microsoft.com/en-gb/pricing/calculator/):
 
 
-Diferença entre Worload sugerido primeiro (sem storage)
-Serviços envolvidos no workload sugerido e no que está sendo feito
-Sugerido 1:
-- Azure Static Web Apps
+## Diferença entre Worload sugerido primeiro (sem storage):
 
-Realizado:
-- Web Endpoint
-- Storage Account
-  - Static Website
-  - Block Blob Storage
-- Azure Monitor / Metrics
-- Cost Management
+- Workload inicial sugerido 1:
+  - Azure Static Web Apps
 
+- Workload Realizado:
+  - Web Endpoint
+  - Storage Account
+    - Static Website
+    - Block Blob Storage
+  - Azure Monitor / Metrics
+  - Cost Management
 
+## Deploy do WL-001
+
+1. Definir arquitetura
+2. Definir naming
+3. Definir tags
+4. Criar Resource Group        
+5. Criar Storage Account        
+6. Habilitar Static Website        
+7. Criar index.html / 404.html        
+8. Publicar        
+9. Testar endpoint        
+10. Verificar Policy / RBAC / Metrics        
+11. Verificar Cost Management        
+12. Documentar no GitHub
 
