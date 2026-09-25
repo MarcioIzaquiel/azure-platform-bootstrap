@@ -311,3 +311,51 @@ TIPO-PROJETO-AMBIENTE-REGIAO-INSTANCIA
 ---
 ---
 ---
+
+# Worload 001: Storage Static Website
+
+WORKLOAD 001 — Storage Static Website
+
+1. [ ] Definição do workload. 
+2. [ ] Arquitetura
+3. [ ] Naming + Tags
+4. [ ] Estimativa de custo (antes de criar recursos)
+5. [ ] Cost Gate: GO / NO-GO
+6. [ ] Deployment pelo Portal
+7. [ ] Configurar Static Website
+8. [ ] Publicar index.html / 404.html
+9. [ ] Testes
+10. [ ] Validar Policy / RBAC / Cost
+11. [ ] Documentar no GitHub
+12. [ ] Observar custo real
+13. [ ] Teardown
+14. [ ] Encerramento da Fase 0
+
+
+### 1. Definição do Workload 001
+
+- Workload ID:      WL-001
+- Name:             Storage Static Website
+- Project:          AZLAB
+- Environment:      LAB
+- Region:           Brazil South
+- Purpose:          Validate the Azure Platform Bootstrap
+- Lifecycle:        Temporary
+- Deployment:       Manual / Azure Portal
+
+### 2. Arquitetura Workload 001
+
+Internet -> HTTPS -> Azure Storage Static Website Endpoint -> Storage Account
+
+Tenant Root Group -> MG-MarcioLab -> SUB-MarcioLab -> RG-AZLAB-LAB -> stazlablabbrs001
+
+st(Storage Account), azlab(projeto), lab(ambiente), brs(BrazilSouth), 001(instancia)
+
+Tag:
+- Env: Lab
+- Owner: Marcio
+- Project: Azlab
+- CostCenter: Learning
+- ManagedBy: Manual
+- Lifecycle: Temporary
+
