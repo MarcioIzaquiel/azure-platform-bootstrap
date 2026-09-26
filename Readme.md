@@ -115,6 +115,29 @@ Atalhos:
 
 # Git+GitHub Notes
 
+**Instalação**
+- git --version
+- gh --version
+- winget install --id GitHub.cli
+- gh --version
+- git config --global user.name
+- git config --global user.email
+- git config --global init.defaultBranch
+- git config --global user.name "Marcio Izaquiel de Oliveira"
+- git config --global user.email "309544935+MarcioIzaquiel@users.noreply. github.com"
+- git config --global init.defaultBranch main
+- git config --global --list
+- gh auth login
+- cd "$HOME\OneDrive\MarcioOliveira\Studies\AZURE"
+- mkdir azure-platform-bootstrap
+- cd azure-platform-bootstrap
+- git init
+- code .
+- gh repo create azure-platform-bootstrap --public --source=. --remote=origin --push
+- git remote -v
+- gh auth status
+- gh repo clone MarcioIzaquiel/azure-platform-bootstrap
+
 **Sequência rápida:**
 
 Antes:
@@ -250,6 +273,7 @@ AZURE
       - RG-SPGG-DEV 
       - RG-SPGG-PROD 
       - RG-AZLAB-LAB 
+      - Cost Management > Budget > BUD-MarcioLab-Monthly
   - RBAC (Azure role-based access control) : 
     - Marcio → Owner 
     - GRP-AZ-MarcioLab-Readers → Reader 
@@ -411,11 +435,18 @@ Azure Pricing Calculator (https://azure.microsoft.com/en-gb/pricing/calculator/)
 
 ## Deploy do WL-001
 
-1. Definir arquitetura
-2. Definir naming
-3. Definir tags
-4. Criar Resource Group        
-5. Criar Storage Account        
+1. [x] Definir arquitetura
+2. [x] Definir naming
+3. [x] Definir tags
+4. [x] Criar Resource Group        
+5. [x] Criar Storage Account        
+    - stazlablabeus001
+      - Tags, policy, budget, audit, RBAC
+      - Static Website        
+        - https://stazlablabeus001.z13.web.core.windows.net/
+        - $web
+          - index.html
+          - 404.html
 6. Habilitar Static Website        
 7. Criar index.html / 404.html        
 8. Publicar        
