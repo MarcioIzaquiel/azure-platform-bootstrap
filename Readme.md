@@ -340,15 +340,15 @@ TIPO-PROJETO-AMBIENTE-REGIAO-INSTANCIA
 
 WORKLOAD 001 — Storage Static Website
 
-1. [ ] Definição do workload. 
-2. [ ] Arquitetura
-3. [ ] Naming + Tags
-4. [ ] Estimativa de custo (antes de criar recursos)
-5. [ ] Cost Gate: GO / NO-GO
-6. [ ] Deployment pelo Portal
-7. [ ] Configurar Static Website
-8. [ ] Publicar index.html / 404.html
-9. [ ] Testes
+1. [x] Definição do workload. 
+2. [x] Arquitetura
+3. [x] Naming + Tags
+4. [x] Estimativa de custo (antes de criar recursos)
+5. [x] Cost Gate: GO / NO-GO
+6. [x] Deployment pelo Portal
+7. [x] Configurar Static Website
+8. [x] Publicar index.html / 404.html
+9. [x] Testes
 10. [ ] Validar Policy / RBAC / Cost
 11. [ ] Documentar no GitHub
 12. [ ] Observar custo real
@@ -441,17 +441,16 @@ Azure Pricing Calculator (https://azure.microsoft.com/en-gb/pricing/calculator/)
 4. [x] Criar Resource Group        
 5. [x] Criar Storage Account        
     - stazlablabeus001
-      - Tags, policy, budget, audit, RBAC
       - Static Website        
         - https://stazlablabeus001.z13.web.core.windows.net/
         - $web
           - index.html
           - 404.html
-6. Habilitar Static Website        
-7. Criar index.html / 404.html        
-8. Publicar        
-9. Testar endpoint        
-10. Verificar Policy / RBAC / Metrics        
+6. [x] Habilitar Static Website        
+7. [x] Criar index.html / 404.html        
+8. [x] Publicar        
+9. [x] Testar endpoint        
+10. Verificar Policy / RBAC / Metrics (tags, budget, audit)        
 11. Verificar Cost Management        
 12. Documentar no GitHub
 
