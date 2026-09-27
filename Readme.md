@@ -450,7 +450,8 @@ Azure Pricing Calculator (https://azure.microsoft.com/en-gb/pricing/calculator/)
 7. [x] Criar index.html / 404.html        
 8. [x] Publicar        
 9. [x] Testar endpoint        
-10. Verificar Policy / RBAC / Metrics (tags, budget, audit)        
+10. Verificar Policy (tags) / RBAC / Metrics (budget, audit)
+  - [x] stazlablabeus001 -> Tags        
 11. Verificar Cost Management        
 12. Documentar no GitHub
 
