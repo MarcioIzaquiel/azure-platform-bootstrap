@@ -501,3 +501,47 @@ WL-002 — Azure Static Web Apps (+GitHub Actions e sem storage)
 18. [ ] Monitoramento
 19. [ ] Cost Management
 20. [ ] Documentar
+
+
+---
+---
+---
+---
+---
+---
+---
+---
+---
+
+# Linux
+
+`ip a` = ifconfig
+
+`sudo ss -tlnp | grep ':22'` verificar se o servidor está com a 22 aberta (no próprio servidor)
+
+`Test-NetConnection 192.168.1.120 -Port 22` no PowerShell a partir do Windows 11
+
+No VS Code, instalar o Remote - SSH, da Microsoft.
+`ssh -V` no PowerShell do VS Code
+1. Pressione Ctrl + Shift + P.
+2. Digite Remote-SSH: Add New SSH Host.
+3. Informe o comando abaixo, substituindo pelo usuário e IP com os quais você já acessa pelo PuTTY: `ssh usuario@192.168.1.120 -p 22`
+
+`sed -i 's/\r$//' ~/meu_script.sh` limpar o script de \r (quando feito no Windows)
+
+### Editor VI
+- vi meu_script.sh
+- (:set paste)
+- i
+- esc
+- (:set nopaste)
+- :wq
+
+`chmod +x meu_script.sh` dar permissão no script
+`bash -n SPGG_Linux.sh` verificar a sintaxe dos os comandos
+`./meu_script.sh`
+
+### Execução remota via VS Code
+- `scp .\SPGG_Linux\SPGG_Linux.sh marcio@192.168.0.46:~/SPGG_Linux.sh`
+- `ssh -tt marcio@192.168.0.46 "cd ~ && bash ./SPGG_Linux.sh"`
+- `scp marcio@192.168.0.46:~/20261011_ubuntuserver_SPGG_Linux.txt .\SPGG_Linux`
