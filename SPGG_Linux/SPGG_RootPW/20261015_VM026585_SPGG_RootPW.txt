@@ -1,0 +1,229 @@
+
+===== EXECUTIVE SUMMARY =====
+Host: VM026585
+Hostname short: VM026585
+Collected: 2026-10-15T08:11:34-03:00
+Window: 2026-07-01 to 2026-10-01 (end exclusive)
+Global rootpw directive: FOUND (text scan; verify effective scope)
+sudoers mtime: 2026-08-03 12:00:39.875255143 -0300
+root password status: root P 08/03/2026 0 99999 7 -1
+sudoers mtime day: INSIDE REQUESTED WINDOW
+
+===== IDENTIFICATION =====
+OS: Ubuntu 22.04.4 LTS
+Timezone: -03
+Executed as: uid=0(root) gid=0(root) groups=0(root)
+
+===== SUDO EFFECTIVE DEFAULTS (FOR ROOT; NOT PER-USER PROOF) =====
+Matching Defaults entries for root on VM026585:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty, rootpw, !requiretty
+
+User root may run the following commands on VM026585:
+    (ALL : ALL) ALL
+
+===== SUDOERS DIRECTIVES =====
+
+-- /etc/sudoers --
+9:Defaults	env_reset
+10:Defaults	mail_badpass
+11:Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+12:Defaults	use_pty
+13:Defaults        rootpw
+54:@includedir /etc/sudoers.d
+
+-- /etc/sudoers.d/90-cloud-init-users --
+
+-- /etc/sudoers.d/README --
+
+-- /etc/sudoers.d/morpheus-node --
+1:Defaults:morpheus-node !requiretty
+7:Defaults:root !requiretty
+
+===== SUDOERS FILE METADATA =====
+/etc/sudoers | owner=root:root | mode=440 | size=1693 | mtime=2026-08-03 12:00:39.875255143 -0300 | ctime=2026-10-09 06:50:20.444149865 -0300 | birth=2026-08-03 12:00:06.766571246 -0300
+/etc/sudoers.d/90-cloud-init-users | owner=root:root | mode=440 | size=141 | mtime=2025-05-28 08:45:19.696000000 -0300 | ctime=2025-05-28 08:45:19.696000000 -0300 | birth=2025-05-28 08:45:19.696000000 -0300
+/etc/sudoers.d/README | owner=root:root | mode=440 | size=1096 | mtime=2022-02-08 05:35:40.000000000 -0300 | ctime=2022-10-27 08:52:41.239988282 -0300 | birth=2022-10-27 08:52:41.239988282 -0300
+/etc/sudoers.d/morpheus-node | owner=root:root | mode=440 | size=240 | mtime=2025-05-28 10:07:50.992610378 -0300 | ctime=2025-05-28 10:07:50.992610378 -0300 | birth=2025-05-28 10:07:50.992610378 -0300
+
+===== ROOT PASSWORD METADATA (NO HASHES) =====
+root P 08/03/2026 0 99999 7 -1
+Last password change					: Aug 03, 2026
+Password expires					: never
+Password inactive					: never
+Account expires						: never
+Minimum number of days between password change		: 0
+Maximum number of days between password change		: 99999
+Number of days of warning before password expires	: 7
+
+===== LOG SOURCES / RETENTION =====
+/var/log/auth.log | bytes=1472445 | mtime=2026-10-15 08:11:34.875455540 -0300
+/var/log/auth.log.1 | bytes=2285308 | mtime=2026-10-11 00:00:01.931461911 -0300
+/var/log/auth.log.2.gz | bytes=125645 | mtime=2026-10-04 00:00:01.356266040 -0300
+/var/log/auth.log.3.gz | bytes=122328 | mtime=2026-09-27 00:00:01.325486329 -0300
+/var/log/auth.log.4.gz | bytes=119534 | mtime=2026-09-20 00:00:01.663778154 -0300
+-4 7140114f84b34d2794f3f00e7dd04c64 Mon 2025-05-26 16:36:31 -03—Tue 2025-05-27 18:03:01 -03
+-3 0af6afd0e3dc4470bb5010a3d50e855f Wed 2025-05-28 08:45:14 -03—Wed 2025-05-28 09:20:55 -03
+-2 0a953c7936ea40b9b8a2ce32cf391f0f Wed 2025-05-28 09:22:44 -03—Tue 2025-08-19 13:55:51 -03
+-1 9010b5f30059482f8df96a0249c91cc4 Tue 2025-08-19 13:56:03 -03—Sat 2026-05-23 02:12:19 -03
+ 0 ea1007168d4c427690ad34157546a015 Sat 2026-05-23 03:26:29 -03—Thu 2026-10-15 08:11:34 -03
+
+===== AUTH LOG - PRIORITIZED EVENTS (MAX 100 HIGH + 60 MEDIUM PER FILE) =====
+NOTE: syslog timestamps usually omit year; year inferred from file mtime (heuristic, not forensic proof).
+NOTE: routine PAM sessions and CRON are counted, not printed. Matches are investigative leads.
+NOTE: HIGH identifies command keywords; it does not prove a configuration change.
+
+-- /var/log/auth.log --
+LOG_OBSERVED_DATE_RANGE=2026-10-11..2026-10-15 (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.1 --
+LOG_OBSERVED_DATE_RANGE=2026-10-04..2026-10-11 (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.2.gz --
+[MEDIUM inferred 2026-09-27] Sep 27 08:29:52 VM026585 sudo: deeadmin : TTY=pts/0 ; PWD=/home/deeadmin ; USER=root ; COMMAND=/usr/bin/su
+[MEDIUM inferred 2026-09-27] Sep 27 17:52:46 VM026585 sudo: deeadmin : TTY=pts/0 ; PWD=/home/deeadmin ; USER=root ; COMMAND=/usr/bin/su
+[MEDIUM inferred 2026-09-27] Sep 27 18:25:44 VM026585 sudo: deeadmin : TTY=pts/0 ; PWD=/home/deeadmin ; USER=root ; COMMAND=/usr/bin/su
+[MEDIUM inferred 2026-09-28] Sep 28 08:21:21 VM026585 sudo: deeadmin : TTY=pts/0 ; PWD=/home/deeadmin ; USER=root ; COMMAND=/usr/bin/su
+[MEDIUM inferred 2026-09-28] Sep 28 12:12:39 VM026585 sudo: deeadmin : TTY=pts/0 ; PWD=/home/deeadmin ; USER=root ; COMMAND=/usr/bin/su
+[MEDIUM inferred 2026-09-29] Sep 29 07:50:59 VM026585 sudo: deeadmin : TTY=pts/0 ; PWD=/home/deeadmin ; USER=root ; COMMAND=/usr/bin/su
+[MEDIUM inferred 2026-09-29] Sep 29 10:15:53 VM026585 sudo: deeadmin : TTY=pts/5 ; PWD=/home/deeadmin ; USER=root ; COMMAND=/usr/bin/su
+[MEDIUM inferred 2026-09-29] Sep 29 15:12:26 VM026585 sudo: deeadmin : TTY=pts/0 ; PWD=/home/deeadmin ; USER=root ; COMMAND=/usr/bin/su
+[MEDIUM inferred 2026-09-29] Sep 29 19:45:02 VM026585 sudo: deeadmin : TTY=pts/0 ; PWD=/home/deeadmin ; USER=root ; COMMAND=/usr/bin/su
+[HIGH inferred 2026-09-30] Sep 30 15:10:45 VM026585 sudo:     root : TTY=pts/0 ; PWD=/root ; USER=root ; COMMAND=/usr/bin/passwd spggadmin
+[HIGH inferred 2026-09-30] Sep 30 15:11:06 VM026585 passwd[176045]: pam_unix(passwd:chauthtok): password changed for spggadmin
+LOG_OBSERVED_DATE_RANGE=2026-09-27..2026-10-04 (inferred, not proof of continuous coverage)
+HIGH_MATCHES=2; HIGH_DISPLAYED=2; MEDIUM_MATCHES=9; MEDIUM_DISPLAYED=9; ROUTINE_SKIPPED=12807; OTHER_SKIPPED=174
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.3.gz --
+[MEDIUM inferred 2026-09-21] Sep 21 08:33:50 VM026585 sudo: pam_unix(sudo:auth): authentication failure; logname=deeadmin uid=1004 euid=0 tty=/dev/pts/0 ruser=deeadmin rhost=  user=root
+[MEDIUM inferred 2026-09-21] Sep 21 08:33:54 VM026585 sudo: deeadmin : TTY=pts/0 ; PWD=/home/deeadmin ; USER=root ; COMMAND=/usr/bin/su
+[MEDIUM inferred 2026-09-21] Sep 21 09:29:27 VM026585 sudo:     root : TTY=pts/1 ; PWD=/etc/apache2/sites-available ; USER=root ; COMMAND=/usr/bin/systemctl reload apache2
+[MEDIUM inferred 2026-09-21] Sep 21 10:02:00 VM026585 sudo: deeadmin : TTY=pts/0 ; PWD=/home/deeadmin ; USER=root ; COMMAND=/usr/bin/su
+[MEDIUM inferred 2026-09-21] Sep 21 12:10:59 VM026585 sudo: deeadmin : TTY=pts/3 ; PWD=/home/deeadmin ; USER=root ; COMMAND=/usr/bin/su
+[MEDIUM inferred 2026-09-21] Sep 21 14:53:41 VM026585 sudo: deeadmin : TTY=pts/0 ; PWD=/home/deeadmin ; USER=root ; COMMAND=/usr/bin/su
+[MEDIUM inferred 2026-09-26] Sep 26 09:09:07 VM026585 sudo: deeadmin : TTY=pts/0 ; PWD=/home/deeadmin ; USER=root ; COMMAND=/usr/bin/su
+[MEDIUM inferred 2026-09-26] Sep 26 16:55:55 VM026585 sudo: deeadmin : TTY=pts/0 ; PWD=/home/deeadmin ; USER=root ; COMMAND=/usr/bin/su
+LOG_OBSERVED_DATE_RANGE=2026-09-20..2026-09-27 (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=8; MEDIUM_DISPLAYED=8; ROUTINE_SKIPPED=22336; OTHER_SKIPPED=161
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.4.gz --
+[MEDIUM inferred 2026-09-15] Sep 15 10:22:08 VM026585 sudo: deeadmin : TTY=pts/0 ; PWD=/home/deeadmin ; USER=root ; COMMAND=/usr/bin/su
+[MEDIUM inferred 2026-09-16] Sep 16 15:25:34 VM026585 sudo: pam_unix(sudo:auth): authentication failure; logname=deeadmin uid=1004 euid=0 tty=/dev/pts/0 ruser=deeadmin rhost=  user=root
+[MEDIUM inferred 2026-09-16] Sep 16 15:25:37 VM026585 sudo: deeadmin : TTY=pts/0 ; PWD=/home/deeadmin ; USER=root ; COMMAND=/usr/bin/su
+LOG_OBSERVED_DATE_RANGE=2026-09-13..2026-09-20 (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=3; MEDIUM_DISPLAYED=3; ROUTINE_SKIPPED=22267; OTHER_SKIPPED=42
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+===== JOURNAL - PRIORITIZED EVENTS (MAX 100 HIGH + 60 MEDIUM) =====
+[MEDIUM] 2026-07-06T14:42:24-0300 VM026585 sudo[3209750]: pam_unix(sudo:auth): authentication failure; logname=deeadmin uid=1004 euid=0 tty=/dev/pts/0 ruser=deeadmin rhost=  user=deeadmin
+[HIGH] 2026-07-10T13:53:22-0300 VM026585 passwd[3882143]: passwd: can't view or modify password information for root
+[HIGH] 2026-07-10T13:53:22-0300 VM026585 passwd[3882253]: passwd: can't view or modify password information for procergs
+[HIGH] 2026-07-10T13:53:22-0300 VM026585 passwd[3882362]: passwd: can't view or modify password information for ubuntu
+[HIGH] 2026-07-10T13:53:22-0300 VM026585 passwd[3882459]: passwd: can't view or modify password information for morpheus-node
+[HIGH] 2026-07-10T13:53:22-0300 VM026585 passwd[3882556]: passwd: can't view or modify password information for cdsadmin
+[HIGH] 2026-07-10T13:53:22-0300 VM026585 passwd[3882665]: passwd: can't view or modify password information for spggadmin
+[HIGH] 2026-07-10T13:53:23-0300 VM026585 passwd[3882774]: passwd: can't view or modify password information for deeadmin
+[HIGH] 2026-07-10T14:10:52-0300 VM026585 passwd[3885118]: passwd: can't view or modify password information for root
+[HIGH] 2026-07-10T14:10:52-0300 VM026585 passwd[3885227]: passwd: can't view or modify password information for procergs
+[HIGH] 2026-07-10T14:10:52-0300 VM026585 passwd[3885336]: passwd: can't view or modify password information for ubuntu
+[HIGH] 2026-07-10T14:10:52-0300 VM026585 passwd[3885433]: passwd: can't view or modify password information for morpheus-node
+[HIGH] 2026-07-10T14:10:52-0300 VM026585 passwd[3885639]: passwd: can't view or modify password information for spggadmin
+[HIGH] 2026-07-10T14:10:52-0300 VM026585 passwd[3885748]: passwd: can't view or modify password information for deeadmin
+[HIGH] 2026-07-10T14:10:52-0300 VM026585 passwd[3885857]: passwd: can't view or modify password information for monitoramento
+[MEDIUM] 2026-07-13T12:45:12-0300 VM026585 sudo[193125]: pam_unix(sudo:auth): authentication failure; logname=deeadmin uid=1004 euid=0 tty=/dev/pts/0 ruser=deeadmin rhost=  user=deeadmin
+[MEDIUM] 2026-07-16T14:34:46-0300 VM026585 sudo[715735]: pam_unix(sudo:auth): authentication failure; logname=deeadmin uid=1004 euid=0 tty=/dev/pts/0 ruser=deeadmin rhost=  user=deeadmin
+[MEDIUM] 2026-07-23T09:34:12-0300 VM026585 sudo[1892605]: pam_unix(sudo:auth): authentication failure; logname=deeadmin uid=1004 euid=0 tty=/dev/pts/0 ruser=deeadmin rhost=  user=deeadmin
+[HIGH] 2026-07-29T10:54:50-0300 VM026585 chpasswd[2920696]: pam_unix(chpasswd:chauthtok): password changed for spggadmin
+[HIGH] 2026-07-29T10:54:51-0300 VM026585 chpasswd[2920701]: pam_unix(chpasswd:chauthtok): password changed for cdsadmin
+[HIGH] 2026-07-29T10:54:51-0300 VM026585 chpasswd[2920706]: pam_unix(chpasswd:chauthtok): password changed for procergs
+[HIGH] 2026-07-29T10:54:51-0300 VM026585 useradd[2920710]: new group: name=devadmin, GID=1015
+[HIGH] 2026-07-29T10:54:51-0300 VM026585 useradd[2920710]: new user: name=devadmin, UID=1006, GID=1015, home=/home/devadmin, shell=/bin/bash, from=/dev/pts/1
+[HIGH] 2026-07-29T10:54:51-0300 VM026585 chpasswd[2920719]: pam_unix(chpasswd:chauthtok): password changed for devadmin
+[HIGH] 2026-07-29T10:54:51-0300 VM026585 useradd[2920723]: new group: name=spezziadmin, GID=1007
+[HIGH] 2026-07-29T10:54:51-0300 VM026585 useradd[2920723]: new user: name=spezziadmin, UID=1007, GID=1007, home=/home/spezziadmin, shell=/bin/bash, from=/dev/pts/1
+[HIGH] 2026-07-29T10:54:51-0300 VM026585 chpasswd[2920732]: pam_unix(chpasswd:chauthtok): password changed for spezziadmin
+[HIGH] 2026-07-29T10:54:51-0300 VM026585 chpasswd[2920737]: pam_unix(chpasswd:chauthtok): password changed for deeadmin
+[HIGH] 2026-07-29T10:54:51-0300 VM026585 chpasswd[2920742]: pam_unix(chpasswd:chauthtok): password changed for monitoramento
+[HIGH] 2026-07-29T11:06:10-0300 VM026585 chpasswd[2922062]: pam_unix(chpasswd:chauthtok): password changed for spggadmin
+[HIGH] 2026-07-29T11:06:10-0300 VM026585 chpasswd[2922067]: pam_unix(chpasswd:chauthtok): password changed for cdsadmin
+[HIGH] 2026-07-29T11:06:10-0300 VM026585 chpasswd[2922072]: pam_unix(chpasswd:chauthtok): password changed for procergs
+[HIGH] 2026-07-29T11:06:10-0300 VM026585 chpasswd[2922077]: pam_unix(chpasswd:chauthtok): password changed for devadmin
+[HIGH] 2026-07-29T11:06:10-0300 VM026585 chpasswd[2922082]: pam_unix(chpasswd:chauthtok): password changed for spezziadmin
+[HIGH] 2026-07-29T11:06:10-0300 VM026585 chpasswd[2922087]: pam_unix(chpasswd:chauthtok): password changed for deeadmin
+[HIGH] 2026-07-29T11:06:10-0300 VM026585 chpasswd[2922092]: pam_unix(chpasswd:chauthtok): password changed for monitoramento
+[HIGH] 2026-07-29T18:07:47-0300 VM026585 userdel[2967060]: delete user 'ubuntu'
+[HIGH] 2026-07-29T18:07:47-0300 VM026585 userdel[2967060]: delete 'ubuntu' from group 'adm'
+[HIGH] 2026-07-29T18:07:47-0300 VM026585 userdel[2967060]: delete 'ubuntu' from group 'dialout'
+[HIGH] 2026-07-29T18:07:47-0300 VM026585 userdel[2967060]: delete 'ubuntu' from group 'cdrom'
+[HIGH] 2026-07-29T18:07:47-0300 VM026585 userdel[2967060]: delete 'ubuntu' from group 'floppy'
+[HIGH] 2026-07-29T18:07:47-0300 VM026585 userdel[2967060]: delete 'ubuntu' from group 'sudo'
+[HIGH] 2026-07-29T18:07:47-0300 VM026585 userdel[2967060]: delete 'ubuntu' from group 'audio'
+[HIGH] 2026-07-29T18:07:47-0300 VM026585 userdel[2967060]: delete 'ubuntu' from group 'dip'
+[HIGH] 2026-07-29T18:07:47-0300 VM026585 userdel[2967060]: delete 'ubuntu' from group 'video'
+[HIGH] 2026-07-29T18:07:47-0300 VM026585 userdel[2967060]: delete 'ubuntu' from group 'plugdev'
+[HIGH] 2026-07-29T18:07:47-0300 VM026585 userdel[2967060]: delete 'ubuntu' from group 'lxd'
+[HIGH] 2026-07-29T18:07:47-0300 VM026585 userdel[2967060]: delete 'ubuntu' from group 'netdev'
+[HIGH] 2026-07-29T18:07:47-0300 VM026585 userdel[2967060]: removed group 'ubuntu' owned by 'ubuntu'
+[HIGH] 2026-07-29T18:07:47-0300 VM026585 userdel[2967060]: removed shadow group 'ubuntu' owned by 'ubuntu'
+[HIGH] 2026-07-29T18:07:47-0300 VM026585 userdel[2967060]: delete 'ubuntu' from shadow group 'adm'
+[HIGH] 2026-07-29T18:07:47-0300 VM026585 userdel[2967060]: delete 'ubuntu' from shadow group 'dialout'
+[HIGH] 2026-07-29T18:07:47-0300 VM026585 userdel[2967060]: delete 'ubuntu' from shadow group 'cdrom'
+[HIGH] 2026-07-29T18:07:47-0300 VM026585 userdel[2967060]: delete 'ubuntu' from shadow group 'floppy'
+[HIGH] 2026-07-29T18:07:47-0300 VM026585 userdel[2967060]: delete 'ubuntu' from shadow group 'sudo'
+[HIGH] 2026-07-29T18:07:47-0300 VM026585 userdel[2967060]: delete 'ubuntu' from shadow group 'audio'
+[HIGH] 2026-07-29T18:07:47-0300 VM026585 userdel[2967060]: delete 'ubuntu' from shadow group 'dip'
+[HIGH] 2026-07-29T18:07:47-0300 VM026585 userdel[2967060]: delete 'ubuntu' from shadow group 'video'
+[HIGH] 2026-07-29T18:07:47-0300 VM026585 userdel[2967060]: delete 'ubuntu' from shadow group 'plugdev'
+[HIGH] 2026-07-29T18:07:47-0300 VM026585 userdel[2967060]: delete 'ubuntu' from shadow group 'lxd'
+[HIGH] 2026-07-29T18:07:47-0300 VM026585 userdel[2967060]: delete 'ubuntu' from shadow group 'netdev'
+[HIGH] 2026-08-03T11:59:47-0300 VM026585 sudo[3700274]: cdsadmin : TTY=pts/4 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/bin/passwd root
+[HIGH] 2026-08-03T12:00:01-0300 VM026585 passwd[3700294]: pam_unix(passwd:chauthtok): password changed for root
+[HIGH] 2026-08-03T12:00:06-0300 VM026585 sudo[3700333]: cdsadmin : TTY=pts/4 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/sbin/visudo
+[MEDIUM] 2026-08-03T13:58:59-0300 VM026585 sudo[3713972]: pam_unix(sudo:auth): authentication failure; logname=spggadmin uid=1003 euid=0 tty=/dev/pts/0 ruser=spggadmin rhost=  user=root
+[HIGH] 2026-08-03T14:00:04-0300 VM026585 sudo[3713972]: spggadmin : 3 incorrect password attempts ; TTY=pts/0 ; PWD=/home/spggadmin ; USER=root ; COMMAND=/usr/bin/passwd spggadmin
+[MEDIUM] 2026-08-03T14:02:36-0300 VM026585 sudo[3714388]: pam_unix(sudo:auth): authentication failure; logname=spggadmin uid=1003 euid=0 tty=/dev/pts/0 ruser=spggadmin rhost=  user=root
+[HIGH] 2026-08-03T14:05:01-0300 VM026585 sudo[3714388]: spggadmin : 1 incorrect password attempt ; TTY=pts/0 ; PWD=/home/spggadmin ; USER=root ; COMMAND=/usr/bin/passwd spggadmin
+[MEDIUM] 2026-08-03T14:18:36-0300 VM026585 sudo[3716245]: pam_unix(sudo:auth): authentication failure; logname=spggadmin uid=1003 euid=0 tty=/dev/pts/0 ruser=spggadmin rhost=  user=root
+[HIGH] 2026-08-03T14:19:31-0300 VM026585 sudo[3716245]: spggadmin : TTY=pts/0 ; PWD=/home/spggadmin ; USER=root ; COMMAND=/usr/bin/passwd spggadmin
+[HIGH] 2026-08-03T14:20:28-0300 VM026585 passwd[3716341]: pam_unix(passwd:chauthtok): password changed for spggadmin
+[MEDIUM] 2026-08-05T08:01:33-0300 VM026585 sudo[3983749]: pam_unix(sudo:auth): authentication failure; logname=deeadmin uid=1004 euid=0 tty=/dev/pts/0 ruser=deeadmin rhost=  user=root
+[MEDIUM] 2026-08-05T08:01:42-0300 VM026585 sudo[3983770]: pam_unix(sudo:auth): authentication failure; logname=deeadmin uid=1004 euid=0 tty=/dev/pts/0 ruser=deeadmin rhost=  user=root
+[MEDIUM] 2026-08-05T08:02:43-0300 VM026585 sudo[3983957]: pam_unix(sudo:auth): authentication failure; logname=deeadmin uid=1004 euid=0 tty=/dev/pts/0 ruser=deeadmin rhost=  user=root
+[MEDIUM] 2026-08-05T08:13:15-0300 VM026585 sudo[3985136]: pam_unix(sudo:auth): authentication failure; logname=deeadmin uid=1004 euid=0 tty=/dev/pts/1 ruser=deeadmin rhost=  user=root
+[HIGH] 2026-08-05T11:16:21-0300 VM026585 sudo[4004572]: monitoramento : TTY=pts/0 ; PWD=/home/monitoramento ; USER=root ; COMMAND=/usr/sbin/usermod -aG sudo,www-data,users spggadmin
+[HIGH] 2026-08-05T11:16:21-0300 VM026585 usermod[4004575]: add 'spggadmin' to group 'www-data'
+[HIGH] 2026-08-05T11:16:21-0300 VM026585 usermod[4004575]: add 'spggadmin' to group 'users'
+[HIGH] 2026-08-05T11:16:21-0300 VM026585 usermod[4004575]: add 'spggadmin' to shadow group 'www-data'
+[HIGH] 2026-08-05T11:16:21-0300 VM026585 usermod[4004575]: add 'spggadmin' to shadow group 'users'
+[HIGH] 2026-08-05T11:20:42-0300 VM026585 sudo[4005247]: cdsadmin : TTY=pts/1 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/sbin/usermod -aG sudo,www-data,users spggadmin
+[MEDIUM] 2026-08-05T13:28:04-0300 VM026585 sudo[4018809]: pam_unix(sudo:auth): authentication failure; logname=deeadmin uid=1004 euid=0 tty=/dev/pts/0 ruser=deeadmin rhost=  user=root
+[MEDIUM] 2026-08-05T13:30:16-0300 VM026585 sudo[4018985]: pam_unix(sudo:auth): authentication failure; logname=deeadmin uid=1004 euid=0 tty=/dev/pts/0 ruser=deeadmin rhost=  user=root
+[MEDIUM] 2026-08-05T13:31:12-0300 VM026585 sudo[4019085]: pam_unix(sudo:auth): authentication failure; logname=deeadmin uid=1004 euid=0 tty=/dev/pts/0 ruser=deeadmin rhost=  user=root
+[MEDIUM] 2026-08-12T12:49:33-0300 VM026585 sudo[933309]: pam_unix(sudo:auth): authentication failure; logname=deeadmin uid=1004 euid=0 tty=/dev/pts/0 ruser=deeadmin rhost=  user=root
+[MEDIUM] 2026-08-18T10:02:49-0300 VM026585 sudo[1842527]: pam_unix(sudo:auth): authentication failure; logname=deeadmin uid=1004 euid=0 tty=/dev/pts/0 ruser=deeadmin rhost=  user=root
+[MEDIUM] 2026-09-10T10:20:30-0300 VM026585 sudo[1237727]: pam_unix(sudo:auth): authentication failure; logname=deeadmin uid=1004 euid=0 tty=/dev/pts/0 ruser=deeadmin rhost=  user=root
+[MEDIUM] 2026-09-16T15:25:34-0300 VM026585 sudo[2187777]: pam_unix(sudo:auth): authentication failure; logname=deeadmin uid=1004 euid=0 tty=/dev/pts/0 ruser=deeadmin rhost=  user=root
+[MEDIUM] 2026-09-21T08:33:50-0300 VM026585 sudo[2911797]: pam_unix(sudo:auth): authentication failure; logname=deeadmin uid=1004 euid=0 tty=/dev/pts/0 ruser=deeadmin rhost=  user=root
+[HIGH] 2026-09-30T15:10:45-0300 VM026585 sudo[176043]:     root : TTY=pts/0 ; PWD=/root ; USER=root ; COMMAND=/usr/bin/passwd spggadmin
+[HIGH] 2026-09-30T15:11:06-0300 VM026585 passwd[176045]: pam_unix(passwd:chauthtok): password changed for spggadmin
+JOURNAL_HIGH=72; DISPLAYED=72; JOURNAL_MEDIUM=19; DISPLAYED=19; ROUTINE_SKIPPED=439475
+
+===== SUDOERS MODIFICATION DATE - LOG COVERAGE ASSESSMENT =====
+sudoers mtime day: 2026-08-03
+The log ranges above are inferred observations, not guarantees of complete retention.
+If no source covers the sudoers mtime day, attribution from local retained logs is not possible.
+Even if a source covers that day, only explicit records can support attribution.
+
+===== AUDITD AVAILABILITY =====
+ausearch unavailable
+
+===== LIMITATIONS / SECURITY =====
+READ ONLY: no changes to accounts, sudoers, services or passwords.
+No matching log records does not imply no change; logs may have rotated or never been collected.
+sudoers mtime is not proof of when rootpw was introduced or who changed it.
+Reports may contain usernames and command arguments; keep private and out of Git.

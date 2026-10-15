@@ -1,0 +1,107 @@
+
+===== EXECUTIVE SUMMARY =====
+Host: VM700127
+Hostname short: VM700127
+Collected: 2026-10-15T11:20:17+00:00
+Window: 2026-07-01 to 2026-10-01 (end exclusive)
+Global rootpw directive: FOUND (text scan; verify effective scope)
+sudoers mtime: 2026-08-03 15:17:43.352924178 +0000
+root password status: root PS 2026-08-03 0 99999 7 -1 (Password set, SHA512 crypt.)
+sudoers mtime day: INSIDE REQUESTED WINDOW
+
+===== IDENTIFICATION =====
+OS: Oracle Linux Server 9.7
+Timezone: GMT
+Executed as: uid=0(root) gid=0(root) groups=0(root) context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
+
+===== SUDO EFFECTIVE DEFAULTS (FOR ROOT; NOT PER-USER PROOF) =====
+Matching Defaults entries for root on VM700127:
+    always_set_home, match_group_by_gid, always_query_group_plugin, env_reset, env_keep="COLORS DISPLAY HOSTNAME HISTSIZE KDEDIR LS_COLORS", env_keep+="MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE", env_keep+="LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES", env_keep+="LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE", env_keep+="LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY", secure_path=/sbin\:/bin\:/usr/sbin\:/usr/bin, rootpw, !requiretty
+
+User root may run the following commands on VM700127:
+    (ALL) ALL
+
+===== SUDOERS DIRECTIVES =====
+
+-- /etc/sudoers --
+64:Defaults    always_set_home
+65:Defaults    match_group_by_gid
+73:Defaults    always_query_group_plugin
+75:Defaults    env_reset
+76:Defaults    env_keep =  "COLORS DISPLAY HOSTNAME HISTSIZE KDEDIR LS_COLORS"
+77:Defaults    env_keep += "MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE"
+78:Defaults    env_keep += "LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES"
+79:Defaults    env_keep += "LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE"
+80:Defaults    env_keep += "LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY"
+88:Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin
+89:Defaults        rootpw
+120:#includedir /etc/sudoers.d
+
+-- /etc/sudoers.d/090-oca-vss-plugin-commands --
+
+-- /etc/sudoers.d/100-oracle-cloud-agent-users --
+113:Defaults:oracle-cloud-agent !requiretty
+114:Defaults:oracle-cloud-agent-updater !requiretty
+115:Defaults:ocarun !requiretty
+
+-- /etc/sudoers.d/90-cloud-init-users --
+
+-- /etc/sudoers.d/morpheus-node --
+1:Defaults:morpheus-node !requiretty
+7:Defaults:root !requiretty
+
+===== SUDOERS FILE METADATA =====
+/etc/sudoers | owner=root:root | mode=440 | size=4351 | mtime=2026-08-03 15:17:43.352924178 +0000 | ctime=2026-08-03 15:17:43.365924455 +0000 | birth=2026-08-03 15:17:43.352924178 +0000
+/etc/sudoers.d/090-oca-vss-plugin-commands | owner=root:root | mode=440 | size=3948 | mtime=2026-09-22 16:48:06.000000000 +0000 | ctime=2026-09-30 23:28:37.356128541 +0000 | birth=2026-09-30 23:28:28.101927215 +0000
+/etc/sudoers.d/100-oracle-cloud-agent-users | owner=root:root | mode=440 | size=12393 | mtime=2026-09-22 16:47:58.000000000 +0000 | ctime=2026-09-30 23:28:37.356128541 +0000 | birth=2026-09-30 23:28:28.102927237 +0000
+/etc/sudoers.d/90-cloud-init-users | owner=root:root | mode=440 | size=189 | mtime=2024-08-15 19:22:06.413810767 +0000 | ctime=2024-08-15 19:22:06.413810767 +0000 | birth=2024-08-15 19:22:06.329810767 +0000
+/etc/sudoers.d/morpheus-node | owner=root:root | mode=440 | size=240 | mtime=2024-08-15 19:24:24.841854369 +0000 | ctime=2024-08-15 19:24:24.845854443 +0000 | birth=2024-08-15 19:24:24.841854369 +0000
+
+===== ROOT PASSWORD METADATA (NO HASHES) =====
+root PS 2026-08-03 0 99999 7 -1 (Password set, SHA512 crypt.)
+Last password change					: Aug 03, 2026
+Password expires					: never
+Password inactive					: never
+Account expires						: never
+Minimum number of days between password change		: 0
+Maximum number of days between password change		: 99999
+Number of days of warning before password expires	: 7
+
+===== LOG SOURCES / RETENTION =====
+/var/log/secure | bytes=1648812 | mtime=2026-10-15 11:19:57.496350353 +0000
+/var/log/audit/audit.log | bytes=2514938 | mtime=2026-10-15 11:20:17.542785622 +0000
+/var/log/audit/audit.log.1 | bytes=8388833 | mtime=2026-10-14 17:21:02.461821068 +0000
+/var/log/audit/audit.log.2 | bytes=8388881 | mtime=2026-10-12 05:19:10.471402572 +0000
+/var/log/audit/audit.log.3 | bytes=8388744 | mtime=2026-10-09 16:50:14.705163791 +0000
+/var/log/audit/audit.log.4 | bytes=8388668 | mtime=2026-10-07 04:23:22.273711013 +0000
+IDX BOOT ID                          FIRST ENTRY                 LAST ENTRY
+  0 e4d0b74b68634992a7a77485948ee4af Sat 2026-10-10 18:49:41 GMT Thu 2026-10-15 11:20:17 GMT
+
+===== AUTH LOG - PRIORITIZED EVENTS (MAX 100 HIGH + 60 MEDIUM PER FILE) =====
+NOTE: syslog timestamps usually omit year; year inferred from file mtime (heuristic, not forensic proof).
+NOTE: routine PAM sessions and CRON are counted, not printed. Matches are investigative leads.
+NOTE: HIGH identifies command keywords; it does not prove a configuration change.
+
+-- /var/log/secure --
+LOG_OBSERVED_DATE_RANGE=2026-10-11..2026-10-15 (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+===== JOURNAL - PRIORITIZED EVENTS (MAX 100 HIGH + 60 MEDIUM) =====
+JOURNAL_HIGH=0; DISPLAYED=0; JOURNAL_MEDIUM=0; DISPLAYED=0; ROUTINE_SKIPPED=0
+
+===== SUDOERS MODIFICATION DATE - LOG COVERAGE ASSESSMENT =====
+sudoers mtime day: 2026-08-03
+The log ranges above are inferred observations, not guarantees of complete retention.
+If no source covers the sudoers mtime day, attribution from local retained logs is not possible.
+Even if a source covers that day, only explicit records can support attribution.
+
+===== AUDITD AVAILABILITY =====
+ausearch available; historical events not queried automatically (audit rules/site-specific formats).
+No rules
+
+===== LIMITATIONS / SECURITY =====
+READ ONLY: no changes to accounts, sudoers, services or passwords.
+No matching log records does not imply no change; logs may have rotated or never been collected.
+sudoers mtime is not proof of when rootpw was introduced or who changed it.
+Reports may contain usernames and command arguments; keep private and out of Git.

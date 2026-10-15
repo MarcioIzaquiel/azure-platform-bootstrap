@@ -1,0 +1,179 @@
+
+===== EXECUTIVE SUMMARY =====
+Host: vm701096
+Hostname short: vm701096
+Collected: 2026-10-15T17:32:49+00:00
+Window: 2026-07-01 to 2026-10-01 (end exclusive)
+Global rootpw directive: FOUND (text scan; verify effective scope)
+sudoers mtime: 2026-08-03 14:33:02.378889311 +0000
+root password status: root P 2026-08-03 0 99999 7 -1
+sudoers mtime day: INSIDE REQUESTED WINDOW
+
+===== IDENTIFICATION =====
+OS: Ubuntu 24.04.2 LTS
+Timezone: UTC
+Executed as: uid=0(root) gid=0(root) groups=0(root)
+
+===== SUDO EFFECTIVE DEFAULTS (FOR ROOT; NOT PER-USER PROOF) =====
+Matching Defaults entries for root on VM701096:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty, rootpw, !requiretty
+
+User root may run the following commands on VM701096:
+    (ALL : ALL) ALL
+
+===== SUDOERS DIRECTIVES =====
+
+-- /etc/sudoers --
+9:Defaults	env_reset
+10:Defaults	mail_badpass
+11:Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+15:Defaults	use_pty
+16:Defaults        rootpw
+57:@includedir /etc/sudoers.d
+
+-- /etc/sudoers.d/090-oca-vss-plugin-commands --
+
+-- /etc/sudoers.d/100-oracle-cloud-agent-users --
+54:Defaults:snap_daemon !requiretty
+
+-- /etc/sudoers.d/90-cloud-init-users --
+
+-- /etc/sudoers.d/README --
+
+-- /etc/sudoers.d/morpheus-node --
+1:Defaults:morpheus-node !requiretty
+7:Defaults:root !requiretty
+
+===== SUDOERS FILE METADATA =====
+/etc/sudoers | owner=root:root | mode=440 | size=1822 | mtime=2026-08-03 14:33:02.378889311 +0000 | ctime=2026-10-08 06:14:10.284588367 +0000 | birth=2026-08-03 14:32:48.768879439 +0000
+/etc/sudoers.d/090-oca-vss-plugin-commands | owner=root:root | mode=440 | size=746 | mtime=2025-09-24 14:36:41.500888436 +0000 | ctime=2025-09-24 14:36:41.501888436 +0000 | birth=2025-09-24 14:36:41.499888436 +0000
+/etc/sudoers.d/100-oracle-cloud-agent-users | owner=root:root | mode=440 | size=3723 | mtime=2025-09-24 14:36:41.502888436 +0000 | ctime=2025-09-24 14:36:41.504888436 +0000 | birth=2025-09-24 14:36:41.502888436 +0000
+/etc/sudoers.d/90-cloud-init-users | owner=root:root | mode=440 | size=232 | mtime=2025-09-24 14:36:37.971888436 +0000 | ctime=2025-09-24 14:36:37.971888436 +0000 | birth=2025-09-24 14:36:37.922888436 +0000
+/etc/sudoers.d/README | owner=root:root | mode=440 | size=1068 | mtime=2024-01-29 17:09:56.000000000 +0000 | ctime=2025-05-16 10:12:33.753621291 +0000 | birth=2025-05-16 10:12:33.753621291 +0000
+/etc/sudoers.d/morpheus-node | owner=root:root | mode=440 | size=240 | mtime=2025-09-24 14:37:36.841581529 +0000 | ctime=2025-09-24 14:37:36.871581781 +0000 | birth=2025-09-24 14:37:36.841581529 +0000
+
+===== ROOT PASSWORD METADATA (NO HASHES) =====
+root P 2026-08-03 0 99999 7 -1
+Last password change					: Aug 03, 2026
+Password expires					: never
+Password inactive					: never
+Account expires						: never
+Minimum number of days between password change		: 0
+Maximum number of days between password change		: 99999
+Number of days of warning before password expires	: 7
+
+===== LOG SOURCES / RETENTION =====
+/var/log/auth.log | bytes=1886334 | mtime=2026-10-15 17:32:49.237169007 +0000
+/var/log/auth.log.1 | bytes=2753799 | mtime=2026-10-10 23:59:01.341296873 +0000
+/var/log/auth.log.2.gz | bytes=172069 | mtime=2026-10-03 23:59:01.587940437 +0000
+/var/log/auth.log.3.gz | bytes=171067 | mtime=2026-09-26 23:59:01.255803416 +0000
+/var/log/auth.log.4.gz | bytes=172681 | mtime=2026-09-19 23:59:01.585966467 +0000
+IDX BOOT ID                          FIRST ENTRY                 LAST ENTRY
+ -1 9ab22bd6b46f4ca1bb14a713ddac9313 Mon 2026-05-11 02:09:29 UTC Sun 2026-05-17 06:49:31 UTC
+  0 044f8ba1eca040ca8e797142d42359b1 Sun 2026-05-17 07:11:02 UTC Thu 2026-10-15 17:32:49 UTC
+
+===== AUTH LOG - PRIORITIZED EVENTS (MAX 100 HIGH + 60 MEDIUM PER FILE) =====
+NOTE: syslog timestamps usually omit year; year inferred from file mtime (heuristic, not forensic proof).
+NOTE: routine PAM sessions and CRON are counted, not printed. Matches are investigative leads.
+NOTE: HIGH identifies command keywords; it does not prove a configuration change.
+
+-- /var/log/auth.log --
+LOG_OBSERVED_DATE_RANGE=unknown..unknown (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; METADATA_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.1 --
+LOG_OBSERVED_DATE_RANGE=unknown..unknown (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; METADATA_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.2.gz --
+LOG_OBSERVED_DATE_RANGE=unknown..unknown (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; METADATA_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.3.gz --
+LOG_OBSERVED_DATE_RANGE=unknown..unknown (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; METADATA_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.4.gz --
+LOG_OBSERVED_DATE_RANGE=unknown..unknown (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; METADATA_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+===== JOURNAL - PRIORITIZED EVENTS (DATE-PRIORITIZED; MAX 100 HIGH + 60 MEDIUM) =====
+
+-- PRIORITY DATE 2026-08-03 (UTC/local journal time) --
+[HIGH] 2026-08-03T12:45:27+00:00 vm701096 sudo[3738344]: monitoramento : TTY=pts/0 ; PWD=/home/monitoramento ; USER=root ; COMMAND=/usr/sbin/userdel marcio-oliveira@spgg.rs.gov.br
+[HIGH] 2026-08-03T12:45:27+00:00 vm701096 userdel[3738667]: delete user 'marcio-oliveira@spgg.rs.gov.br'
+[HIGH] 2026-08-03T12:45:27+00:00 vm701096 userdel[3738667]: removed group 'marcio-oliveira@spgg.rs.gov.br' owned by 'marcio-oliveira@spgg.rs.gov.br'
+[HIGH] 2026-08-03T12:45:27+00:00 vm701096 userdel[3738667]: removed shadow group 'marcio-oliveira@spgg.rs.gov.br' owned by 'marcio-oliveira@spgg.rs.gov.br'
+[HIGH] 2026-08-03T14:30:14+00:00 vm701096 sudo[3781215]: monitoramento : TTY=pts/0 ; PWD=/home/monitoramento ; USER=root ; COMMAND=/usr/bin/passwd root
+[HIGH] 2026-08-03T14:30:40+00:00 vm701096 passwd[3781348]: pam_unix(passwd:chauthtok): password changed for root
+[HIGH] 2026-08-03T14:31:20+00:00 vm701096 sudo[3781834]: monitoramento : TTY=pts/0 ; PWD=/home/monitoramento ; USER=root ; COMMAND=/usr/sbin/visudo
+[HIGH] 2026-08-03T14:32:15+00:00 vm701096 sudo[3782062]: monitoramento : TTY=pts/0 ; PWD=/home/monitoramento ; USER=root ; COMMAND=/usr/sbin/visudo
+[HIGH] 2026-08-03T14:32:48+00:00 vm701096 sudo[3782205]: monitoramento : TTY=pts/0 ; PWD=/home/monitoramento ; USER=root ; COMMAND=/usr/sbin/visudo
+PRIORITY_HIGH=9; HIGH_DISPLAYED=9; PRIORITY_MEDIUM=0; MEDIUM_DISPLAYED=0; METADATA_SKIPPED=284; ROUTINE_SKIPPED=2290
+
+-- PRIORITY DATE 2026-08-05 (UTC/local journal time) --
+[HIGH] 2026-08-05T14:12:45+00:00 vm701096 sudo[778433]: monitoramento : TTY=pts/0 ; PWD=/home/monitoramento ; USER=root ; COMMAND=/usr/sbin/usermod -aG sudo,www-data,users spggadmin
+[HIGH] 2026-08-05T14:12:45+00:00 vm701096 usermod[778469]: add 'spggadmin' to group 'www-data'
+[HIGH] 2026-08-05T14:12:45+00:00 vm701096 usermod[778469]: add 'spggadmin' to group 'users'
+[HIGH] 2026-08-05T14:12:45+00:00 vm701096 usermod[778469]: add 'spggadmin' to shadow group 'www-data'
+[HIGH] 2026-08-05T14:12:45+00:00 vm701096 usermod[778469]: add 'spggadmin' to shadow group 'users'
+[HIGH] 2026-08-05T14:24:03+00:00 vm701096 passwd[779195]: pam_unix(passwd:chauthtok): authentication failure; logname=spggadmin uid=1000 euid=0 tty= ruser= rhost=  user=spggadmin
+PRIORITY_HIGH=6; HIGH_DISPLAYED=6; PRIORITY_MEDIUM=0; MEDIUM_DISPLAYED=0; METADATA_SKIPPED=296; ROUTINE_SKIPPED=2260
+
+-- FULL WINDOW SUMMARY --
+[HIGH] 2026-07-09T20:15:00+00:00 vm701096 passwd[2281916]: passwd: can't view or modify password information for root
+[HIGH] 2026-07-09T20:15:00+00:00 vm701096 passwd[2282013]: passwd: can't view or modify password information for spggadmin
+[HIGH] 2026-07-09T20:15:01+00:00 vm701096 passwd[2282123]: passwd: can't view or modify password information for marcio-oliveira@spgg.rs.gov.br
+[HIGH] 2026-07-09T20:15:01+00:00 vm701096 passwd[2282220]: passwd: can't view or modify password information for morpheus-node
+[HIGH] 2026-07-09T20:15:01+00:00 vm701096 passwd[2282321]: passwd: can't view or modify password information for cdsadmin
+[HIGH] 2026-07-09T20:15:01+00:00 vm701096 passwd[2282431]: passwd: can't view or modify password information for procergs
+[HIGH] 2026-07-09T20:15:01+00:00 vm701096 passwd[2282540]: passwd: can't view or modify password information for devadmin
+[HIGH] 2026-07-09T20:15:02+00:00 vm701096 passwd[2282637]: passwd: can't view or modify password information for spezziadmin
+[HIGH] 2026-07-09T20:15:02+00:00 vm701096 passwd[2282746]: passwd: can't view or modify password information for cdsdevadmin
+[HIGH] 2026-07-29T13:34:31+00:00 vm701096 chpasswd[954046]: pam_unix(chpasswd:chauthtok): password changed for spggadmin
+[HIGH] 2026-07-29T13:34:31+00:00 vm701096 chpasswd[954051]: pam_unix(chpasswd:chauthtok): password changed for cdsadmin
+[HIGH] 2026-07-29T13:34:31+00:00 vm701096 chpasswd[954056]: pam_unix(chpasswd:chauthtok): password changed for procergs
+[HIGH] 2026-07-29T13:34:31+00:00 vm701096 chpasswd[954061]: pam_unix(chpasswd:chauthtok): password changed for devadmin
+[HIGH] 2026-07-29T13:34:31+00:00 vm701096 chpasswd[954066]: pam_unix(chpasswd:chauthtok): password changed for spezziadmin
+[HIGH] 2026-07-29T13:34:31+00:00 vm701096 chpasswd[954072]: pam_unix(chpasswd:chauthtok): password changed for monitoramento
+[HIGH] 2026-07-30T18:53:05+00:00 vm701096 sudo[1637076]: monitoramento : TTY=pts/0 ; PWD=/home/monitoramento ; USER=root ; COMMAND=/usr/sbin/usermod -aG sudo spezziadmin
+[HIGH] 2026-07-31T20:06:42+00:00 vm701096 sudo[2226425]: monitoramento : TTY=pts/0 ; PWD=/home ; USER=root ; COMMAND=/usr/sbin/usermod -aG sudo,www-data,users spezziadmin
+[HIGH] 2026-07-31T20:06:42+00:00 vm701096 usermod[2226534]: add 'spezziadmin' to group 'www-data'
+[HIGH] 2026-07-31T20:06:42+00:00 vm701096 usermod[2226534]: add 'spezziadmin' to shadow group 'www-data'
+[HIGH] 2026-08-03T12:45:27+00:00 vm701096 sudo[3738344]: monitoramento : TTY=pts/0 ; PWD=/home/monitoramento ; USER=root ; COMMAND=/usr/sbin/userdel marcio-oliveira@spgg.rs.gov.br
+[HIGH] 2026-08-03T12:45:27+00:00 vm701096 userdel[3738667]: delete user 'marcio-oliveira@spgg.rs.gov.br'
+[HIGH] 2026-08-03T12:45:27+00:00 vm701096 userdel[3738667]: removed group 'marcio-oliveira@spgg.rs.gov.br' owned by 'marcio-oliveira@spgg.rs.gov.br'
+[HIGH] 2026-08-03T12:45:27+00:00 vm701096 userdel[3738667]: removed shadow group 'marcio-oliveira@spgg.rs.gov.br' owned by 'marcio-oliveira@spgg.rs.gov.br'
+[HIGH] 2026-08-03T14:30:14+00:00 vm701096 sudo[3781215]: monitoramento : TTY=pts/0 ; PWD=/home/monitoramento ; USER=root ; COMMAND=/usr/bin/passwd root
+[HIGH] 2026-08-03T14:30:40+00:00 vm701096 passwd[3781348]: pam_unix(passwd:chauthtok): password changed for root
+[HIGH] 2026-08-03T14:31:20+00:00 vm701096 sudo[3781834]: monitoramento : TTY=pts/0 ; PWD=/home/monitoramento ; USER=root ; COMMAND=/usr/sbin/visudo
+[HIGH] 2026-08-03T14:32:15+00:00 vm701096 sudo[3782062]: monitoramento : TTY=pts/0 ; PWD=/home/monitoramento ; USER=root ; COMMAND=/usr/sbin/visudo
+[HIGH] 2026-08-03T14:32:48+00:00 vm701096 sudo[3782205]: monitoramento : TTY=pts/0 ; PWD=/home/monitoramento ; USER=root ; COMMAND=/usr/sbin/visudo
+[HIGH] 2026-08-05T14:12:45+00:00 vm701096 sudo[778433]: monitoramento : TTY=pts/0 ; PWD=/home/monitoramento ; USER=root ; COMMAND=/usr/sbin/usermod -aG sudo,www-data,users spggadmin
+[HIGH] 2026-08-05T14:12:45+00:00 vm701096 usermod[778469]: add 'spggadmin' to group 'www-data'
+[HIGH] 2026-08-05T14:12:45+00:00 vm701096 usermod[778469]: add 'spggadmin' to group 'users'
+[HIGH] 2026-08-05T14:12:45+00:00 vm701096 usermod[778469]: add 'spggadmin' to shadow group 'www-data'
+[HIGH] 2026-08-05T14:12:45+00:00 vm701096 usermod[778469]: add 'spggadmin' to shadow group 'users'
+[HIGH] 2026-08-05T14:24:03+00:00 vm701096 passwd[779195]: pam_unix(passwd:chauthtok): authentication failure; logname=spggadmin uid=1000 euid=0 tty= ruser= rhost=  user=spggadmin
+[MEDIUM] 2026-08-19T19:19:40+00:00 vm701096 sudo[712222]: pam_unix(sudo:auth): authentication failure; logname=devadmin uid=1004 euid=0 tty=/dev/pts/0 ruser=devadmin rhost=  user=root
+JOURNAL_HIGH=34; DISPLAYED=34; JOURNAL_MEDIUM=1; DISPLAYED=1; ROUTINE_SKIPPED=286737; METADATA_SKIPPED=26376
+
+===== SUDOERS MODIFICATION DATE - LOG COVERAGE ASSESSMENT =====
+sudoers mtime day: 2026-08-03
+The log ranges above are inferred observations, not guarantees of complete retention.
+If no source covers the sudoers mtime day, attribution from local retained logs is not possible.
+Even if a source covers that day, only explicit records can support attribution.
+
+===== AUDITD AVAILABILITY =====
+ausearch unavailable
+
+===== LIMITATIONS / SECURITY =====
+READ ONLY: no changes to accounts, sudoers, services or passwords.
+No matching log records does not imply no change; logs may have rotated or never been collected.
+sudoers mtime is not proof of when rootpw was introduced or who changed it.
+Reports may contain usernames and command arguments; keep private and out of Git.

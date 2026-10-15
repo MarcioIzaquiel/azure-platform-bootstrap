@@ -1,0 +1,174 @@
+SPGG - INVENTARIO DE USUARIOS E ACESSOS LINUX
+Versao do script : 1.3
+Data da auditoria: 14/10/2026 15:22:12 -03
+Servidor         : seplagpaeas12
+Relatorio        : /tmp/spgg-auditoria-99f2c26fe6084584b729bc2b647d7de6/20261014_seplagpaeas12_SPGG_Linux.txt
+Modo             : Somente leitura
+
+===== 01 - SISTEMA OPERACIONAL =====
+VERSION_ID="9.6"
+PRETTY_NAME="AlmaLinux 9.6 (Sage Margay)"
+
+===== 02 - HOSTNAME =====
+Static hostname: seplagpaeas12.seplag.intra.rs.gov.br
+Operating System: AlmaLinux 9.6 (Sage Margay)
+Kernel: 5.14.0-570.60.1.el9_6.x86_64
+Architecture: x86_64
+Enderecos IP:
+ens192           UP             10.112.7.70/26 
+IPv6 globais:
+
+===== 03 - USUARIO ATUAL =====
+spggadmin
+uid=1004(spggadmin) gid=1004(spggadmin) groups=1004(spggadmin),10(wheel) context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
+
+===== 04 - USUARIOS HUMANOS (UID >= 1000) =====
+Criterio: contas locais com UID de 1000 a 65533.
+Usuario: admin                UID: 1000     GID: 1000     Shell: /bin/bash
+Usuario: metabase             UID: 1001     GID: 1001     Shell: /sbin/nologin
+Usuario: cdsadmin             UID: 1003     GID: 1005     Shell: /bin/bash
+Usuario: spggadmin            UID: 1004     GID: 1004     Shell: /bin/bash
+Usuario: devadmin             UID: 1005     GID: 1007     Shell: /bin/bash
+Usuario: procergs             UID: 1006     GID: 1008     Shell: /bin/bash
+Usuario: spezziadmin          UID: 1007     GID: 1009     Shell: /bin/bash
+
+===== 05 - GRUPO SUDO =====
+
+===== 06 - USUARIOS COM GRUPO SUDO =====
+admin : NAO
+metabase : NAO
+cdsadmin : NAO
+spggadmin : NAO
+devadmin : NAO
+procergs : NAO
+spezziadmin : NAO
+
+===== 07 - USUARIOS SPGG =====
+uid=1004(spggadmin) gid=1004(spggadmin) groups=1004(spggadmin),10(wheel)
+uid=1006(procergs) gid=1008(procergs) groups=1008(procergs),10(wheel)
+
+===== 08 - STATUS DA SENHA ROOT =====
+root PS 2026-08-02 0 99999 7 -1 (Password set, SHA512 crypt.)
+Interpretacao: P=senha definida; L=senha bloqueada; NP=sem senha.
+Senha bloqueada nao significa conta root inexistente.
+
+===== 09 - STATUS DA CONTA ROOT =====
+root:x:0:0:root:/root:/bin/bash
+Last password change					: Aug 03, 2026
+Password expires					: never
+Password inactive					: never
+Account expires						: never
+Minimum number of days between password change		: 0
+Maximum number of days between password change		: 99999
+Number of days of warning before password expires	: 7
+UID 0 identifica privilegios de superusuario.
+O bloqueio da senha nao impede o uso autorizado de sudo.
+
+===== 10 - PRIVILEGIOS SUDO DO USUARIO ATUAL =====
+Matching Defaults entries for spggadmin on seplagpaeas12:
+    !visiblepw, always_set_home, match_group_by_gid, always_query_group_plugin, env_reset, env_keep="COLORS DISPLAY HOSTNAME HISTSIZE KDEDIR LS_COLORS", env_keep+="MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE", env_keep+="LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES", env_keep+="LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE", env_keep+="LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY", secure_path=/sbin\:/bin\:/usr/sbin\:/usr/bin, rootpw
+
+User spggadmin may run the following commands on seplagpaeas12:
+    (ALL) ALL
+Esta consulta mostra as permissoes sudo do usuario atual.
+Nao e uma consulta automatica dos privilegios do root.
+
+===== 11 - PRIVILEGIOS SUDO DOS USUARIOS SPGG =====
+--- spggadmin ---
+Matching Defaults entries for spggadmin on seplagpaeas12:
+    !visiblepw, always_set_home, match_group_by_gid, always_query_group_plugin, env_reset, env_keep="COLORS DISPLAY HOSTNAME HISTSIZE KDEDIR LS_COLORS", env_keep+="MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE", env_keep+="LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES", env_keep+="LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE", env_keep+="LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY", secure_path=/sbin\:/bin\:/usr/sbin\:/usr/bin, rootpw
+
+User spggadmin may run the following commands on seplagpaeas12:
+    (ALL) ALL
+--- procergs ---
+Matching Defaults entries for procergs on seplagpaeas12:
+    !visiblepw, always_set_home, match_group_by_gid, always_query_group_plugin, env_reset, env_keep="COLORS DISPLAY HOSTNAME HISTSIZE KDEDIR LS_COLORS", env_keep+="MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE", env_keep+="LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES", env_keep+="LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE", env_keep+="LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY", secure_path=/sbin\:/bin\:/usr/sbin\:/usr/bin, rootpw
+
+User procergs may run the following commands on seplagpaeas12:
+    (ALL) ALL
+
+===== 12 - STATUS DO SERVICO SSH =====
+Habilitacao: Failed to get unit file state for ssh.service: No such file or directory
+Execucao: inactive
+
+===== 13 - CONFIGURACAO EFETIVA SSH =====
+port 22
+permitrootlogin without-password
+pubkeyauthentication yes
+passwordauthentication yes
+kbdinteractiveauthentication no
+permitemptypasswords no
+
+--- INTERPRETACAO SSH ---
+permitrootlogin no: bloqueia login SSH direto do root.
+permitrootlogin prohibit-password: bloqueia senha do root,
+mas pode permitir autenticacao por chave publica.
+passwordauthentication yes: permite autenticacao por senha.
+pubkeyauthentication yes: permite autenticacao por chave.
+kbdinteractiveauthentication no: desabilita esse metodo.
+permitemptypasswords no: nao aceita senhas vazias via SSH.
+
+--- AUTENTICACAO SUDO ---
+O sudo normalmente solicita a senha do proprio usuario.
+Defaults rootpw: solicita a senha da conta root.
+Defaults targetpw: solicita a senha do usuario de destino.
+Defaults runaspw: solicita a senha do usuario runas_default.
+NOPASSWD: pode dispensar autenticacao para comandos autorizados.
+
+--- OPCOES SUDO CONFIGURADAS ---
+Defaults   !visiblepw
+Defaults    always_set_home
+Defaults    match_group_by_gid
+Defaults    always_query_group_plugin
+Defaults    env_reset
+Defaults    env_keep =  "COLORS DISPLAY HOSTNAME HISTSIZE KDEDIR LS_COLORS"
+Defaults    env_keep += "MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE"
+Defaults    env_keep += "LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES"
+Defaults    env_keep += "LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE"
+Defaults    env_keep += "LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY"
+Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin
+Defaults        rootpw
+
+IMPORTANTE: ausencia de rootpw, targetpw e runaspw
+normalmente significa que sudo pede a senha do proprio usuario.
+Regras por usuario, grupo ou comando podem alterar esse comportamento.
+
+===== 14 - PORTA SSH EM ESCUTA =====
+LISTEN 0      128          0.0.0.0:22         0.0.0.0:*    users:(("sshd",pid=1527,fd=3))                                                                                                                                          
+LISTEN 0      128             [::]:22            [::]:*    users:(("sshd",pid=1527,fd=4))                                                                                                                                          
+A porta configurada pode ser diferente de 22.
+
+===== 15 - FIREWALL =====
+sudo: ufw: command not found
+Observacao: UFW inativo nao exclui outras regras de firewall.
+
+===== 16 - DISCOS E PARTICOES =====
+NAME                       SIZE FSTYPE      MOUNTPOINTS
+sda                        250G             
+├─sda1                     600M vfat        /boot/efi
+├─sda2                       1G xfs         /boot
+└─sda3                   248.4G LVM2_member 
+  ├─vg_almalinux-lv_root 240.5G xfs         /usr/share/glpi/marketplace
+  │                                         /
+  └─vg_almalinux-lv_swap   7.9G swap        [SWAP]
+sr0                       1024M             
+
+===== 17 - STATUS DAS SENHAS DOS USUARIOS SPGG =====
+--- spggadmin ---
+spggadmin PS 2026-10-13 0 99999 7 -1 (Password set, SHA512 crypt.)
+Last password change					: Oct 14, 2026
+Password expires					: never
+Password inactive					: never
+Account expires						: never
+Minimum number of days between password change		: 0
+Maximum number of days between password change		: 99999
+Number of days of warning before password expires	: 7
+--- procergs ---
+procergs PS 2026-07-28 0 99999 7 -1 (Password set, SHA512 crypt.)
+Last password change					: Jul 29, 2026
+Password expires					: never
+Password inactive					: never
+Account expires						: never
+Minimum number of days between password change		: 0
+Maximum number of days between password change		: 99999
+Number of days of warning before password expires	: 7

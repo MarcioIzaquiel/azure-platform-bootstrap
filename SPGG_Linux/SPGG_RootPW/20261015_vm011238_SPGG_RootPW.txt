@@ -1,0 +1,164 @@
+
+===== EXECUTIVE SUMMARY =====
+Host: vm011238.tudofacil.intra.rs.gov.br
+Hostname short: vm011238
+Collected: 2026-10-15T08:38:09-03:00
+Window: 2026-07-01 to 2026-10-01 (end exclusive)
+Global rootpw directive: FOUND (text scan; verify effective scope)
+sudoers mtime: 2026-08-03 12:13:56.341119737 -0300
+root password status: root P 08/03/2026 0 99999 7 -1
+sudoers mtime day: INSIDE REQUESTED WINDOW
+
+===== IDENTIFICATION =====
+OS: Ubuntu 18.04.6 LTS
+Timezone: -03
+Executed as: uid=0(root) gid=0(root) groups=0(root)
+
+===== SUDO EFFECTIVE DEFAULTS (FOR ROOT; NOT PER-USER PROOF) =====
+Matching Defaults entries for root on vm011238:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, rootpw, !requiretty
+
+User root may run the following commands on vm011238:
+    (ALL : ALL) ALL
+
+===== SUDOERS DIRECTIVES =====
+
+-- /etc/sudoers --
+9:Defaults	env_reset
+10:Defaults	mail_badpass
+11:Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+12:Defaults        rootpw
+30:#includedir /etc/sudoers.d
+
+-- /etc/sudoers.d/090-oca-vss-plugin-commands --
+
+-- /etc/sudoers.d/100-oracle-cloud-agent-users --
+55:Defaults:snap_daemon !requiretty
+
+-- /etc/sudoers.d/README --
+
+-- /etc/sudoers.d/morpheus-node --
+1:Defaults:morpheus-node !requiretty
+7:Defaults:root !requiretty
+
+===== SUDOERS FILE METADATA =====
+/etc/sudoers | owner=root:root | mode=440 | size=777 | mtime=2026-08-03 12:13:56.341119737 -0300 | ctime=2026-08-03 12:13:56.345119796 -0300 | birth=-
+/etc/sudoers.d/090-oca-vss-plugin-commands | owner=root:root | mode=440 | size=746 | mtime=2025-08-15 08:16:17.192641297 -0300 | ctime=2025-08-15 08:16:17.192641297 -0300 | birth=-
+/etc/sudoers.d/100-oracle-cloud-agent-users | owner=root:root | mode=440 | size=3739 | mtime=2025-08-15 08:16:17.196641304 -0300 | ctime=2025-08-15 08:16:17.196641304 -0300 | birth=-
+/etc/sudoers.d/README | owner=root:root | mode=440 | size=958 | mtime=2018-01-17 22:08:16.000000000 -0200 | ctime=2019-11-27 11:05:59.197395968 -0300 | birth=-
+/etc/sudoers.d/morpheus-node | owner=root:root | mode=440 | size=240 | mtime=2025-08-15 08:15:07.764509986 -0300 | ctime=2025-08-15 08:15:07.768509995 -0300 | birth=-
+
+===== ROOT PASSWORD METADATA (NO HASHES) =====
+root P 08/03/2026 0 99999 7 -1
+Last password change					: Aug 03, 2026
+Password expires					: never
+Password inactive					: never
+Account expires						: never
+Minimum number of days between password change		: 0
+Maximum number of days between password change		: 99999
+Number of days of warning before password expires	: 7
+
+===== LOG SOURCES / RETENTION =====
+/var/log/auth.log | bytes=1089149 | mtime=2026-10-15 08:38:09.312739060 -0300
+/var/log/auth.log.1 | bytes=2744723 | mtime=2026-10-12 06:25:01.329480195 -0300
+/var/log/auth.log.2.gz | bytes=49988 | mtime=2026-10-04 06:25:01.000000000 -0300
+/var/log/auth.log.3.gz | bytes=66627 | mtime=2026-09-28 06:25:01.000000000 -0300
+/var/log/auth.log.4.gz | bytes=49856 | mtime=2026-09-20 06:25:01.000000000 -0300
+ 0 9d31524840de4d48a8863c726929173b Fri 2026-10-02 04:08:54 -03—Thu 2026-10-15 08:38:09 -03
+
+===== AUTH LOG - PRIORITIZED EVENTS (MAX 100 HIGH + 60 MEDIUM PER FILE) =====
+NOTE: syslog timestamps usually omit year; year inferred from file mtime (heuristic, not forensic proof).
+NOTE: routine PAM sessions and CRON are counted, not printed. Matches are investigative leads.
+NOTE: HIGH identifies command keywords; it does not prove a configuration change.
+
+-- /var/log/auth.log --
+LOG_OBSERVED_DATE_RANGE=2026-10-12..2026-10-15 (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.1 --
+LOG_OBSERVED_DATE_RANGE=2026-10-04..2026-10-12 (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.2.gz --
+[MEDIUM inferred 2026-09-28] Sep 28 18:03:39 vm011238 sudo: snap_daemon : TTY=unknown ; PWD=/var/snap/oracle-cloud-agent/106 ; USER=root ; COMMAND=/usr/sbin/sshd -T
+[MEDIUM inferred 2026-09-29] Sep 29 01:31:07 vm011238 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-29] Sep 29 06:31:28 vm011238 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-29] Sep 29 19:03:34 vm011238 sudo: snap_daemon : TTY=unknown ; PWD=/var/snap/oracle-cloud-agent/106 ; USER=root ; COMMAND=/usr/sbin/sshd -T
+[MEDIUM inferred 2026-09-30] Sep 30 02:31:49 vm011238 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-30] Sep 30 06:48:40 vm011238 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-30] Sep 30 20:03:39 vm011238 sudo: snap_daemon : TTY=unknown ; PWD=/var/snap/oracle-cloud-agent/106 ; USER=root ; COMMAND=/usr/sbin/sshd -T
+LOG_OBSERVED_DATE_RANGE=2026-09-28..2026-10-04 (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=7; MEDIUM_DISPLAYED=7; ROUTINE_SKIPPED=8023; OTHER_SKIPPED=8
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.3.gz --
+[MEDIUM inferred 2026-09-20] Sep 20 07:25:37 vm011238 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-20] Sep 20 15:03:35 vm011238 sudo: snap_daemon : TTY=unknown ; PWD=/var/snap/oracle-cloud-agent/106 ; USER=root ; COMMAND=/usr/sbin/sshd -T
+[MEDIUM inferred 2026-09-21] Sep 21 03:25:55 vm011238 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-21] Sep 21 08:26:13 vm011238 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-21] Sep 21 15:03:40 vm011238 sudo: snap_daemon : TTY=unknown ; PWD=/var/snap/oracle-cloud-agent/106 ; USER=root ; COMMAND=/usr/sbin/sshd -T
+[MEDIUM inferred 2026-09-22] Sep 22 04:26:32 vm011238 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-22] Sep 22 09:26:51 vm011238 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-22] Sep 22 16:03:32 vm011238 sudo: snap_daemon : TTY=unknown ; PWD=/var/snap/oracle-cloud-agent/106 ; USER=root ; COMMAND=/usr/sbin/sshd -T
+[MEDIUM inferred 2026-09-23] Sep 23 00:27:13 vm011238 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-23] Sep 23 05:27:31 vm011238 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-23] Sep 23 16:03:33 vm011238 sudo: snap_daemon : TTY=unknown ; PWD=/var/snap/oracle-cloud-agent/106 ; USER=root ; COMMAND=/usr/sbin/sshd -T
+[MEDIUM inferred 2026-09-24] Sep 24 01:27:51 vm011238 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-24] Sep 24 06:28:10 vm011238 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-24] Sep 24 16:03:35 vm011238 sudo: snap_daemon : TTY=unknown ; PWD=/var/snap/oracle-cloud-agent/106 ; USER=root ; COMMAND=/usr/sbin/sshd -T
+[MEDIUM inferred 2026-09-25] Sep 25 02:28:26 vm011238 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-25] Sep 25 07:28:46 vm011238 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-25] Sep 25 16:03:36 vm011238 sudo: snap_daemon : TTY=unknown ; PWD=/var/snap/oracle-cloud-agent/106 ; USER=root ; COMMAND=/usr/sbin/sshd -T
+[MEDIUM inferred 2026-09-26] Sep 26 03:29:07 vm011238 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-26] Sep 26 08:29:27 vm011238 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-26] Sep 26 17:03:34 vm011238 sudo: snap_daemon : TTY=unknown ; PWD=/var/snap/oracle-cloud-agent/106 ; USER=root ; COMMAND=/usr/sbin/sshd -T
+[MEDIUM inferred 2026-09-27] Sep 27 04:29:45 vm011238 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-27] Sep 27 09:30:04 vm011238 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-27] Sep 27 18:03:35 vm011238 sudo: snap_daemon : TTY=unknown ; PWD=/var/snap/oracle-cloud-agent/106 ; USER=root ; COMMAND=/usr/sbin/sshd -T
+[MEDIUM inferred 2026-09-28] Sep 28 00:30:26 vm011238 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-28] Sep 28 05:30:48 vm011238 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+LOG_OBSERVED_DATE_RANGE=2026-09-20..2026-09-28 (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=25; MEDIUM_DISPLAYED=25; ROUTINE_SKIPPED=23482; OTHER_SKIPPED=3
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.4.gz --
+[MEDIUM inferred 2026-09-14] Sep 14 09:03:39 vm011238 sudo: snap_daemon : TTY=unknown ; PWD=/var/snap/oracle-cloud-agent/106 ; USER=root ; COMMAND=/usr/sbin/sshd -T
+[MEDIUM inferred 2026-09-15] Sep 15 02:22:04 vm011238 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-15] Sep 15 07:22:23 vm011238 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-15] Sep 15 10:03:37 vm011238 sudo: snap_daemon : TTY=unknown ; PWD=/var/snap/oracle-cloud-agent/106 ; USER=root ; COMMAND=/usr/sbin/sshd -T
+[MEDIUM inferred 2026-09-16] Sep 16 03:22:43 vm011238 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-16] Sep 16 08:23:03 vm011238 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-16] Sep 16 11:03:33 vm011238 sudo: snap_daemon : TTY=unknown ; PWD=/var/snap/oracle-cloud-agent/106 ; USER=root ; COMMAND=/usr/sbin/sshd -T
+[MEDIUM inferred 2026-09-17] Sep 17 04:23:23 vm011238 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-17] Sep 17 09:23:42 vm011238 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-17] Sep 17 12:03:40 vm011238 sudo: snap_daemon : TTY=unknown ; PWD=/var/snap/oracle-cloud-agent/106 ; USER=root ; COMMAND=/usr/sbin/sshd -T
+[MEDIUM inferred 2026-09-18] Sep 18 00:24:02 vm011238 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-18] Sep 18 05:24:22 vm011238 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-18] Sep 18 13:03:36 vm011238 sudo: snap_daemon : TTY=unknown ; PWD=/var/snap/oracle-cloud-agent/106 ; USER=root ; COMMAND=/usr/sbin/sshd -T
+[MEDIUM inferred 2026-09-19] Sep 19 01:24:40 vm011238 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-19] Sep 19 06:24:59 vm011238 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-19] Sep 19 14:03:35 vm011238 sudo: snap_daemon : TTY=unknown ; PWD=/var/snap/oracle-cloud-agent/106 ; USER=root ; COMMAND=/usr/sbin/sshd -T
+[MEDIUM inferred 2026-09-20] Sep 20 02:25:18 vm011238 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+LOG_OBSERVED_DATE_RANGE=2026-09-14..2026-09-20 (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=17; MEDIUM_DISPLAYED=17; ROUTINE_SKIPPED=17630; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+===== JOURNAL - PRIORITIZED EVENTS (MAX 100 HIGH + 60 MEDIUM) =====
+JOURNAL_HIGH=0; DISPLAYED=0; JOURNAL_MEDIUM=0; DISPLAYED=0; ROUTINE_SKIPPED=0
+
+===== SUDOERS MODIFICATION DATE - LOG COVERAGE ASSESSMENT =====
+sudoers mtime day: 2026-08-03
+The log ranges above are inferred observations, not guarantees of complete retention.
+If no source covers the sudoers mtime day, attribution from local retained logs is not possible.
+Even if a source covers that day, only explicit records can support attribution.
+
+===== AUDITD AVAILABILITY =====
+ausearch unavailable
+
+===== LIMITATIONS / SECURITY =====
+READ ONLY: no changes to accounts, sudoers, services or passwords.
+No matching log records does not imply no change; logs may have rotated or never been collected.
+sudoers mtime is not proof of when rootpw was introduced or who changed it.
+Reports may contain usernames and command arguments; keep private and out of Git.

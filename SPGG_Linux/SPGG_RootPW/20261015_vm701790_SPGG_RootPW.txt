@@ -1,0 +1,213 @@
+
+===== EXECUTIVE SUMMARY =====
+Host: vm701790
+Hostname short: vm701790
+Collected: 2026-10-15T07:44:31-03:00
+Window: 2026-07-01 to 2026-10-01 (end exclusive)
+Global rootpw directive: not found by simple text scan
+sudoers mtime: 2026-09-25 09:44:17.782998220 -0300
+root password status: root L 2026-07-11 0 99999 7 -1
+sudoers mtime day: INSIDE REQUESTED WINDOW
+
+===== IDENTIFICATION =====
+OS: Ubuntu 24.04.5 LTS
+Timezone: -03
+Executed as: uid=0(root) gid=0(root) groups=0(root)
+
+===== SUDO EFFECTIVE DEFAULTS (FOR ROOT; NOT PER-USER PROOF) =====
+Matching Defaults entries for root on VM701790:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty, !requiretty
+
+User root may run the following commands on VM701790:
+    (ALL : ALL) ALL
+
+===== SUDOERS DIRECTIVES =====
+
+-- /etc/sudoers --
+9:Defaults	env_reset
+10:Defaults	mail_badpass
+11:Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+15:Defaults	use_pty
+57:@includedir /etc/sudoers.d
+
+-- /etc/sudoers.d/090-oca-vss-plugin-commands --
+
+-- /etc/sudoers.d/100-oracle-cloud-agent-users --
+
+-- /etc/sudoers.d/90-cloud-init-users --
+
+-- /etc/sudoers.d/README --
+
+-- /etc/sudoers.d/morpheus-node --
+1:Defaults:morpheus-node !requiretty
+7:Defaults:root !requiretty
+
+===== SUDOERS FILE METADATA =====
+/etc/sudoers | owner=root:root | mode=440 | size=1800 | mtime=2026-09-25 09:44:17.782998220 -0300 | ctime=2026-10-08 03:03:10.214847219 -0300 | birth=2026-09-25 09:44:17.782022302 -0300
+/etc/sudoers.d/090-oca-vss-plugin-commands | owner=root:root | mode=440 | size=746 | mtime=2026-09-25 09:43:57.727022302 -0300 | ctime=2026-09-25 09:43:57.728022302 -0300 | birth=2026-09-25 09:43:57.726022302 -0300
+/etc/sudoers.d/100-oracle-cloud-agent-users | owner=root:root | mode=440 | size=3805 | mtime=2026-09-25 09:43:57.730022302 -0300 | ctime=2026-09-25 09:43:57.731022302 -0300 | birth=2026-09-25 09:43:57.729022302 -0300
+/etc/sudoers.d/90-cloud-init-users | owner=root:root | mode=440 | size=230 | mtime=2026-09-25 09:43:54.408022302 -0300 | ctime=2026-09-25 09:43:54.408022302 -0300 | birth=2026-09-25 09:43:54.356022302 -0300
+/etc/sudoers.d/README | owner=root:root | mode=440 | size=1068 | mtime=2024-01-29 14:09:56.000000000 -0300 | ctime=2026-07-11 09:15:04.020746069 -0300 | birth=2026-07-11 09:15:04.020746069 -0300
+/etc/sudoers.d/morpheus-node | owner=root:root | mode=440 | size=240 | mtime=2026-09-25 09:44:48.380467805 -0300 | ctime=2026-09-25 09:44:48.383467827 -0300 | birth=2026-09-25 09:44:48.380467805 -0300
+
+===== ROOT PASSWORD METADATA (NO HASHES) =====
+root L 2026-07-11 0 99999 7 -1
+Last password change					: Jul 11, 2026
+Password expires					: never
+Password inactive					: never
+Account expires						: never
+Minimum number of days between password change		: 0
+Maximum number of days between password change		: 99999
+Number of days of warning before password expires	: 7
+
+===== LOG SOURCES / RETENTION =====
+/var/log/auth.log | bytes=1715042 | mtime=2026-10-15 07:44:31.875362615 -0300
+/var/log/auth.log.1 | bytes=2826520 | mtime=2026-10-10 23:59:01.678628484 -0300
+/var/log/auth.log.2.gz | bytes=168383 | mtime=2026-10-03 20:59:01.385593637 -0300
+/var/log/auth.log.3.gz | bytes=39675 | mtime=2026-09-26 20:59:27.535796220 -0300
+IDX BOOT ID                          FIRST ENTRY                 LAST ENTRY
+ -1 ec8bd780f6e54883b93941751e2cad7c Fri 2026-09-25 09:43:45 -03 Thu 2026-10-08 08:55:44 -03
+  0 18254a010d824d60a04cafcd6784c737 Thu 2026-10-08 08:55:55 -03 Thu 2026-10-15 07:44:31 -03
+
+===== AUTH LOG - PRIORITIZED EVENTS (MAX 100 HIGH + 60 MEDIUM PER FILE) =====
+NOTE: syslog timestamps usually omit year; year inferred from file mtime (heuristic, not forensic proof).
+NOTE: routine PAM sessions and CRON are counted, not printed. Matches are investigative leads.
+NOTE: HIGH identifies command keywords; it does not prove a configuration change.
+
+-- /var/log/auth.log --
+LOG_OBSERVED_DATE_RANGE=unknown..unknown (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.1 --
+LOG_OBSERVED_DATE_RANGE=unknown..unknown (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.2.gz --
+LOG_OBSERVED_DATE_RANGE=unknown..unknown (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.3.gz --
+LOG_OBSERVED_DATE_RANGE=unknown..unknown (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+===== JOURNAL - PRIORITIZED EVENTS (MAX 100 HIGH + 60 MEDIUM) =====
+[HIGH] 2026-09-25T09:43:54-03:00 vm701790 useradd[1242]: new group: name=spggadmin, GID=1000
+[HIGH] 2026-09-25T09:43:54-03:00 vm701790 useradd[1242]: new user: name=spggadmin, UID=1000, GID=1000, home=/home/spggadmin, shell=/bin/bash, from=none
+[HIGH] 2026-09-25T09:43:54-03:00 vm701790 passwd[1250]: password for 'spggadmin' changed by 'root'
+[HIGH] 2026-09-25T09:43:54-03:00 vm701790 useradd[1257]: new group: name=marcio-oliveira@spgg.rs.gov.br, GID=1001
+[HIGH] 2026-09-25T09:43:54-03:00 vm701790 useradd[1257]: new user: name=marcio-oliveira@spgg.rs.gov.br, UID=1001, GID=1001, home=/home/marcio-oliveira@spgg.rs.gov.br, shell=/bin/bash, from=none
+[HIGH] 2026-09-25T09:43:54-03:00 vm701790 passwd[1265]: password for 'marcio-oliveira@spgg.rs.gov.br' changed by 'root'
+[HIGH] 2026-09-25T09:44:25-03:00 vm701790 cloud-init[1831]: bash: line 151: /usr/bin/morpheus-node-ctl: No such file or directory
+[HIGH] 2026-09-25T09:44:25-03:00 vm701790 cloud-init[1831]: Ign:1 https://cloud.procergs.com.br/apt morpheus InRelease
+[HIGH] 2026-09-25T09:44:25-03:00 vm701790 cloud-init[1831]: Get:2 https://cloud.procergs.com.br/apt morpheus Release [2047 B]
+[HIGH] 2026-09-25T09:44:25-03:00 vm701790 cloud-init[1831]: Get:3 https://cloud.procergs.com.br/apt morpheus Release.gpg [473 B]
+[HIGH] 2026-09-25T09:44:25-03:00 vm701790 cloud-init[1831]: Get:4 https://cloud.procergs.com.br/apt morpheus/main amd64 Packages [1003 B]
+[HIGH] 2026-09-25T09:44:27-03:00 vm701790 cloud-init[1831]:   morpheus-vm-node
+[HIGH] 2026-09-25T09:44:27-03:00 vm701790 cloud-init[1831]: Get:1 https://cloud.procergs.com.br/apt morpheus/main amd64 morpheus-vm-node amd64 3.3.19-1 [126 MB]
+[HIGH] 2026-09-25T09:44:30-03:00 vm701790 cloud-init[1831]: Selecting previously unselected package morpheus-vm-node.
+[HIGH] 2026-09-25T09:44:30-03:00 vm701790 cloud-init[1831]: Preparing to unpack .../morpheus-vm-node_3.3.19-1_amd64.deb ...
+[HIGH] 2026-09-25T09:44:30-03:00 vm701790 cloud-init[1831]: Unpacking morpheus-vm-node (3.3.19-1) ...
+[HIGH] 2026-09-25T09:44:45-03:00 vm701790 cloud-init[1831]: Setting up morpheus-vm-node (3.3.19-1) ...
+[HIGH] 2026-09-25T09:44:46-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:46+00:00] INFO: Started chef-zero at chefzero://localhost:1 with repository at /opt/morpheus-node/embedded
+[HIGH] 2026-09-25T09:44:46-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:46+00:00] INFO: Chef-client pid: 2659
+[HIGH] 2026-09-25T09:44:47-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:47+00:00] INFO: Setting the run_list to ["recipe[morpheus-solo-vm-node]"] from CLI options
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:48+00:00] INFO: Run List is [recipe[morpheus-solo-vm-node]]
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:48+00:00] INFO: Run List expands to [morpheus-solo-vm-node]
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: resolving cookbooks for run list: ["morpheus-solo-vm-node"]
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:48+00:00] INFO: Loading cookbooks [morpheus-solo-vm-node@0.0.1, runit@0.14.2]
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:48+00:00] INFO: Storing updated cookbooks/morpheus-solo-vm-node/metadata.rb in the cache.
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:48+00:00] INFO: Storing updated cookbooks/morpheus-solo-vm-node/templates/default/rsyslog.erb in the cache.
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:48+00:00] INFO: Storing updated cookbooks/morpheus-solo-vm-node/templates/default/sv-morphd-log-run.erb in the cache.
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:48+00:00] INFO: Storing updated cookbooks/morpheus-solo-vm-node/templates/default/sv-morphd-run.erb in the cache.
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:48+00:00] INFO: Storing updated cookbooks/morpheus-solo-vm-node/templates/default/sv-morphd-log-config.erb in the cache.
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:48+00:00] INFO: Storing updated cookbooks/morpheus-solo-vm-node/templates/default/sv-rsyslogd-log-config.erb in the cache.
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:48+00:00] INFO: Storing updated cookbooks/morpheus-solo-vm-node/templates/default/morphd-config.yml.erb in the cache.
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:48+00:00] INFO: Storing updated cookbooks/morpheus-solo-vm-node/templates/default/morpheus-auth-key.erb in the cache.
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:48+00:00] INFO: Storing updated cookbooks/morpheus-solo-vm-node/templates/default/sv-rsyslogd-control-u.erb in the cache.
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:48+00:00] INFO: Storing updated cookbooks/morpheus-solo-vm-node/templates/default/sv-morphd-control-u.erb in the cache.
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:48+00:00] INFO: Storing updated cookbooks/morpheus-solo-vm-node/templates/default/sv-rsyslogd-log-run.erb in the cache.
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:48+00:00] INFO: Storing updated cookbooks/morpheus-solo-vm-node/recipes/add_trusted_certs.rb in the cache.
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:48+00:00] INFO: Storing updated cookbooks/morpheus-solo-vm-node/templates/default/sv-rsyslogd-run.erb in the cache.
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:48+00:00] INFO: Storing updated cookbooks/morpheus-solo-vm-node/libraries/certificate_helper.rb in the cache.
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:48+00:00] INFO: Storing updated cookbooks/morpheus-solo-vm-node/libraries/helper.rb in the cache.
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:48+00:00] INFO: Storing updated cookbooks/morpheus-solo-vm-node/attributes/default.rb in the cache.
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:48+00:00] INFO: Storing updated cookbooks/morpheus-solo-vm-node/recipes/bootstrap.rb in the cache.
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:48+00:00] INFO: Storing updated cookbooks/morpheus-solo-vm-node/recipes/default.rb in the cache.
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:48+00:00] INFO: Storing updated cookbooks/morpheus-solo-vm-node/libraries/morpheus_solo_vm_node.rb in the cache.
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:48+00:00] INFO: Storing updated cookbooks/morpheus-solo-vm-node/recipes/vmnode.rb in the cache.
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:48+00:00] INFO: Storing updated cookbooks/morpheus-solo-vm-node/recipes/show_config.rb in the cache.
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:48+00:00] INFO: Storing updated cookbooks/morpheus-solo-vm-node/recipes/users.rb in the cache.
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:48+00:00] INFO: Storing updated cookbooks/morpheus-solo-vm-node/recipes/morpheus_agent.rb in the cache.
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:48+00:00] INFO: Storing updated cookbooks/runit/files/default/morpheus-node-runsvdir.service in the cache.
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:48+00:00] INFO: Storing updated cookbooks/runit/templates/default/morpheus-node-runsvdir.conf.erb in the cache.
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:48+00:00] INFO: Storing updated cookbooks/morpheus-solo-vm-node/recipes/rsyslog.rb in the cache.
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:   - morpheus-solo-vm-node (0.0.1)
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: Recipe: morpheus-solo-vm-node::default
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:   * directory[/etc/morpheus] action create[2026-09-25T12:44:48+00:00] INFO: directory[/etc/morpheus] mode changed to 770
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: Recipe: morpheus-solo-vm-node::add_trusted_certs
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:   * directory[/etc/morpheus/ssl/trusted_certs] action create[2026-09-25T12:44:48+00:00] INFO: directory[/etc/morpheus/ssl/trusted_certs] created directory /etc/morpheus/ssl/trusted_certs
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:     - create new directory /etc/morpheus/ssl/trusted_certs[2026-09-25T12:44:48+00:00] INFO: directory[/etc/morpheus/ssl/trusted_certs] mode changed to 755
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:   * directory[/opt/morpheus-node/embedded/ssl/certs] action create (up to date)
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:   * file[/opt/morpheus-node/embedded/ssl/certs/README] action create[2026-09-25T12:44:48+00:00] INFO: file[/opt/morpheus-node/embedded/ssl/certs/README] created file /opt/morpheus-node/embedded/ssl/certs/README
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:     - create new file /opt/morpheus-node/embedded/ssl/certs/README[2026-09-25T12:44:48+00:00] INFO: file[/opt/morpheus-node/embedded/ssl/certs/README] updated file contents /opt/morpheus-node/embedded/ssl/certs/README
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:     - update content in file /opt/morpheus-node/embedded/ssl/certs/README from none to dd04f8
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:     --- /opt/morpheus-node/embedded/ssl/certs/README        2026-09-25 12:44:48.223466633 +0000
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:     +++ /opt/morpheus-node/embedded/ssl/certs/.chef-README20260925-2659-12p8oin        2026-09-25 12:44:48.223466633 +0000
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:     +This directory is managed by morpheus-appliance.
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:     +. Place certificates in /etc/morpheus/ssl/trusted_certs.[2026-09-25T12:44:48+00:00] INFO: file[/opt/morpheus-node/embedded/ssl/certs/README] mode changed to 644
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:   * ruby_block[Move existing certs and link to /opt/morpheus-node/embedded/ssl/certs] action run
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:   * Moving existing certificates found in /opt/morpheus-node/embedded/ssl/certs
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:   * Symlinking existing certificates found in /etc/morpheus/ssl/trusted_certs
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:48+00:00] INFO: ruby_block[Move existing certs and link to /opt/morpheus-node/embedded/ssl/certs] called
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:     - execute the ruby block Move existing certs and link to /opt/morpheus-node/embedded/ssl/certs
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: Recipe: morpheus-solo-vm-node::users
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 groupadd[2908]: group added to /etc/group: name=morpheus-node, GID=988
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 groupadd[2908]: group added to /etc/gshadow: name=morpheus-node
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 groupadd[2908]: new group: name=morpheus-node, GID=988
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 gpasswd[2916]: members of group morpheus-node set by root to
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:   * group[morpheus-node] action create[2026-09-25T12:44:48+00:00] INFO: group[morpheus-node] created
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:     - create group morpheus-node
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 useradd[2924]: new user: name=morpheus-node, UID=999, GID=988, home=/opt/morpheus-node, shell=/bin/bash, from=none
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:   * linux_user[morpheus-node] action create[2026-09-25T12:44:48+00:00] INFO: linux_user[morpheus-node] created
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:     - create user morpheus-node
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:   * directory[/opt/morpheus-node] action create[2026-09-25T12:44:48+00:00] INFO: directory[/opt/morpheus-node] owner changed to 999
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:48+00:00] INFO: directory[/opt/morpheus-node] group changed to 988
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:     - change owner from 'root' to 'morpheus-node'
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:     - change group from 'root' to 'morpheus-node'
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:   * file[/opt/morpheus-node/.profile] action create[2026-09-25T12:44:48+00:00] INFO: file[/opt/morpheus-node/.profile] created file /opt/morpheus-node/.profile
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:     - create new file /opt/morpheus-node/.profile[2026-09-25T12:44:48+00:00] INFO: file[/opt/morpheus-node/.profile] updated file contents /opt/morpheus-node/.profile
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:     - update content in file /opt/morpheus-node/.profile from none to f065e5
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:     --- /opt/morpheus-node/.profile        2026-09-25 12:44:48.367467708 +0000
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:     +++ /opt/morpheus-node/.chef-.profile20260925-2659-3t2470.profile        2026-09-25 12:44:48.367467708 +0000
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:     +PATH="/opt/morpheus-node/bin:/opt/morpheus-node/embedded/bin:/opt/morpheus-node/embedded/java/bin:$PATH"
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:     +JAVA_HOME=/opt/morpheus-node/embedded/java
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:     +export PATH JAVA_HOME[2026-09-25T12:44:48+00:00] INFO: file[/opt/morpheus-node/.profile] owner changed to 999
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:48+00:00] INFO: file[/opt/morpheus-node/.profile] mode changed to 644
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:     - change owner from '' to 'morpheus-node'
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:   * directory[/opt/morpheus-node/.ssh] action create[2026-09-25T12:44:48+00:00] INFO: directory[/opt/morpheus-node/.ssh] created directory /opt/morpheus-node/.ssh
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:     - create new directory /opt/morpheus-node/.ssh[2026-09-25T12:44:48+00:00] INFO: directory[/opt/morpheus-node/.ssh] owner changed to 999
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:48+00:00] INFO: directory[/opt/morpheus-node/.ssh] group changed to 988
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]: [2026-09-25T12:44:48+00:00] INFO: directory[/opt/morpheus-node/.ssh] mode changed to 700
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:     - change owner from '' to 'morpheus-node'
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:     - change group from '' to 'morpheus-node'
+[HIGH] 2026-09-25T09:44:48-03:00 vm701790 cloud-init[1831]:   * template[/opt/morpheus-node/.ssh/authorized_keys] action create[2026-09-25T12:44:48+00:00] INFO: template[/opt/morpheus-node/.ssh/authorized_keys] created file /opt/morpheus-node/.ssh/authorized_keys
+JOURNAL_HIGH=1571; DISPLAYED=100; JOURNAL_MEDIUM=0; DISPLAYED=0; ROUTINE_SKIPPED=17487
+
+===== SUDOERS MODIFICATION DATE - LOG COVERAGE ASSESSMENT =====
+sudoers mtime day: 2026-09-25
+The log ranges above are inferred observations, not guarantees of complete retention.
+If no source covers the sudoers mtime day, attribution from local retained logs is not possible.
+Even if a source covers that day, only explicit records can support attribution.
+
+===== AUDITD AVAILABILITY =====
+ausearch unavailable
+
+===== LIMITATIONS / SECURITY =====
+READ ONLY: no changes to accounts, sudoers, services or passwords.
+No matching log records does not imply no change; logs may have rotated or never been collected.
+sudoers mtime is not proof of when rootpw was introduced or who changed it.
+Reports may contain usernames and command arguments; keep private and out of Git.

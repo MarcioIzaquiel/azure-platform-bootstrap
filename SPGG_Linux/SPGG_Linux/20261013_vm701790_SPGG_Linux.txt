@@ -1,0 +1,166 @@
+SPGG - INVENTARIO DE USUARIOS E ACESSOS LINUX
+Versao do script : 1.3
+Data da auditoria: 13/10/2026 09:03:33 -03
+Servidor         : vm701790
+Relatorio        : /tmp/spgg-auditoria-cd4de76f2e4d44baa3258e8034de7595/20261013_vm701790_SPGG_Linux.txt
+Modo             : Somente leitura
+
+===== 01 - SISTEMA OPERACIONAL =====
+PRETTY_NAME="Ubuntu 24.04.5 LTS"
+VERSION_ID="24.04"
+
+===== 02 - HOSTNAME =====
+Static hostname: vm701790
+Operating System: Ubuntu 24.04.5 LTS
+Kernel: 7.0.0-1013-oracle
+Architecture: x86_64
+Enderecos IP:
+ens3             UP             10.113.3.129/24 metric 100 
+docker0          UP             172.17.0.1/16 
+IPv6 globais:
+
+===== 03 - USUARIO ATUAL =====
+spggadmin
+uid=1000(spggadmin) gid=1000(spggadmin) grupos=1000(spggadmin)
+
+===== 04 - USUARIOS HUMANOS (UID >= 1000) =====
+Criterio: contas locais com UID de 1000 a 65533.
+Usuario: spggadmin            UID: 1000     GID: 1000     Shell: /bin/bash
+Usuario: marcio-oliveira@spgg.rs.gov.br UID: 1001     GID: 1001     Shell: /bin/bash
+Usuario: deeadmin             UID: 1002     GID: 1002     Shell: /bin/bash
+Usuario: procergs             UID: 1003     GID: 1003     Shell: /bin/bash
+Usuario: cdsadmin             UID: 1004     GID: 1004     Shell: /bin/bash
+
+===== 05 - GRUPO SUDO =====
+sudo:x:27:deeadmin,procergs,cdsadmin
+
+===== 06 - USUARIOS COM GRUPO SUDO =====
+spggadmin : NAO
+marcio-oliveira@spgg.rs.gov.br : NAO
+deeadmin : SIM
+procergs : SIM
+cdsadmin : SIM
+
+===== 07 - USUARIOS SPGG =====
+uid=1000(spggadmin) gid=1000(spggadmin) grupos=1000(spggadmin)
+uid=1003(procergs) gid=1003(procergs) grupos=1003(procergs),27(sudo),100(users)
+
+===== 08 - STATUS DA SENHA ROOT =====
+root L 2026-07-11 0 99999 7 -1
+Interpretacao: P=senha definida; L=senha bloqueada; NP=sem senha.
+Senha bloqueada nao significa conta root inexistente.
+
+===== 09 - STATUS DA CONTA ROOT =====
+root:x:0:0:root:/root:/bin/bash
+Última mudança de senha					: jul 11, 2026
+Senha expira					: nunca
+Senha inativa					: nunca
+Conta expira						: nunca
+Número mínimo de dias entre troca de senhas		: 0
+Número máximo de dias entre troca de senhas		: 99999
+Número de dias de avisos antes da expiração da senha	: 7
+UID 0 identifica privilegios de superusuario.
+O bloqueio da senha nao impede o uso autorizado de sudo.
+
+===== 10 - PRIVILEGIOS SUDO DO USUARIO ATUAL =====
+Entradas de Defaults correspondentes a spggadmin em VM701790:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty
+
+Usuário spggadmin pode executar os seguintes comandos em VM701790:
+    (ALL) ALL
+Esta consulta mostra as permissoes sudo do usuario atual.
+Nao e uma consulta automatica dos privilegios do root.
+
+===== 11 - PRIVILEGIOS SUDO DOS USUARIOS SPGG =====
+--- spggadmin ---
+Entradas de Defaults correspondentes a spggadmin em VM701790:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty
+
+Usuário spggadmin pode executar os seguintes comandos em VM701790:
+    (ALL) ALL
+--- procergs ---
+Entradas de Defaults correspondentes a procergs em VM701790:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty
+
+Usuário procergs pode executar os seguintes comandos em VM701790:
+    (ALL : ALL) ALL
+
+===== 12 - STATUS DO SERVICO SSH =====
+Habilitacao: disabled
+Execucao: active
+
+===== 13 - CONFIGURACAO EFETIVA SSH =====
+port 22
+permitrootlogin without-password
+pubkeyauthentication yes
+passwordauthentication yes
+kbdinteractiveauthentication no
+permitemptypasswords no
+
+--- INTERPRETACAO SSH ---
+permitrootlogin no: bloqueia login SSH direto do root.
+permitrootlogin prohibit-password: bloqueia senha do root,
+mas pode permitir autenticacao por chave publica.
+passwordauthentication yes: permite autenticacao por senha.
+pubkeyauthentication yes: permite autenticacao por chave.
+kbdinteractiveauthentication no: desabilita esse metodo.
+permitemptypasswords no: nao aceita senhas vazias via SSH.
+
+--- AUTENTICACAO SUDO ---
+O sudo normalmente solicita a senha do proprio usuario.
+Defaults rootpw: solicita a senha da conta root.
+Defaults targetpw: solicita a senha do usuario de destino.
+Defaults runaspw: solicita a senha do usuario runas_default.
+NOPASSWD: pode dispensar autenticacao para comandos autorizados.
+
+--- OPCOES SUDO CONFIGURADAS ---
+Defaults	env_reset
+Defaults	mail_badpass
+Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+Defaults	use_pty
+
+IMPORTANTE: ausencia de rootpw, targetpw e runaspw
+normalmente significa que sudo pede a senha do proprio usuario.
+Regras por usuario, grupo ou comando podem alterar esse comportamento.
+
+===== 14 - PORTA SSH EM ESCUTA =====
+LISTEN 0      4096              0.0.0.0:22         0.0.0.0:*    users:(("sshd",pid=5436,fd=3),("systemd",pid=1,fd=182))  
+LISTEN 0      4096                 [::]:22            [::]:*    users:(("sshd",pid=5436,fd=4),("systemd",pid=1,fd=183))  
+A porta configurada pode ser diferente de 22.
+
+===== 15 - FIREWALL =====
+sudo: ufw: comando não encontrado
+Observacao: UFW inativo nao exclui outras regras de firewall.
+
+===== 16 - DISCOS E PARTICOES =====
+NAME      SIZE FSTYPE   MOUNTPOINTS
+loop0    55,5M squashfs /snap/core18/2999
+loop1    55,5M squashfs /snap/core18/3084
+loop2   113,2M squashfs /snap/oracle-cloud-agent/121
+loop3    50,3M squashfs /snap/snapd/27738
+loop4    44,7M squashfs /snap/snapd/28254
+sda       200G          
+├─sda1    199G ext4     /
+├─sda14     4M          
+├─sda15   106M vfat     /boot/efi
+└─sda16   913M ext4     /boot
+
+===== 17 - STATUS DAS SENHAS DOS USUARIOS SPGG =====
+--- spggadmin ---
+spggadmin P 2026-09-25 0 99999 7 -1
+Última mudança de senha					: set 25, 2026
+Senha expira					: nunca
+Senha inativa					: nunca
+Conta expira						: nunca
+Número mínimo de dias entre troca de senhas		: 0
+Número máximo de dias entre troca de senhas		: 99999
+Número de dias de avisos antes da expiração da senha	: 7
+--- procergs ---
+procergs P 2026-09-25 0 99999 7 -1
+Última mudança de senha					: set 25, 2026
+Senha expira					: nunca
+Senha inativa					: nunca
+Conta expira						: nunca
+Número mínimo de dias entre troca de senhas		: 0
+Número máximo de dias entre troca de senhas		: 99999
+Número de dias de avisos antes da expiração da senha	: 7

@@ -1,0 +1,178 @@
+SPGG - INVENTARIO DE USUARIOS E ACESSOS LINUX
+Versao do script : 1.3
+Data da auditoria: 14/10/2026 13:05:09 -03
+Servidor         : vm701056
+Relatorio        : /tmp/spgg-auditoria-8fc26aff26d2475aa7bb2a8baf8475bb/20261014_vm701056_SPGG_Linux.txt
+Modo             : Somente leitura
+
+===== 01 - SISTEMA OPERACIONAL =====
+PRETTY_NAME="Ubuntu 24.04.3 LTS"
+VERSION_ID="24.04"
+
+===== 02 - HOSTNAME =====
+Static hostname: vm701056
+Operating System: Ubuntu 24.04.3 LTS
+Kernel: 6.17.0-1011-oracle
+Architecture: x86_64
+Enderecos IP:
+ens3             UP             10.113.1.251/24 metric 100 
+docker_gwbridge  UP             172.19.0.1/16 
+br-751e68f80def  UP             172.18.0.1/16 
+docker0          DOWN           172.17.0.1/16 
+br-3b602340dad3  UP             172.21.0.1/16 
+br-4e4f5179a226  UP             172.20.0.1/16 
+IPv6 globais:
+
+===== 03 - USUARIO ATUAL =====
+spggadmin
+uid=1000(spggadmin) gid=1000(spggadmin) groups=1000(spggadmin),27(sudo),33(www-data),100(users)
+
+===== 04 - USUARIOS HUMANOS (UID >= 1000) =====
+Criterio: contas locais com UID de 1000 a 65533.
+Usuario: spggadmin            UID: 1000     GID: 1000     Shell: /bin/bash
+Usuario: cdsadmin             UID: 1002     GID: 1002     Shell: /bin/bash
+Usuario: devadmin             UID: 1003     GID: 1003     Shell: /bin/bash
+Usuario: procergs             UID: 1004     GID: 1004     Shell: /bin/bash
+Usuario: monitoramento        UID: 1007     GID: 1007     Shell: /bin/bash
+Usuario: spezziadmin          UID: 1005     GID: 1005     Shell: /bin/bash
+
+===== 05 - GRUPO SUDO =====
+sudo:x:27:cdsadmin,devadmin,procergs,monitoramento,spezziadmin,spggadmin
+
+===== 06 - USUARIOS COM GRUPO SUDO =====
+spggadmin : SIM
+cdsadmin : SIM
+devadmin : SIM
+procergs : SIM
+monitoramento : SIM
+spezziadmin : SIM
+
+===== 07 - USUARIOS SPGG =====
+uid=1000(spggadmin) gid=1000(spggadmin) groups=1000(spggadmin),27(sudo),33(www-data),100(users)
+uid=1004(procergs) gid=1004(procergs) groups=1004(procergs),27(sudo),100(users)
+
+===== 08 - STATUS DA SENHA ROOT =====
+root P 2026-08-03 0 99999 7 -1
+Interpretacao: P=senha definida; L=senha bloqueada; NP=sem senha.
+Senha bloqueada nao significa conta root inexistente.
+
+===== 09 - STATUS DA CONTA ROOT =====
+root:x:0:0:root:/root:/bin/bash
+Last password change					: Aug 03, 2026
+Password expires					: never
+Password inactive					: never
+Account expires						: never
+Minimum number of days between password change		: 0
+Maximum number of days between password change		: 99999
+Number of days of warning before password expires	: 7
+UID 0 identifica privilegios de superusuario.
+O bloqueio da senha nao impede o uso autorizado de sudo.
+
+===== 10 - PRIVILEGIOS SUDO DO USUARIO ATUAL =====
+Matching Defaults entries for spggadmin on VM701056:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty, rootpw
+
+User spggadmin may run the following commands on VM701056:
+    (ALL : ALL) ALL
+    (ALL) ALL
+Esta consulta mostra as permissoes sudo do usuario atual.
+Nao e uma consulta automatica dos privilegios do root.
+
+===== 11 - PRIVILEGIOS SUDO DOS USUARIOS SPGG =====
+--- spggadmin ---
+Matching Defaults entries for spggadmin on VM701056:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty, rootpw
+
+User spggadmin may run the following commands on VM701056:
+    (ALL : ALL) ALL
+    (ALL) ALL
+--- procergs ---
+Matching Defaults entries for procergs on VM701056:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty, rootpw
+
+User procergs may run the following commands on VM701056:
+    (ALL : ALL) ALL
+
+===== 12 - STATUS DO SERVICO SSH =====
+Habilitacao: disabled
+Execucao: active
+
+===== 13 - CONFIGURACAO EFETIVA SSH =====
+port 22
+permitrootlogin without-password
+pubkeyauthentication yes
+passwordauthentication yes
+kbdinteractiveauthentication no
+permitemptypasswords no
+
+--- INTERPRETACAO SSH ---
+permitrootlogin no: bloqueia login SSH direto do root.
+permitrootlogin prohibit-password: bloqueia senha do root,
+mas pode permitir autenticacao por chave publica.
+passwordauthentication yes: permite autenticacao por senha.
+pubkeyauthentication yes: permite autenticacao por chave.
+kbdinteractiveauthentication no: desabilita esse metodo.
+permitemptypasswords no: nao aceita senhas vazias via SSH.
+
+--- AUTENTICACAO SUDO ---
+O sudo normalmente solicita a senha do proprio usuario.
+Defaults rootpw: solicita a senha da conta root.
+Defaults targetpw: solicita a senha do usuario de destino.
+Defaults runaspw: solicita a senha do usuario runas_default.
+NOPASSWD: pode dispensar autenticacao para comandos autorizados.
+
+--- OPCOES SUDO CONFIGURADAS ---
+Defaults	env_reset
+Defaults	mail_badpass
+Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+Defaults	use_pty
+Defaults        rootpw
+
+IMPORTANTE: ausencia de rootpw, targetpw e runaspw
+normalmente significa que sudo pede a senha do proprio usuario.
+Regras por usuario, grupo ou comando podem alterar esse comportamento.
+
+===== 14 - PORTA SSH EM ESCUTA =====
+LISTEN 0      4096              0.0.0.0:22         0.0.0.0:*    users:(("sshd",pid=4106961,fd=3),("systemd",pid=1,fd=279))                                                                                         
+LISTEN 0      4096                 [::]:22            [::]:*    users:(("sshd",pid=4106961,fd=4),("systemd",pid=1,fd=280))                                                                                         
+A porta configurada pode ser diferente de 22.
+
+===== 15 - FIREWALL =====
+sudo: ufw: command not found
+Observacao: UFW inativo nao exclui outras regras de firewall.
+
+===== 16 - DISCOS E PARTICOES =====
+NAME     SIZE FSTYPE   MOUNTPOINTS
+loop0   44.7M squashfs /snap/snapd/28254
+loop1   55.5M squashfs /snap/core18/2999
+loop2    2.9M squashfs /snap/http/35
+loop3   88.6M squashfs /snap/oracle-cloud-agent/94
+loop4   55.5M squashfs /snap/core18/3084
+loop6   50.3M squashfs /snap/snapd/27738
+sda       50G          
+├─sda1    49G ext4     /
+├─sda14    4M          
+├─sda15  106M vfat     /boot/efi
+└─sda16  913M ext4     /boot
+sdb      500G ext4     /mnt/secondary
+sdc      200G ext4     /mnt/legados
+
+===== 17 - STATUS DAS SENHAS DOS USUARIOS SPGG =====
+--- spggadmin ---
+spggadmin P 2026-10-05 0 99999 7 -1
+Last password change					: Oct 05, 2026
+Password expires					: never
+Password inactive					: never
+Account expires						: never
+Minimum number of days between password change		: 0
+Maximum number of days between password change		: 99999
+Number of days of warning before password expires	: 7
+--- procergs ---
+procergs P 2026-07-29 0 99999 7 -1
+Last password change					: Jul 29, 2026
+Password expires					: never
+Password inactive					: never
+Account expires						: never
+Minimum number of days between password change		: 0
+Maximum number of days between password change		: 99999
+Number of days of warning before password expires	: 7

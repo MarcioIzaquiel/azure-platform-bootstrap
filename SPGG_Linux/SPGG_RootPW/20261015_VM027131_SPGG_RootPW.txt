@@ -1,0 +1,196 @@
+
+===== EXECUTIVE SUMMARY =====
+Host: VM027131.seplag.intra.rs.gov.br
+Hostname short: VM027131
+Collected: 2026-10-15T08:27:02-03:00
+Window: 2026-07-01 to 2026-10-01 (end exclusive)
+Global rootpw directive: FOUND (text scan; verify effective scope)
+sudoers mtime: 2026-08-03 11:52:01.933267534 -0300
+root password status: root P 08/03/2026 0 99999 7 -1
+sudoers mtime day: INSIDE REQUESTED WINDOW
+
+===== IDENTIFICATION =====
+OS: Ubuntu 18.04.6 LTS
+Timezone: -03
+Executed as: uid=0(root) gid=0(root) groups=0(root)
+
+===== SUDO EFFECTIVE DEFAULTS (FOR ROOT; NOT PER-USER PROOF) =====
+Matching Defaults entries for root on VM027131:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, rootpw, !requiretty
+
+User root may run the following commands on VM027131:
+    (ALL : ALL) ALL
+
+===== SUDOERS DIRECTIVES =====
+
+-- /etc/sudoers --
+9:Defaults	env_reset
+10:Defaults	mail_badpass
+11:Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+12:Defaults        rootpw
+30:#includedir /etc/sudoers.d
+
+-- /etc/sudoers.d/README --
+
+-- /etc/sudoers.d/morpheus-node --
+1:Defaults:morpheus-node !requiretty
+7:Defaults:root !requiretty
+
+===== SUDOERS FILE METADATA =====
+/etc/sudoers | owner=root:root | mode=440 | size=777 | mtime=2026-08-03 11:52:01.933267534 -0300 | ctime=2026-08-03 11:52:01.937267623 -0300 | birth=-
+/etc/sudoers.d/README | owner=root:root | mode=440 | size=958 | mtime=2018-01-17 22:08:16.000000000 -0200 | ctime=2019-11-27 11:05:59.197395968 -0300 | birth=-
+/etc/sudoers.d/morpheus-node | owner=root:root | mode=440 | size=240 | mtime=2025-06-10 08:13:29.863200670 -0300 | ctime=2025-06-10 08:13:29.867200687 -0300 | birth=-
+
+===== ROOT PASSWORD METADATA (NO HASHES) =====
+root P 08/03/2026 0 99999 7 -1
+Last password change					: Aug 03, 2026
+Password expires					: never
+Password inactive					: never
+Account expires						: never
+Minimum number of days between password change		: 0
+Maximum number of days between password change		: 99999
+Number of days of warning before password expires	: 7
+
+===== LOG SOURCES / RETENTION =====
+/var/log/auth.log | bytes=144520 | mtime=2026-10-15 08:27:02.289010763 -0300
+/var/log/auth.log.1 | bytes=91173 | mtime=2026-10-11 06:25:01.529001683 -0300
+/var/log/auth.log.2.gz | bytes=6849 | mtime=2026-10-05 06:25:01.000000000 -0300
+/var/log/auth.log.3.gz | bytes=4949 | mtime=2026-09-27 06:25:01.000000000 -0300
+/var/log/auth.log.4.gz | bytes=6513 | mtime=2026-09-21 06:25:01.000000000 -0300
+-14 6a811b6153a94540ad138ca1957fbad4 Fri 2020-06-12 14:23:10 -03—Fri 2020-06-12 14:27:44 -03
+-13 a92c0a824a7941e695e8a3534aeb4927 Thu 2020-07-02 09:43:03 -03—Thu 2020-07-02 10:26:32 -03
+-12 e50344e8b7b14790b54500a5d78ed46a Thu 2020-07-02 10:26:44 -03—Thu 2020-07-02 10:35:47 -03
+-11 9d42a338b36e4e43bf0c1cb7af9161de Thu 2020-07-02 10:58:02 -03—Thu 2020-07-02 11:02:19 -03
+-10 f3bba99e3d3d4ebeaa8f665e5785ada5 Fri 2020-07-03 14:12:46 -03—Fri 2020-07-03 14:14:27 -03
+ -9 a603eae613504847bf863f98f20e546e Fri 2020-07-03 15:05:16 -03—Fri 2020-07-03 15:09:06 -03
+ -8 f43fc82626b546d390cdad42faeb5228 Mon 2020-07-13 08:54:39 -03—Mon 2020-07-13 08:56:40 -03
+ -7 fdd40736a5114dae8e8af49f8563706f Fri 2022-09-23 17:38:42 -03—Fri 2022-09-23 17:41:08 -03
+ -6 48a2086644904a7b9e9419b96af43880 Tue 2024-07-09 09:24:20 -03—Tue 2024-07-09 09:24:51 -03
+ -5 958e19913d5148c7828d41390de0b21f Tue 2024-07-09 09:25:05 -03—Tue 2024-07-09 15:15:20 -03
+ -4 729450f2d4f947c09c88dae8fe7e76d0 Tue 2024-07-09 15:16:34 -03—Wed 2024-07-10 10:47:42 -03
+ -3 cd3ad438ea66497f9a9648db934e8350 Wed 2024-07-10 10:48:35 -03—Mon 2025-06-09 19:45:26 -03
+ -2 337d8bc192f54613b0487643ac8ef642 Tue 2025-06-10 00:04:26 -03—Tue 2025-06-10 07:37:27 -03
+ -1 7b5f5a89b6944adbbc0ebb2610f3a07d Tue 2025-06-10 07:39:39 -03—Mon 2026-05-18 01:13:06 -03
+  0 404981e15ba44bc4a2217a55a644c2e0 Mon 2026-05-18 01:55:10 -03—Thu 2026-10-15 08:27:02 -03
+
+===== AUTH LOG - PRIORITIZED EVENTS (MAX 100 HIGH + 60 MEDIUM PER FILE) =====
+NOTE: syslog timestamps usually omit year; year inferred from file mtime (heuristic, not forensic proof).
+NOTE: routine PAM sessions and CRON are counted, not printed. Matches are investigative leads.
+NOTE: HIGH identifies command keywords; it does not prove a configuration change.
+
+-- /var/log/auth.log --
+LOG_OBSERVED_DATE_RANGE=2026-10-11..2026-10-15 (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.1 --
+LOG_OBSERVED_DATE_RANGE=2026-10-05..2026-10-11 (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.2.gz --
+[MEDIUM inferred 2026-09-27] Sep 27 07:14:13 VM027131 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-28] Sep 28 03:14:17 VM027131 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-28] Sep 28 08:14:22 VM027131 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-29] Sep 29 04:14:28 VM027131 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-29] Sep 29 09:14:32 VM027131 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-30] Sep 30 00:14:37 VM027131 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-30] Sep 30 05:14:42 VM027131 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+LOG_OBSERVED_DATE_RANGE=2026-09-27..2026-10-05 (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=7; MEDIUM_DISPLAYED=7; ROUTINE_SKIPPED=567; OTHER_SKIPPED=8
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.3.gz --
+[MEDIUM inferred 2026-09-22] Sep 22 02:13:22 VM027131 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-22] Sep 22 07:13:26 VM027131 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-23] Sep 23 03:13:31 VM027131 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-23] Sep 23 08:13:35 VM027131 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-24] Sep 24 04:13:40 VM027131 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-24] Sep 24 09:13:46 VM027131 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-25] Sep 25 00:13:51 VM027131 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-25] Sep 25 05:13:55 VM027131 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-26] Sep 26 01:13:59 VM027131 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-26] Sep 26 06:14:04 VM027131 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-27] Sep 27 02:14:09 VM027131 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+LOG_OBSERVED_DATE_RANGE=2026-09-21..2026-09-27 (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=11; MEDIUM_DISPLAYED=11; ROUTINE_SKIPPED=914; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.4.gz --
+[MEDIUM inferred 2026-09-13] Sep 13 08:12:04 VM027131 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-14] Sep 14 04:12:09 VM027131 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-14] Sep 14 09:12:13 VM027131 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-15] Sep 15 00:12:18 VM027131 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-15] Sep 15 05:12:22 VM027131 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-16] Sep 16 01:12:27 VM027131 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-16] Sep 16 06:12:33 VM027131 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-17] Sep 17 02:12:37 VM027131 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-17] Sep 17 07:12:42 VM027131 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-18] Sep 18 03:12:46 VM027131 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-18] Sep 18 08:12:51 VM027131 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-19] Sep 19 04:12:55 VM027131 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-19] Sep 19 09:12:59 VM027131 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-20] Sep 20 00:13:04 VM027131 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-20] Sep 20 05:13:08 VM027131 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-21] Sep 21 01:13:13 VM027131 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-21] Sep 21 06:13:18 VM027131 sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+LOG_OBSERVED_DATE_RANGE=2026-09-13..2026-09-21 (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=17; MEDIUM_DISPLAYED=17; ROUTINE_SKIPPED=1222; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+===== JOURNAL - PRIORITIZED EVENTS (MAX 100 HIGH + 60 MEDIUM) =====
+[MEDIUM] 2026-07-03T18:43:31-0300 VM027131.seplag.intra.rs.gov.br sudo[22925]: pam_unix(sudo:auth): authentication failure; logname=monitoramento uid=1003 euid=0 tty=/dev/pts/0 ruser=monitoramento rhost=  user=monitoramento
+[HIGH] 2026-07-10T13:48:31-0300 VM027131.seplag.intra.rs.gov.br passwd[7585]: passwd: can't view or modify password information for root
+[HIGH] 2026-07-10T13:48:31-0300 VM027131.seplag.intra.rs.gov.br passwd[7695]: passwd: can't view or modify password information for procergs
+[HIGH] 2026-07-10T13:48:31-0300 VM027131.seplag.intra.rs.gov.br passwd[7805]: passwd: can't view or modify password information for morpheus-node
+[HIGH] 2026-07-10T13:48:31-0300 VM027131.seplag.intra.rs.gov.br passwd[7902]: passwd: can't view or modify password information for spggadmin
+[HIGH] 2026-07-10T13:48:31-0300 VM027131.seplag.intra.rs.gov.br passwd[8012]: passwd: can't view or modify password information for cdsadmin
+[HIGH] 2026-07-13T08:54:29-0300 VM027131.seplag.intra.rs.gov.br passwd[24369]: passwd: can't view or modify password information for root
+[HIGH] 2026-07-13T08:54:29-0300 VM027131.seplag.intra.rs.gov.br passwd[24479]: passwd: can't view or modify password information for procergs
+[HIGH] 2026-07-13T08:54:29-0300 VM027131.seplag.intra.rs.gov.br passwd[24591]: passwd: can't view or modify password information for morpheus-node
+[HIGH] 2026-07-13T08:54:29-0300 VM027131.seplag.intra.rs.gov.br passwd[24688]: passwd: can't view or modify password information for spggadmin
+[HIGH] 2026-07-13T08:54:29-0300 VM027131.seplag.intra.rs.gov.br passwd[24908]: passwd: can't view or modify password information for monitoramento
+[MEDIUM] 2026-07-13T09:38:29-0300 VM027131.seplag.intra.rs.gov.br sudo[30449]: pam_unix(sudo:auth): authentication failure; logname=cdsadmin uid=1002 euid=0 tty=/dev/pts/0 ruser=cdsadmin rhost=  user=cdsadmin
+[HIGH] 2026-07-13T09:38:48-0300 VM027131.seplag.intra.rs.gov.br passwd[30487]: passwd: can't view or modify password information for root
+[HIGH] 2026-07-13T09:38:48-0300 VM027131.seplag.intra.rs.gov.br passwd[30598]: passwd: can't view or modify password information for procergs
+[HIGH] 2026-07-13T09:38:48-0300 VM027131.seplag.intra.rs.gov.br passwd[30708]: passwd: can't view or modify password information for morpheus-node
+[HIGH] 2026-07-13T09:38:48-0300 VM027131.seplag.intra.rs.gov.br passwd[30805]: passwd: can't view or modify password information for spggadmin
+[HIGH] 2026-07-13T09:38:48-0300 VM027131.seplag.intra.rs.gov.br passwd[31025]: passwd: can't view or modify password information for monitoramento
+[HIGH] 2026-07-29T10:53:07-0300 VM027131.seplag.intra.rs.gov.br chpasswd[4327]: pam_unix(chpasswd:chauthtok): password changed for spggadmin
+[HIGH] 2026-07-29T10:53:07-0300 VM027131.seplag.intra.rs.gov.br chpasswd[4331]: pam_unix(chpasswd:chauthtok): password changed for cdsadmin
+[HIGH] 2026-07-29T10:53:07-0300 VM027131.seplag.intra.rs.gov.br chpasswd[4335]: pam_unix(chpasswd:chauthtok): password changed for procergs
+[HIGH] 2026-07-29T10:53:07-0300 VM027131.seplag.intra.rs.gov.br useradd[4338]: new group: name=devadmin, GID=1004
+[HIGH] 2026-07-29T10:53:07-0300 VM027131.seplag.intra.rs.gov.br useradd[4338]: new user: name=devadmin, UID=1004, GID=1004, home=/home/devadmin, shell=/bin/bash
+[HIGH] 2026-07-29T10:53:07-0300 VM027131.seplag.intra.rs.gov.br chpasswd[4345]: pam_unix(chpasswd:chauthtok): password changed for devadmin
+[HIGH] 2026-07-29T10:53:08-0300 VM027131.seplag.intra.rs.gov.br useradd[4348]: new group: name=spezziadmin, GID=1005
+[HIGH] 2026-07-29T10:53:08-0300 VM027131.seplag.intra.rs.gov.br useradd[4348]: new user: name=spezziadmin, UID=1005, GID=1005, home=/home/spezziadmin, shell=/bin/bash
+[HIGH] 2026-07-29T10:53:08-0300 VM027131.seplag.intra.rs.gov.br chpasswd[4355]: pam_unix(chpasswd:chauthtok): password changed for spezziadmin
+[HIGH] 2026-07-29T10:53:08-0300 VM027131.seplag.intra.rs.gov.br chpasswd[4360]: pam_unix(chpasswd:chauthtok): password changed for monitoramento
+[MEDIUM] 2026-08-03T11:44:42-0300 VM027131.seplag.intra.rs.gov.br sudo[26753]: pam_unix(sudo:auth): authentication failure; logname=monitoramento uid=1003 euid=0 tty=/dev/pts/0 ruser=monitoramento rhost=  user=monitoramento
+[HIGH] 2026-08-03T11:51:11-0300 VM027131.seplag.intra.rs.gov.br sudo[26753]: monitoramento : TTY=pts/0 ; PWD=/home/monitoramento ; USER=root ; COMMAND=/usr/bin/passwd root
+[HIGH] 2026-08-03T11:51:28-0300 VM027131.seplag.intra.rs.gov.br passwd[27659]: pam_unix(passwd:chauthtok): password changed for root
+[HIGH] 2026-08-03T11:51:32-0300 VM027131.seplag.intra.rs.gov.br sudo[27682]: monitoramento : TTY=pts/0 ; PWD=/home/monitoramento ; USER=root ; COMMAND=/usr/sbin/visudo
+[HIGH] 2026-08-03T12:10:40-0300 VM027131.seplag.intra.rs.gov.br sudo[30018]: cdsadmin : TTY=pts/0 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/sbin/visudo
+[HIGH] 2026-08-05T11:15:51-0300 VM027131.seplag.intra.rs.gov.br sudo[22776]: monitoramento : TTY=pts/0 ; PWD=/home/monitoramento ; USER=root ; COMMAND=/usr/sbin/usermod -aG sudo,www-data,users spggadmin
+[HIGH] 2026-08-05T11:15:51-0300 VM027131.seplag.intra.rs.gov.br usermod[22778]: add 'spggadmin' to group 'www-data'
+[HIGH] 2026-08-05T11:15:51-0300 VM027131.seplag.intra.rs.gov.br usermod[22778]: add 'spggadmin' to group 'users'
+[HIGH] 2026-08-05T11:15:51-0300 VM027131.seplag.intra.rs.gov.br usermod[22778]: add 'spggadmin' to shadow group 'www-data'
+[HIGH] 2026-08-05T11:15:51-0300 VM027131.seplag.intra.rs.gov.br usermod[22778]: add 'spggadmin' to shadow group 'users'
+[HIGH] 2026-08-05T11:22:43-0300 VM027131.seplag.intra.rs.gov.br sudo[23667]: cdsadmin : TTY=pts/1 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/sbin/usermod -aG sudo,www-data,users spggadmin
+[HIGH] 2026-08-05T11:30:11-0300 VM027131.seplag.intra.rs.gov.br sudo[24455]: cdsadmin : TTY=pts/0 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/sbin/usermod -aG sudo,www-data,users spggadmin
+JOURNAL_HIGH=36; DISPLAYED=36; JOURNAL_MEDIUM=3; DISPLAYED=3; ROUTINE_SKIPPED=21111
+
+===== SUDOERS MODIFICATION DATE - LOG COVERAGE ASSESSMENT =====
+sudoers mtime day: 2026-08-03
+The log ranges above are inferred observations, not guarantees of complete retention.
+If no source covers the sudoers mtime day, attribution from local retained logs is not possible.
+Even if a source covers that day, only explicit records can support attribution.
+
+===== AUDITD AVAILABILITY =====
+ausearch unavailable
+
+===== LIMITATIONS / SECURITY =====
+READ ONLY: no changes to accounts, sudoers, services or passwords.
+No matching log records does not imply no change; logs may have rotated or never been collected.
+sudoers mtime is not proof of when rootpw was introduced or who changed it.
+Reports may contain usernames and command arguments; keep private and out of Git.

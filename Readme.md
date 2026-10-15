@@ -546,7 +546,7 @@ No VS Code, instalar o Remote - SSH, da Microsoft.
 - `ssh -tt marcio@192.168.0.46 "cd ~ && bash ./SPGG_Linux.sh"`
 - `scp marcio@192.168.0.46:~/20261011_ubuntuserver_SPGG_Linux.txt .\SPGG_Linux`
 
-- `.\Invoke-SPGG_Linux.ps1 -Usuario marcio 
-`
+- `Unblock-File .\Invoke-SPGG_RootPW_v1.3.ps1`
+- `.\Invoke-SPGG_Linux.ps1 -Usuario marcio`
 
 https://www.microsoft.com/en-us/evalcenter/download-windows-server-2025
