@@ -1,0 +1,7 @@
+"IP","Status","Relatorio","Erro"
+"10.113.3.73","SUCESSO","C:\TEMP_MARCIO\AZURE\azure-platform-bootstrap\SPGG_Linux\SPGG_Padronizacao_Etapa_1\20261020_170405\20261020_10.113.3.73_SPGG_Hardening_Precheck.txt",""
+"10.113.3.114","SUCESSO","C:\TEMP_MARCIO\AZURE\azure-platform-bootstrap\SPGG_Linux\SPGG_Padronizacao_Etapa_1\20261020_170405\20261020_10.113.3.114_SPGG_Hardening_Precheck.txt",""
+"10.113.1.203","SUCESSO","C:\TEMP_MARCIO\AZURE\azure-platform-bootstrap\SPGG_Linux\SPGG_Padronizacao_Etapa_1\20261020_170405\20261020_10.113.1.203_SPGG_Hardening_Precheck.txt",""
+"10.113.1.102","FALHA","","Falha ao baixar relatorio"
+"10.113.3.129","SUCESSO","C:\TEMP_MARCIO\AZURE\azure-platform-bootstrap\SPGG_Linux\SPGG_Padronizacao_Etapa_1\20261020_170405\20261020_10.113.3.129_SPGG_Hardening_Precheck.txt",""
+"10.113.1.134","SUCESSO","C:\TEMP_MARCIO\AZURE\azure-platform-bootstrap\SPGG_Linux\SPGG_Padronizacao_Etapa_1\20261020_170405\20261020_10.113.1.134_SPGG_Hardening_Precheck.txt",""

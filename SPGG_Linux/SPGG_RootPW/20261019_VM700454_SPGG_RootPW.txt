@@ -1,0 +1,105 @@
+
+===== EXECUTIVE SUMMARY =====
+Host: VM700454
+Hostname short: VM700454
+Collected: 2026-10-19T14:04:20+00:00
+Window: 2026-07-01 to 2026-10-01 (end exclusive)
+Global rootpw directive: not found by simple text scan
+sudoers mtime: 2025-05-20 19:45:42.018285524 +0000
+root password status: root PS 2025-09-04 0 99999 7 -1 (Password set, SHA512 crypt.)
+sudoers mtime day: OUTSIDE REQUESTED WINDOW
+
+===== IDENTIFICATION =====
+OS: Rocky Linux 9.5 (Blue Onyx)
+Timezone: UTC
+Executed as: uid=0(root) gid=0(root) groups=0(root) context=unconfined_u:unconfined_r:unconfined_t:s0-s0:c0.c1023
+
+===== SUDO EFFECTIVE DEFAULTS (FOR ROOT; NOT PER-USER PROOF) =====
+Matching Defaults entries for root on VM700454:
+    always_set_home, match_group_by_gid, always_query_group_plugin, env_reset, env_keep="COLORS DISPLAY HOSTNAME HISTSIZE KDEDIR LS_COLORS", env_keep+="MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE", env_keep+="LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES", env_keep+="LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE", env_keep+="LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY", secure_path=/sbin\:/bin\:/usr/sbin\:/usr/bin, !requiretty
+
+User root may run the following commands on VM700454:
+    (ALL) ALL
+
+===== SUDOERS DIRECTIVES =====
+
+-- /etc/sudoers --
+64:Defaults    always_set_home
+65:Defaults    match_group_by_gid
+73:Defaults    always_query_group_plugin
+75:Defaults    env_reset
+76:Defaults    env_keep =  "COLORS DISPLAY HOSTNAME HISTSIZE KDEDIR LS_COLORS"
+77:Defaults    env_keep += "MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE"
+78:Defaults    env_keep += "LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES"
+79:Defaults    env_keep += "LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE"
+80:Defaults    env_keep += "LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY"
+88:Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin
+120:#includedir /etc/sudoers.d
+
+-- /etc/sudoers.d/90-cloud-init-users --
+
+-- /etc/sudoers.d/morpheus-node --
+1:Defaults:morpheus-node !requiretty
+7:Defaults:root !requiretty
+
+===== SUDOERS FILE METADATA =====
+/etc/sudoers | owner=root:root | mode=440 | size=4401 | mtime=2025-05-20 19:45:42.018285524 +0000 | ctime=2026-06-11 20:06:25.189969688 +0000 | birth=2025-05-20 19:45:42.018285524 +0000
+/etc/sudoers.d/90-cloud-init-users | owner=root:root | mode=440 | size=242 | mtime=2024-12-06 14:56:42.770332693 +0000 | ctime=2024-12-06 14:56:42.770332693 +0000 | birth=2024-07-05 12:59:30.848585933 +0000
+/etc/sudoers.d/morpheus-node | owner=root:root | mode=440 | size=240 | mtime=2024-12-06 14:57:28.428832925 +0000 | ctime=2024-12-06 14:57:28.431832985 +0000 | birth=2024-12-06 14:57:28.428832925 +0000
+
+===== ROOT PASSWORD METADATA (NO HASHES) =====
+root PS 2025-09-04 0 99999 7 -1 (Password set, SHA512 crypt.)
+Last password change					: Sep 04, 2025
+Password expires					: never
+Password inactive					: never
+Account expires						: never
+Minimum number of days between password change		: 0
+Maximum number of days between password change		: 99999
+Number of days of warning before password expires	: 7
+
+===== LOG SOURCES / RETENTION =====
+/var/log/secure | bytes=1015598 | mtime=2026-10-19 14:04:11.373916019 +0000
+/var/log/audit/audit.log | bytes=2397713 | mtime=2026-10-19 14:04:20.228095492 +0000
+/var/log/audit/audit.log.1 | bytes=8388669 | mtime=2026-10-19 09:06:38.876991064 +0000
+/var/log/audit/audit.log.2 | bytes=8388831 | mtime=2026-10-18 15:18:23.122194357 +0000
+/var/log/audit/audit.log.3 | bytes=8388975 | mtime=2026-10-17 21:34:14.193223646 +0000
+/var/log/audit/audit.log.4 | bytes=8388794 | mtime=2026-10-17 03:48:10.721344989 +0000
+IDX BOOT ID                          FIRST ENTRY                 LAST ENTRY
+  0 420138e623484d7fa4ff56a4824f164d Wed 2026-09-30 11:31:01 UTC Mon 2026-10-19 14:04:20 UTC
+
+===== AUTH LOG - PRIORITIZED EVENTS (MAX 100 HIGH + 60 MEDIUM PER FILE) =====
+NOTE: syslog timestamps usually omit year; year inferred from file mtime (heuristic, not forensic proof).
+NOTE: routine PAM sessions and CRON are counted, not printed. Matches are investigative leads.
+NOTE: HIGH identifies command keywords; it does not prove a configuration change.
+
+-- /var/log/secure --
+LOG_OBSERVED_DATE_RANGE=2026-10-18..2026-10-19 (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; METADATA_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+===== JOURNAL - PRIORITIZED EVENTS (DATE-PRIORITIZED; MAX 100 HIGH + 60 MEDIUM) =====
+
+-- PRIORITY DATE 2026-08-03 (UTC/local journal time) --
+PRIORITY_HIGH=0; HIGH_DISPLAYED=0; PRIORITY_MEDIUM=0; MEDIUM_DISPLAYED=0; METADATA_SKIPPED=0; ROUTINE_SKIPPED=0
+
+-- PRIORITY DATE 2026-08-05 (UTC/local journal time) --
+PRIORITY_HIGH=0; HIGH_DISPLAYED=0; PRIORITY_MEDIUM=0; MEDIUM_DISPLAYED=0; METADATA_SKIPPED=0; ROUTINE_SKIPPED=0
+
+-- FULL WINDOW SUMMARY --
+JOURNAL_HIGH=0; DISPLAYED=0; JOURNAL_MEDIUM=0; DISPLAYED=0; ROUTINE_SKIPPED=0; METADATA_SKIPPED=0
+
+===== SUDOERS MODIFICATION DATE - LOG COVERAGE ASSESSMENT =====
+sudoers mtime day: 2025-05-20
+The log ranges above are inferred observations, not guarantees of complete retention.
+If no source covers the sudoers mtime day, attribution from local retained logs is not possible.
+Even if a source covers that day, only explicit records can support attribution.
+
+===== AUDITD AVAILABILITY =====
+ausearch available; historical events not queried automatically (audit rules/site-specific formats).
+No rules
+
+===== LIMITATIONS / SECURITY =====
+READ ONLY: no changes to accounts, sudoers, services or passwords.
+No matching log records does not imply no change; logs may have rotated or never been collected.
+sudoers mtime is not proof of when rootpw was introduced or who changed it.
+Reports may contain usernames and command arguments; keep private and out of Git.

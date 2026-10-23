@@ -87,6 +87,12 @@ Linha horizontal
 ---
 ---
 ---
+---
+---
+---
+---
+---
+
 # VS Code
 VS Code Extensions:
 - PowerShell
@@ -102,6 +108,7 @@ Atalhos:
 - Ctrl+K+U = Descomentar 
 - Ctrl+. = Comentar/Descomentar 
 - Ctrl+Shift+V 
+
 ---
 ---
 ---
@@ -149,9 +156,7 @@ Commit: `git add nomedoarquivo.ext` -> `git status` -> `git commit -m "docs: des
 
 Enviar: `git push` -> `git status`
 
-
 ---
-
 
 Alterações, partindo do notebook, depois: 
 
@@ -172,11 +177,9 @@ Criar arquivos/subpastas via Windows (\docs\architecture.md) ; `git status` ; `g
 O Git não rastreia diretórios vazios, então:
 Criar subpasta ; criar arquivo .gitkeep
 
-
 ---
 
-
-Nomenclatura para Commit:
+**Nomenclatura para Commit:**
 
 | Prefixo | Significado | Exemplo |
 |---------|-------------|---------|
@@ -189,7 +192,59 @@ Nomenclatura para Commit:
 | ci: | Pipeline/automação de integração | ci: add GitHub Actions validation |
 | build: | Build/dependências | menos importante por enquanto |
 
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
 
+# Linux
+
+`ip a` = ifconfig
+
+`sudo ss -tlnp | grep ':22'` verificar se o servidor está com a 22 aberta (no próprio servidor)
+
+`Test-NetConnection 192.168.1.120 -Port 22` no PowerShell a partir do Windows 11
+
+No VS Code, instalar o Remote - SSH, da Microsoft.
+`ssh -V` no PowerShell do VS Code
+1. Pressione Ctrl + Shift + P.
+2. Digite Remote-SSH: Add New SSH Host.
+3. Informe o comando abaixo, substituindo pelo usuário e IP com os quais você já acessa pelo PuTTY: `ssh usuario@192.168.1.120 -p 22`
+
+`sed -i 's/\r$//' ~/meu_script.sh` limpar o script de \r (quando feito no Windows)
+
+### Editor VI
+- vi meu_script.sh
+- (:set paste)
+- i
+- esc
+- (:set nopaste)
+- :wq
+
+`chmod +x meu_script.sh` dar permissão no script
+`bash -n SPGG_Linux.sh` verificar a sintaxe dos os comandos
+`./meu_script.sh`
+
+### Execução remota via VS Code
+- `scp .\SPGG_Linux\SPGG_Linux.sh marcio@192.168.0.46:~/SPGG_Linux.sh`
+- `ssh -tt marcio@192.168.0.46 "cd ~ && bash ./SPGG_Linux.sh"`
+- `scp marcio@192.168.0.46:~/20261011_ubuntuserver_SPGG_Linux.txt .\SPGG_Linux`
+
+- `Unblock-File .\Invoke-SPGG_RootPW_v1.3.ps1`
+- `.\Invoke-SPGG_Linux.ps1 -Usuario marcio`
+
+https://www.microsoft.com/en-us/evalcenter/download-windows-server-2025
+
+---
+---
+---
+---
 ---
 ---
 ---
@@ -343,210 +398,9 @@ TIPO-PROJETO-AMBIENTE-REGIAO-INSTANCIA
 ---
 ---
 
-# Worload 001: Storage Static Website
-
-WORKLOAD 001 — Storage Static Website
-
-1. [x] Definição do workload. 
-2. [x] Arquitetura
-3. [x] Naming + Tags
-4. [x] Estimativa de custo (antes de criar recursos)
-5. [x] Cost Gate: GO / NO-GO
-6. [x] Deployment pelo Portal
-7. [x] Configurar Static Website
-8. [x] Publicar index.html / 404.html
-9. [x] Testes
-10. [x] Validar Policy / RBAC / Cost
-11. [x] Documentar no GitHub
-12. [x] Observar custo real
-13. [x] Teardown
-    - [x] Inventariar recurso antes da exclusão
-    - [x] Executar teardown
-    - [ ] Confirmar remoção
-    - [ ] Confirmar ausência de custo residual
-14. [x] Decisão: manter WL-001 ativo para laboratório
-15. [x] Encerramento da Fase 0
-
-
-### 1. Definição do Workload 001
-
-- Workload ID:      WL-001
-- Name:             Storage Static Website
-- Project:          AZLAB
-- Environment:      LAB
-- Region:           East US
-- Purpose:          Validate the Azure Platform Bootstrap
-- Lifecycle:        Temporary
-- Deployment:       Manual / Azure Portal
-
-### 2. Arquitetura Workload 001
-
-Internet -> HTTPS -> Azure Storage Static Website Endpoint -> Storage Account
-
-Tenant Root Group
-- MG-MarcioLab
-  - SUB-MarcioLab
-    - RG-AZLAB-LAB
-      - Storage Account (stazlablabeus001)
-        - Blob Service
-          - $Web
-            - index.html
-            - 404.html
-            - outros arquivos do site (CSS, JS, Imagens)
-        - Static Website
-
-*stazlablabeus001 = st(Storage Account), azlab(projeto), lab(ambiente), brs(BrazilSouth), 001(instancia)
-
-### 3. e 4. Gov e Cost Gate
-
-Tag:
-- Env: Lab
-- Owner: Marcio
-- Project: Azlab
-- CostCenter: Learning
-- ManagedBy: Manual
-- Lifecycle: Temporary
-
-Azure Policy: MarcioLab - Tag Governance v1.0 (Effect: Audit; Scope: MG-MarcioLab)
-
-RBAC: Permissões
-
-Storage Account:
-- Region: ~~Brazil South~~ East US
-- Performance: Standard
-- Redundancy: LRS
-- Account type: StorageV2 / GPv2
-- Access tier: Hot
-- Capacity: ~0.01 GB ou menos
-- Traffic: mínimo
-- Transactions: mínimo
-- Static Website: Enabled
-- CDN: Não
-- Custom domain: Não
-
-Azure Cost Management (Estimado e Realizado):
-- Resource
-- Resource Group
-- Project = Azlab
-- CostCenter = Learning
-
-Azure Pricing Calculator (https://azure.microsoft.com/en-gb/pricing/calculator/):
-
-
-## Diferença entre Workload sugerido primeiro (sem storage):
-
-- Workload inicial sugerido 1:
-  - Azure Static Web Apps
-
-- Workload Realizado WL-001:
-  - Web Endpoint
-  - Storage Account
-    - Static Website
-    - Block Blob Storage
-  - Azure Monitor / Metrics
-  - Cost Management
-
-## Deploy do WL-001
-
-1. [x] Definir arquitetura
-2. [x] Definir naming
-3. [x] Definir tags
-4. [x] Criar Resource Group        
-5. [x] Criar Storage Account        
-    - stazlablabeus001
-      - Static Website        
-        - https://stazlablabeus001.z13.web.core.windows.net/
-        - $web
-          - index.html
-          - 404.html
-6. [x] Habilitar Static Website        
-7. [x] Criar index.html / 404.html        
-8. [x] Publicar        
-9. [x] Testar endpoint        
-10. Verificar Policy (tags) / RBAC / Metrics (budget, audit)
-    - [x] stazlablabeus001 -> Tags
-    - [x] RBAC
-    - [x] Metrics
-      - stazlablabeus001 → Monitoring → Metrics (transaction)  
-11. [x] Verificar Cost Management
-    - SUB-MarcioLab -> Resources -> Cost Management -> Cost Analysis 
-12. [x] Testar suspensão do workload
-    - Desabilitar Static Website
-      - Storage Account stazlablabeus001 -> Data management -> Static website -> Disabled    
-13. [x] Testar reativação do workload
-    - Habilitar Static Website
-    - Storage Account stazlablabeus001 -> Data management -> Static website -> Enabled               
-14. [x] Documentar no GitHub
-
-### Sugestão de WL-002 (Futuro)
-
-WL-002 — Azure Static Web Apps (+GitHub Actions e sem storage)
-1. [ ] Definir arquitetura
-2. [ ] Definir naming/tags
-3. [ ] Estimar custo
-4. [ ] Cost Gate
-5. [ ] Criar aplicação HTML
-6. [ ] Criar/usar repositório GitHub
-7. [ ] Criar Azure Static Web App
-8. [ ] Conectar GitHub
-9. [ ] Selecionar branch main
-10. [ ] Configurar diretório da aplicação
-11. [ ] Azure criar workflow GitHub Actions
-12. [ ] Primeiro deployment
-13. [ ] Testar endpoint
-14. [ ] Alterar index.html
-15. [ ] git add / commit / push
-16. [ ] Observar deployment automático
-17. [ ] Validar Policy / RBAC
-18. [ ] Monitoramento
-19. [ ] Cost Management
-20. [ ] Documentar
-
-
 ---
 ---
 ---
 ---
 ---
 ---
----
----
----
-
-# Linux
-
-`ip a` = ifconfig
-
-`sudo ss -tlnp | grep ':22'` verificar se o servidor está com a 22 aberta (no próprio servidor)
-
-`Test-NetConnection 192.168.1.120 -Port 22` no PowerShell a partir do Windows 11
-
-No VS Code, instalar o Remote - SSH, da Microsoft.
-`ssh -V` no PowerShell do VS Code
-1. Pressione Ctrl + Shift + P.
-2. Digite Remote-SSH: Add New SSH Host.
-3. Informe o comando abaixo, substituindo pelo usuário e IP com os quais você já acessa pelo PuTTY: `ssh usuario@192.168.1.120 -p 22`
-
-`sed -i 's/\r$//' ~/meu_script.sh` limpar o script de \r (quando feito no Windows)
-
-### Editor VI
-- vi meu_script.sh
-- (:set paste)
-- i
-- esc
-- (:set nopaste)
-- :wq
-
-`chmod +x meu_script.sh` dar permissão no script
-`bash -n SPGG_Linux.sh` verificar a sintaxe dos os comandos
-`./meu_script.sh`
-
-### Execução remota via VS Code
-- `scp .\SPGG_Linux\SPGG_Linux.sh marcio@192.168.0.46:~/SPGG_Linux.sh`
-- `ssh -tt marcio@192.168.0.46 "cd ~ && bash ./SPGG_Linux.sh"`
-- `scp marcio@192.168.0.46:~/20261011_ubuntuserver_SPGG_Linux.txt .\SPGG_Linux`
-
-- `Unblock-File .\Invoke-SPGG_RootPW_v1.3.ps1`
-- `.\Invoke-SPGG_Linux.ps1 -Usuario marcio`
-
-https://www.microsoft.com/en-us/evalcenter/download-windows-server-2025

@@ -1,0 +1,161 @@
+
+===== EXECUTIVE SUMMARY =====
+Host: vm701070
+Hostname short: vm701070
+Collected: 2026-10-19T13:29:19+00:00
+Window: 2026-07-01 to 2026-10-01 (end exclusive)
+Global rootpw directive: FOUND (text scan; verify effective scope)
+sudoers mtime: 2026-08-03 15:15:35.251056282 +0000
+root password status: root P 2026-08-03 0 99999 7 -1
+sudoers mtime day: INSIDE REQUESTED WINDOW
+
+===== IDENTIFICATION =====
+OS: Ubuntu 24.04.2 LTS
+Timezone: UTC
+Executed as: uid=0(root) gid=0(root) groups=0(root)
+
+===== SUDO EFFECTIVE DEFAULTS (FOR ROOT; NOT PER-USER PROOF) =====
+Matching Defaults entries for root on VM701070:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty, rootpw, !requiretty
+
+User root may run the following commands on VM701070:
+    (ALL : ALL) ALL
+
+===== SUDOERS DIRECTIVES =====
+
+-- /etc/sudoers --
+9:Defaults	env_reset
+10:Defaults	mail_badpass
+11:Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+15:Defaults	use_pty
+16:Defaults        rootpw
+57:@includedir /etc/sudoers.d
+
+-- /etc/sudoers.d/090-oca-vss-plugin-commands --
+
+-- /etc/sudoers.d/100-oracle-cloud-agent-users --
+54:Defaults:snap_daemon !requiretty
+
+-- /etc/sudoers.d/90-cloud-init-users --
+
+-- /etc/sudoers.d/README --
+
+-- /etc/sudoers.d/morpheus-node --
+1:Defaults:morpheus-node !requiretty
+7:Defaults:root !requiretty
+
+===== SUDOERS FILE METADATA =====
+/etc/sudoers | owner=root:root | mode=440 | size=1822 | mtime=2026-08-03 15:15:35.251056282 +0000 | ctime=2026-10-09 06:14:44.500370420 +0000 | birth=2026-08-03 15:15:10.619350167 +0000
+/etc/sudoers.d/090-oca-vss-plugin-commands | owner=root:root | mode=440 | size=746 | mtime=2025-09-10 11:23:38.337289417 +0000 | ctime=2025-09-10 11:23:38.338289417 +0000 | birth=2025-09-10 11:23:38.336289417 +0000
+/etc/sudoers.d/100-oracle-cloud-agent-users | owner=root:root | mode=440 | size=3723 | mtime=2025-09-10 11:23:38.339289417 +0000 | ctime=2025-09-10 11:23:38.341289417 +0000 | birth=2025-09-10 11:23:38.339289417 +0000
+/etc/sudoers.d/90-cloud-init-users | owner=root:root | mode=440 | size=196 | mtime=2025-09-10 11:23:35.037289417 +0000 | ctime=2025-09-10 11:23:35.037289417 +0000 | birth=2025-09-10 11:23:34.989289417 +0000
+/etc/sudoers.d/README | owner=root:root | mode=440 | size=1068 | mtime=2024-01-29 17:09:56.000000000 +0000 | ctime=2025-05-16 10:12:33.753621291 +0000 | birth=2025-05-16 10:12:33.753621291 +0000
+/etc/sudoers.d/morpheus-node | owner=root:root | mode=440 | size=240 | mtime=2025-09-10 11:24:32.119659603 +0000 | ctime=2025-09-10 11:24:32.122659618 +0000 | birth=2025-09-10 11:24:32.119659603 +0000
+
+===== ROOT PASSWORD METADATA (NO HASHES) =====
+root P 2026-08-03 0 99999 7 -1
+Last password change					: Aug 03, 2026
+Password expires					: never
+Password inactive					: never
+Account expires						: never
+Minimum number of days between password change		: 0
+Maximum number of days between password change		: 99999
+Number of days of warning before password expires	: 7
+
+===== LOG SOURCES / RETENTION =====
+/var/log/auth.log | bytes=615903 | mtime=2026-10-19 13:29:19.599911688 +0000
+/var/log/auth.log.1 | bytes=2769659 | mtime=2026-10-17 23:59:40.759644321 +0000
+/var/log/auth.log.2.gz | bytes=172842 | mtime=2026-10-10 23:59:01.991403015 +0000
+/var/log/auth.log.3.gz | bytes=172967 | mtime=2026-10-03 23:59:53.081241336 +0000
+/var/log/auth.log.4.gz | bytes=172501 | mtime=2026-09-26 23:59:01.578961603 +0000
+IDX BOOT ID                          FIRST ENTRY                 LAST ENTRY
+  0 f2227d97cb444c79b9a570daf5460458 Mon 2026-07-27 16:46:02 UTC Mon 2026-10-19 13:29:20 UTC
+
+===== AUTH LOG - PRIORITIZED EVENTS (MAX 100 HIGH + 60 MEDIUM PER FILE) =====
+NOTE: syslog timestamps usually omit year; year inferred from file mtime (heuristic, not forensic proof).
+NOTE: routine PAM sessions and CRON are counted, not printed. Matches are investigative leads.
+NOTE: HIGH identifies command keywords; it does not prove a configuration change.
+
+-- /var/log/auth.log --
+LOG_OBSERVED_DATE_RANGE=unknown..unknown (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; METADATA_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.1 --
+LOG_OBSERVED_DATE_RANGE=unknown..unknown (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; METADATA_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.2.gz --
+LOG_OBSERVED_DATE_RANGE=unknown..unknown (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; METADATA_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.3.gz --
+LOG_OBSERVED_DATE_RANGE=unknown..unknown (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; METADATA_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.4.gz --
+LOG_OBSERVED_DATE_RANGE=unknown..unknown (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; METADATA_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+===== JOURNAL - PRIORITIZED EVENTS (DATE-PRIORITIZED; MAX 100 HIGH + 60 MEDIUM) =====
+
+-- PRIORITY DATE 2026-08-03 (UTC/local journal time) --
+[HIGH] 2026-08-03T15:14:55+00:00 vm701070 sudo[117626]: cdsadmin : TTY=pts/0 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/bin/passwd root
+[HIGH] 2026-08-03T15:15:05+00:00 vm701070 passwd[117775]: pam_unix(passwd:chauthtok): password changed for root
+[HIGH] 2026-08-03T15:15:10+00:00 vm701070 sudo[118062]: cdsadmin : TTY=pts/0 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/sbin/visudo
+PRIORITY_HIGH=3; HIGH_DISPLAYED=3; PRIORITY_MEDIUM=0; MEDIUM_DISPLAYED=0; METADATA_SKIPPED=288; ROUTINE_SKIPPED=2258
+
+-- PRIORITY DATE 2026-08-05 (UTC/local journal time) --
+[HIGH] 2026-08-05T14:31:08+00:00 vm701070 sudo[2848011]: spezziadmin : TTY=pts/1 ; PWD=/home/spezziadmin ; USER=root ; COMMAND=/usr/sbin/usermod -aG sudo,www-data,users spggadmin
+[HIGH] 2026-08-05T14:31:09+00:00 vm701070 usermod[2848074]: add 'spggadmin' to group 'www-data'
+[HIGH] 2026-08-05T14:31:09+00:00 vm701070 usermod[2848074]: add 'spggadmin' to group 'users'
+[HIGH] 2026-08-05T14:31:09+00:00 vm701070 usermod[2848074]: add 'spggadmin' to shadow group 'www-data'
+[HIGH] 2026-08-05T14:31:09+00:00 vm701070 usermod[2848074]: add 'spggadmin' to shadow group 'users'
+[HIGH] 2026-08-05T14:39:13+00:00 vm701070 sudo[2855622]: cdsadmin : TTY=pts/0 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/sbin/usermod -aG sudo,www-data,users spggadmin
+PRIORITY_HIGH=6; HIGH_DISPLAYED=6; PRIORITY_MEDIUM=0; MEDIUM_DISPLAYED=0; METADATA_SKIPPED=280; ROUTINE_SKIPPED=2257
+
+-- FULL WINDOW SUMMARY --
+[MEDIUM] 2026-07-28T18:14:11+00:00 vm701070 sudo[302080]: pam_unix(sudo:auth): authentication failure; logname=cdsadmin uid=1002 euid=0 tty=/dev/pts/0 ruser=cdsadmin rhost=  user=cdsadmin
+[HIGH] 2026-07-29T17:48:06+00:00 vm701070 chpasswd[1675011]: pam_unix(chpasswd:chauthtok): password changed for spggadmin
+[HIGH] 2026-07-29T17:48:06+00:00 vm701070 chpasswd[1675016]: pam_unix(chpasswd:chauthtok): password changed for cdsadmin
+[HIGH] 2026-07-29T17:48:06+00:00 vm701070 chpasswd[1675021]: pam_unix(chpasswd:chauthtok): password changed for procergs
+[HIGH] 2026-07-29T17:48:06+00:00 vm701070 chpasswd[1675026]: pam_unix(chpasswd:chauthtok): password changed for devadmin
+[HIGH] 2026-07-29T17:48:06+00:00 vm701070 chpasswd[1675031]: pam_unix(chpasswd:chauthtok): password changed for spezziadmin
+[HIGH] 2026-08-03T15:14:55+00:00 vm701070 sudo[117626]: cdsadmin : TTY=pts/0 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/bin/passwd root
+[HIGH] 2026-08-03T15:15:05+00:00 vm701070 passwd[117775]: pam_unix(passwd:chauthtok): password changed for root
+[HIGH] 2026-08-03T15:15:10+00:00 vm701070 sudo[118062]: cdsadmin : TTY=pts/0 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/sbin/visudo
+[HIGH] 2026-08-04T17:23:32+00:00 vm701070 sudo[1626686]: cdsadmin : TTY=pts/0 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/sbin/visudo
+[HIGH] 2026-08-04T19:46:39+00:00 vm701070 userdel[1764191]: delete user 'cds_paulo'
+[HIGH] 2026-08-04T19:46:39+00:00 vm701070 userdel[1764191]: delete 'cds_paulo' from group 'sudo'
+[HIGH] 2026-08-04T19:46:39+00:00 vm701070 userdel[1764191]: delete 'cds_paulo' from group 'users'
+[HIGH] 2026-08-04T19:46:39+00:00 vm701070 userdel[1764191]: removed group 'cds_paulo' owned by 'cds_paulo'
+[HIGH] 2026-08-04T19:46:39+00:00 vm701070 userdel[1764191]: removed shadow group 'cds_paulo' owned by 'cds_paulo'
+[HIGH] 2026-08-04T19:46:39+00:00 vm701070 userdel[1764191]: delete 'cds_paulo' from shadow group 'sudo'
+[HIGH] 2026-08-04T19:46:39+00:00 vm701070 userdel[1764191]: delete 'cds_paulo' from shadow group 'users'
+[HIGH] 2026-08-05T14:31:08+00:00 vm701070 sudo[2848011]: spezziadmin : TTY=pts/1 ; PWD=/home/spezziadmin ; USER=root ; COMMAND=/usr/sbin/usermod -aG sudo,www-data,users spggadmin
+[HIGH] 2026-08-05T14:31:09+00:00 vm701070 usermod[2848074]: add 'spggadmin' to group 'www-data'
+[HIGH] 2026-08-05T14:31:09+00:00 vm701070 usermod[2848074]: add 'spggadmin' to group 'users'
+[HIGH] 2026-08-05T14:31:09+00:00 vm701070 usermod[2848074]: add 'spggadmin' to shadow group 'www-data'
+[HIGH] 2026-08-05T14:31:09+00:00 vm701070 usermod[2848074]: add 'spggadmin' to shadow group 'users'
+[HIGH] 2026-08-05T14:39:13+00:00 vm701070 sudo[2855622]: cdsadmin : TTY=pts/0 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/sbin/usermod -aG sudo,www-data,users spggadmin
+[MEDIUM] 2026-09-09T14:13:15+00:00 vm701070 sudo[3328731]: pam_unix(sudo:auth): authentication failure; logname=spezziadmin uid=1005 euid=0 tty=/dev/pts/1 ruser=spezziadmin rhost=  user=root
+JOURNAL_HIGH=22; DISPLAYED=22; JOURNAL_MEDIUM=2; DISPLAYED=2; ROUTINE_SKIPPED=203274; METADATA_SKIPPED=18640
+
+===== SUDOERS MODIFICATION DATE - LOG COVERAGE ASSESSMENT =====
+sudoers mtime day: 2026-08-03
+The log ranges above are inferred observations, not guarantees of complete retention.
+If no source covers the sudoers mtime day, attribution from local retained logs is not possible.
+Even if a source covers that day, only explicit records can support attribution.
+
+===== AUDITD AVAILABILITY =====
+ausearch unavailable
+
+===== LIMITATIONS / SECURITY =====
+READ ONLY: no changes to accounts, sudoers, services or passwords.
+No matching log records does not imply no change; logs may have rotated or never been collected.
+sudoers mtime is not proof of when rootpw was introduced or who changed it.
+Reports may contain usernames and command arguments; keep private and out of Git.

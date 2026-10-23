@@ -145,7 +145,21 @@ What adjectives do you want people to use to describe you?
   - Finish the thought with one person before moving to the next
   - Give good coverage
 ### Talk with your hands to show confidence
+-  Satir
+  - Placeter
+  - Leveller
+  - Blamer
+  - Computer
+  - Distractor
 ### Move with purpose and impact while communicating
+- Vocal variety
+- Physical movement - only move with purpose
+  - Chanfe in time (Past on your right, future on your left)
+  - Change in growth (right to the left)
+  - Show sequence
+### Communicating with your face
+- 
+
 
 
 

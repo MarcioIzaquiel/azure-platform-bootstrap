@@ -1,0 +1,198 @@
+
+===== EXECUTIVE SUMMARY =====
+Host: rauma
+Hostname short: rauma
+Collected: 2026-10-19T10:46:06-03:00
+Window: 2026-07-01 to 2026-10-01 (end exclusive)
+Global rootpw directive: FOUND (text scan; verify effective scope)
+sudoers mtime: 2026-08-05 15:19:42.551533957 -0300
+root password status: root P 08/03/2026 0 99999 7 -1
+sudoers mtime day: INSIDE REQUESTED WINDOW
+
+===== IDENTIFICATION =====
+OS: Ubuntu 22.04.1 LTS
+Timezone: -03
+Executed as: uid=0(root) gid=0(root) groups=0(root)
+
+===== SUDO EFFECTIVE DEFAULTS (FOR ROOT; NOT PER-USER PROOF) =====
+Matching Defaults entries for root on rauma:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty, rootpw
+
+User root may run the following commands on rauma:
+    (ALL : ALL) ALL
+
+===== SUDOERS DIRECTIVES =====
+
+-- /etc/sudoers --
+9:Defaults	env_reset
+10:Defaults	mail_badpass
+11:Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+12:Defaults	use_pty
+13:Defaults	rootpw
+54:@includedir /etc/sudoers.d
+
+-- /etc/sudoers.d/README --
+
+-- /etc/sudoers.d/deeadmin --
+
+===== SUDOERS FILE METADATA =====
+/etc/sudoers | owner=root:root | mode=440 | size=1712 | mtime=2026-08-05 15:19:42.551533957 -0300 | ctime=2026-10-09 06:36:09.348598549 -0300 | birth=2026-08-05 15:19:17.911846613 -0300
+/etc/sudoers.d/README | owner=root:root | mode=440 | size=1096 | mtime=2022-02-08 05:35:40.000000000 -0300 | ctime=2022-11-10 08:43:45.500708155 -0300 | birth=2022-11-10 08:43:45.500708155 -0300
+/etc/sudoers.d/deeadmin | owner=root:root | mode=440 | size=33 | mtime=2026-08-05 15:23:04.152950510 -0300 | ctime=2026-08-05 15:23:04.160950406 -0300 | birth=2026-08-05 15:21:25.710217282 -0300
+
+===== ROOT PASSWORD METADATA (NO HASHES) =====
+root P 08/03/2026 0 99999 7 -1
+Last password change					: Aug 03, 2026
+Password expires					: never
+Password inactive					: never
+Account expires						: never
+Minimum number of days between password change		: 0
+Maximum number of days between password change		: 99999
+Number of days of warning before password expires	: 7
+
+===== LOG SOURCES / RETENTION =====
+/var/log/auth.log | bytes=29819 | mtime=2026-10-19 10:46:06.896616998 -0300
+/var/log/auth.log.1 | bytes=107906 | mtime=2026-10-17 23:20:24.687321296 -0300
+/var/log/auth.log.2.gz | bytes=3167 | mtime=2026-10-10 23:17:01.870496259 -0300
+/var/log/auth.log.3.gz | bytes=4665 | mtime=2026-10-03 23:17:01.815545155 -0300
+/var/log/auth.log.4.gz | bytes=3881 | mtime=2026-09-26 23:17:01.358797763 -0300
+-13 64447aef9b25487888ee8b33297b25a1 Thu 2022-11-10 08:48:40 -03—Thu 2022-11-10 14:20:15 -03
+-12 f7c7535a2cf74baeb8afadc2d8712436 Thu 2022-11-10 14:20:27 -03—Fri 2022-11-11 16:37:37 -03
+-11 4815c34cb0f243f38c5f011d208e1c8d Fri 2022-11-11 16:37:47 -03—Thu 2022-11-24 09:53:01 -03
+-10 f340ffc08952456d93cd144cad9d9f63 Thu 2022-11-24 09:53:12 -03—Thu 2022-11-24 09:59:10 -03
+ -9 c5cdb5b417b04216977a583e07a12318 Thu 2022-11-24 09:59:20 -03—Fri 2023-03-10 15:41:46 -03
+ -8 4e15a5adae9a4dd6aaa0dfee79ff750f Fri 2023-03-10 15:41:55 -03—Mon 2024-05-06 15:47:17 -03
+ -7 80443d49d86c4cacba4031b4cb120a84 Sun 2024-05-26 09:47:12 -03—Wed 2024-10-23 18:41:22 -03
+ -6 def9f3dc88f14b4daf3f57e12b5fcb5a Wed 2024-10-23 19:11:41 -03—Fri 2024-10-25 16:51:52 -03
+ -5 66cea78c81a7431b82178ce4fd1eaf94 Fri 2024-10-25 16:52:10 -03—Fri 2024-12-27 06:32:22 -03
+ -4 f56f1119f6fb415dbc787cec761f3ad4 Fri 2024-12-27 06:33:02 -03—Fri 2024-12-27 09:56:02 -03
+ -3 c72028e7ff204feb97434a83689d7af8 Fri 2024-12-27 09:56:19 -03—Tue 2025-08-12 04:07:33 -03
+ -2 a3b832b8ba71418b89e091bba0b5a2af Tue 2025-08-12 06:53:53 -03—Sun 2025-08-17 10:34:36 -03
+ -1 e853938d868f46e5bb3db1d5a0a22c29 Sun 2025-08-17 11:00:31 -03—Tue 2025-09-30 16:53:58 -03
+  0 1a4941f7c89043e5bd76294449bd70bd Tue 2025-09-30 16:53:58 -03—Mon 2026-10-19 10:46:06 -03
+
+===== AUTH LOG - PRIORITIZED EVENTS (MAX 100 HIGH + 60 MEDIUM PER FILE) =====
+NOTE: syslog timestamps usually omit year; year inferred from file mtime (heuristic, not forensic proof).
+NOTE: routine PAM sessions and CRON are counted, not printed. Matches are investigative leads.
+NOTE: HIGH identifies command keywords; it does not prove a configuration change.
+
+-- /var/log/auth.log --
+LOG_OBSERVED_DATE_RANGE=2026-10-18..2026-10-19 (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; METADATA_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.1 --
+LOG_OBSERVED_DATE_RANGE=2026-10-11..2026-10-17 (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; METADATA_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.2.gz --
+LOG_OBSERVED_DATE_RANGE=2026-10-04..2026-10-10 (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; METADATA_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.3.gz --
+[HIGH inferred 2026-09-30] Sep 30 15:15:31 rauma sudo:     root : TTY=pts/0 ; PWD=/root ; USER=root ; COMMAND=/usr/bin/passwd spggadmin
+[HIGH inferred 2026-09-30] Sep 30 15:15:51 rauma passwd[1920120]: pam_unix(passwd:chauthtok): password changed for spggadmin
+LOG_OBSERVED_DATE_RANGE=2026-09-27..2026-10-03 (inferred, not proof of continuous coverage)
+HIGH_MATCHES=2; HIGH_DISPLAYED=2; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=239; METADATA_SKIPPED=0; OTHER_SKIPPED=57
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.4.gz --
+LOG_OBSERVED_DATE_RANGE=2026-09-20..2026-09-26 (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=419; METADATA_SKIPPED=0; OTHER_SKIPPED=80
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+===== JOURNAL - PRIORITIZED EVENTS (DATE-PRIORITIZED; MAX 100 HIGH + 60 MEDIUM) =====
+
+-- PRIORITY DATE 2026-08-03 (UTC/local journal time) --
+[HIGH] 2026-08-03T12:01:30-0300 rauma sudo[1117801]: cdsadmin : TTY=pts/0 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/bin/passwd root
+[HIGH] 2026-08-03T12:01:41-0300 rauma passwd[1117811]: pam_unix(passwd:chauthtok): password changed for root
+[HIGH] 2026-08-03T12:01:46-0300 rauma sudo[1117825]: cdsadmin : TTY=pts/0 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/sbin/visudo
+[HIGH] 2026-08-03T14:31:19-0300 rauma sudo[1133556]: spggadmin : user NOT in sudoers ; TTY=pts/0 ; PWD=/home/spggadmin ; USER=root ; COMMAND=/usr/bin/whoami
+[MEDIUM] 2026-08-03T14:32:34-0300 rauma sudo[1133759]: pam_unix(sudo:auth): authentication failure; logname=spggadmin uid=1004 euid=0 tty=/dev/pts/0 ruser=spggadmin rhost=  user=root
+[HIGH] 2026-08-03T14:32:55-0300 rauma sudo[1133759]: spggadmin : user NOT in sudoers ; TTY=pts/0 ; PWD=/home/spggadmin ; USER=root ; COMMAND=/usr/bin/passwd spggadmin
+[HIGH] 2026-08-03T14:36:47-0300 rauma sudo[1134218]: spggadmin : user NOT in sudoers ; TTY=pts/0 ; PWD=/home/spggadmin ; USER=root ; COMMAND=/usr/bin/passwd spggadmin
+[HIGH] 2026-08-03T14:45:47-0300 rauma sudo[1135285]: spggadmin : user NOT in sudoers ; TTY=pts/0 ; PWD=/home/spggadmin ; USER=root ; COMMAND=/usr/bin/whoami
+PRIORITY_HIGH=7; HIGH_DISPLAYED=7; PRIORITY_MEDIUM=1; MEDIUM_DISPLAYED=1; METADATA_SKIPPED=0; ROUTINE_SKIPPED=104
+
+-- PRIORITY DATE 2026-08-05 (UTC/local journal time) --
+[HIGH] 2026-08-05T11:21:08-0300 rauma sudo[1419785]: cdsadmin : TTY=pts/0 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/sbin/usermod -aG sudo,www-data,users spggadmin
+[HIGH] 2026-08-05T11:21:08-0300 rauma usermod[1419796]: add 'spggadmin' to group 'sudo'
+[HIGH] 2026-08-05T11:21:08-0300 rauma usermod[1419796]: add 'spggadmin' to group 'www-data'
+[HIGH] 2026-08-05T11:21:08-0300 rauma usermod[1419796]: add 'spggadmin' to group 'users'
+[HIGH] 2026-08-05T11:21:08-0300 rauma usermod[1419796]: add 'spggadmin' to shadow group 'sudo'
+[HIGH] 2026-08-05T11:21:08-0300 rauma usermod[1419796]: add 'spggadmin' to shadow group 'www-data'
+[HIGH] 2026-08-05T11:21:08-0300 rauma usermod[1419796]: add 'spggadmin' to shadow group 'users'
+[HIGH] 2026-08-05T15:16:53-0300 rauma useradd[1445270]: new user: name=deeadmin, UID=1005, GID=1005, home=/home/deeadmin, shell=/bin/bash, from=/dev/pts/1
+[HIGH] 2026-08-05T15:17:35-0300 rauma passwd[1445281]: pam_unix(passwd:chauthtok): password changed for deeadmin
+[HIGH] 2026-08-05T15:18:19-0300 rauma sudo[1445452]: cdsadmin : TTY=pts/0 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/sbin/usermod -aG sudo deeadmin
+[HIGH] 2026-08-05T15:18:19-0300 rauma usermod[1445454]: add 'deeadmin' to group 'sudo'
+[HIGH] 2026-08-05T15:18:19-0300 rauma usermod[1445454]: add 'deeadmin' to shadow group 'sudo'
+[HIGH] 2026-08-05T15:19:17-0300 rauma sudo[1445590]: cdsadmin : TTY=pts/0 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/sbin/visudo
+[HIGH] 2026-08-05T15:21:25-0300 rauma sudo[1445928]: cdsadmin : TTY=pts/0 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/sbin/visudo -f /etc/sudoers.d/deeadmin
+[HIGH] 2026-08-05T15:23:10-0300 rauma sudo[1446079]: cdsadmin : TTY=pts/0 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/sbin/visudo -c
+[HIGH] 2026-08-05T15:36:36-0300 rauma sudo[1447459]: cdsadmin : TTY=pts/0 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/sbin/visudo
+PRIORITY_HIGH=16; HIGH_DISPLAYED=16; PRIORITY_MEDIUM=0; MEDIUM_DISPLAYED=0; METADATA_SKIPPED=0; ROUTINE_SKIPPED=123
+
+-- FULL WINDOW SUMMARY --
+[HIGH] 2026-07-13T08:32:28-0300 rauma passwd[1990214]: passwd: can't view or modify password information for root
+[HIGH] 2026-07-13T08:32:28-0300 rauma passwd[1990323]: passwd: can't view or modify password information for procergs
+[MEDIUM] 2026-07-28T15:01:40-0300 rauma sudo[211163]: pam_unix(sudo:auth): authentication failure; logname=cdsadmin uid=1001 euid=0 tty=/dev/pts/0 ruser=cdsadmin rhost=  user=cdsadmin
+[HIGH] 2026-07-29T11:07:58-0300 rauma chpasswd[340424]: pam_unix(chpasswd:chauthtok): password changed for cdsadmin
+[HIGH] 2026-07-29T11:07:58-0300 rauma chpasswd[340429]: pam_unix(chpasswd:chauthtok): password changed for procergs
+[HIGH] 2026-07-29T11:07:58-0300 rauma useradd[340433]: new group: name=devadmin, GID=1002
+[HIGH] 2026-07-29T11:07:58-0300 rauma useradd[340433]: new user: name=devadmin, UID=1002, GID=1002, home=/home/devadmin, shell=/bin/bash, from=/dev/pts/1
+[HIGH] 2026-07-29T11:07:58-0300 rauma chpasswd[340443]: pam_unix(chpasswd:chauthtok): password changed for devadmin
+[HIGH] 2026-07-29T11:07:58-0300 rauma useradd[340447]: new group: name=spezziadmin, GID=1003
+[HIGH] 2026-07-29T11:07:58-0300 rauma useradd[340447]: new user: name=spezziadmin, UID=1003, GID=1003, home=/home/spezziadmin, shell=/bin/bash, from=/dev/pts/1
+[HIGH] 2026-07-29T11:07:59-0300 rauma chpasswd[340456]: pam_unix(chpasswd:chauthtok): password changed for spezziadmin
+[HIGH] 2026-07-29T11:30:54-0300 rauma useradd[343100]: new group: name=spggadmin, GID=1004
+[HIGH] 2026-07-29T11:30:54-0300 rauma useradd[343100]: new user: name=spggadmin, UID=1004, GID=1004, home=/home/spggadmin, shell=/bin/bash, from=/dev/pts/1
+[HIGH] 2026-07-29T11:30:54-0300 rauma chpasswd[343110]: pam_unix(chpasswd:chauthtok): password changed for spggadmin
+[HIGH] 2026-07-29T11:30:54-0300 rauma chpasswd[343115]: pam_unix(chpasswd:chauthtok): password changed for cdsadmin
+[HIGH] 2026-07-29T11:30:54-0300 rauma chpasswd[343120]: pam_unix(chpasswd:chauthtok): password changed for procergs
+[HIGH] 2026-07-29T11:30:54-0300 rauma chpasswd[343125]: pam_unix(chpasswd:chauthtok): password changed for devadmin
+[HIGH] 2026-07-29T11:30:54-0300 rauma chpasswd[343130]: pam_unix(chpasswd:chauthtok): password changed for spezziadmin
+[HIGH] 2026-08-03T12:01:30-0300 rauma sudo[1117801]: cdsadmin : TTY=pts/0 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/bin/passwd root
+[HIGH] 2026-08-03T12:01:41-0300 rauma passwd[1117811]: pam_unix(passwd:chauthtok): password changed for root
+[HIGH] 2026-08-03T12:01:46-0300 rauma sudo[1117825]: cdsadmin : TTY=pts/0 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/sbin/visudo
+[HIGH] 2026-08-03T14:31:19-0300 rauma sudo[1133556]: spggadmin : user NOT in sudoers ; TTY=pts/0 ; PWD=/home/spggadmin ; USER=root ; COMMAND=/usr/bin/whoami
+[MEDIUM] 2026-08-03T14:32:34-0300 rauma sudo[1133759]: pam_unix(sudo:auth): authentication failure; logname=spggadmin uid=1004 euid=0 tty=/dev/pts/0 ruser=spggadmin rhost=  user=root
+[HIGH] 2026-08-03T14:32:55-0300 rauma sudo[1133759]: spggadmin : user NOT in sudoers ; TTY=pts/0 ; PWD=/home/spggadmin ; USER=root ; COMMAND=/usr/bin/passwd spggadmin
+[HIGH] 2026-08-03T14:36:47-0300 rauma sudo[1134218]: spggadmin : user NOT in sudoers ; TTY=pts/0 ; PWD=/home/spggadmin ; USER=root ; COMMAND=/usr/bin/passwd spggadmin
+[HIGH] 2026-08-03T14:45:47-0300 rauma sudo[1135285]: spggadmin : user NOT in sudoers ; TTY=pts/0 ; PWD=/home/spggadmin ; USER=root ; COMMAND=/usr/bin/whoami
+[HIGH] 2026-08-05T11:21:08-0300 rauma sudo[1419785]: cdsadmin : TTY=pts/0 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/sbin/usermod -aG sudo,www-data,users spggadmin
+[HIGH] 2026-08-05T11:21:08-0300 rauma usermod[1419796]: add 'spggadmin' to group 'sudo'
+[HIGH] 2026-08-05T11:21:08-0300 rauma usermod[1419796]: add 'spggadmin' to group 'www-data'
+[HIGH] 2026-08-05T11:21:08-0300 rauma usermod[1419796]: add 'spggadmin' to group 'users'
+[HIGH] 2026-08-05T11:21:08-0300 rauma usermod[1419796]: add 'spggadmin' to shadow group 'sudo'
+[HIGH] 2026-08-05T11:21:08-0300 rauma usermod[1419796]: add 'spggadmin' to shadow group 'www-data'
+[HIGH] 2026-08-05T11:21:08-0300 rauma usermod[1419796]: add 'spggadmin' to shadow group 'users'
+[HIGH] 2026-08-05T15:16:53-0300 rauma useradd[1445270]: new user: name=deeadmin, UID=1005, GID=1005, home=/home/deeadmin, shell=/bin/bash, from=/dev/pts/1
+[HIGH] 2026-08-05T15:17:35-0300 rauma passwd[1445281]: pam_unix(passwd:chauthtok): password changed for deeadmin
+[HIGH] 2026-08-05T15:18:19-0300 rauma sudo[1445452]: cdsadmin : TTY=pts/0 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/sbin/usermod -aG sudo deeadmin
+[HIGH] 2026-08-05T15:18:19-0300 rauma usermod[1445454]: add 'deeadmin' to group 'sudo'
+[HIGH] 2026-08-05T15:18:19-0300 rauma usermod[1445454]: add 'deeadmin' to shadow group 'sudo'
+[HIGH] 2026-08-05T15:19:17-0300 rauma sudo[1445590]: cdsadmin : TTY=pts/0 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/sbin/visudo
+[HIGH] 2026-08-05T15:21:25-0300 rauma sudo[1445928]: cdsadmin : TTY=pts/0 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/sbin/visudo -f /etc/sudoers.d/deeadmin
+[HIGH] 2026-08-05T15:23:10-0300 rauma sudo[1446079]: cdsadmin : TTY=pts/0 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/sbin/visudo -c
+[HIGH] 2026-08-05T15:36:36-0300 rauma sudo[1447459]: cdsadmin : TTY=pts/0 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/sbin/visudo
+[HIGH] 2026-09-30T15:15:31-0300 rauma sudo[1920118]:     root : TTY=pts/0 ; PWD=/root ; USER=root ; COMMAND=/usr/bin/passwd spggadmin
+[HIGH] 2026-09-30T15:15:51-0300 rauma passwd[1920120]: pam_unix(passwd:chauthtok): password changed for spggadmin
+JOURNAL_HIGH=42; DISPLAYED=42; JOURNAL_MEDIUM=2; DISPLAYED=2; ROUTINE_SKIPPED=7744; METADATA_SKIPPED=0
+
+===== SUDOERS MODIFICATION DATE - LOG COVERAGE ASSESSMENT =====
+sudoers mtime day: 2026-08-05
+The log ranges above are inferred observations, not guarantees of complete retention.
+If no source covers the sudoers mtime day, attribution from local retained logs is not possible.
+Even if a source covers that day, only explicit records can support attribution.
+
+===== AUDITD AVAILABILITY =====
+ausearch unavailable
+
+===== LIMITATIONS / SECURITY =====
+READ ONLY: no changes to accounts, sudoers, services or passwords.
+No matching log records does not imply no change; logs may have rotated or never been collected.
+sudoers mtime is not proof of when rootpw was introduced or who changed it.
+Reports may contain usernames and command arguments; keep private and out of Git.

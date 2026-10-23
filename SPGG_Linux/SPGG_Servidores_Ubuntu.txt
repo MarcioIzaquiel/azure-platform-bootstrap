@@ -1,5 +1,9 @@
+# Grupo HomeLab
 # 192.168.1.116
 # 192.168.1.120
+# Fim do grupo homelab
+#
+# Grupo 1 - SisMUP:
 # VM701794 SisMUP 10.113.3.73
 # 10.113.3.73
 # VM701793 SisMUP 10.113.3.114
@@ -11,47 +15,51 @@
 # VM701790 SisMUP 10.113.3.129
 # 10.113.3.129
 # VM701789 SisMUP 10.113.1.134
-# 10.113.1.134#
-# NOGALES 200.198.145.173
-# 200.198.145.173 falha porta 22
+10.113.1.134
+# Fim do Grupo 1
+#
+# Grupo 2 - Back-Banco PostgreSQL e MySQL HSM
 # VM701056 Producao Nova (Backend do PostgreSQL) 10.113.1.251
-# 10.113.1.251 falha root (forcei a saida)
+# 10.113.1.251
 # VM701070 Producao Nova (PostgreSQL) 10.113.3.176
-# 10.113.3.176 falha root (forcei a saida)
+# 10.113.3.176
 # VM701096 Producao Nova ETL (Backend do PostgreSQL) 10.113.1.167
-# 10.113.1.167 demora no root
-# 10.113.1.167
+# 10.113.1.167 
 # VM701239 Producao Nova ETL (PostgreSQL) 10.113.3.64
-# 10.113.3.64 demora no root
-# VM701535 Legados Homologacao (Backend do MySQL) 10.113.1.13
-# 10.113.1.13 falha spggadmin (senha diferente)
+# 10.113.3.64 
+# VM701535 Legados Homologacao (Backend do MySQL) 10.113.1.13 *Senha
+# 10.113.1.13
 # VM701713 Producao Nova MySQL DB 10.113.3.216
-# 10.113.3.216 demora no root
-# VMVM026858 DEE DataRS 10.113.3.31
-# 10.113.3.31 demora no root
+# 10.113.3.216 
+# Fim do Grupo 2:
+# 
+# NOGALES 200.198.145.173
+# 200.198.145.173
+# VM026858 DEE DataRS 10.113.3.31
+# 10.113.3.31 
 # Dominical DEE 200.198.145.172
-# 200.198.145.172 falha porta 22
+# 200.198.145.172
 # RAUMA DEE 200.198.145.178
-# 200.198.145.178 falha porta 22
+# 200.198.145.178
 # VM701161 DEE 10.113.1.152
-# 10.113.1.152 demora no root
+# 10.113.1.152 
 # VM700127 DEE 10.113.1.48
-# 10.113.1.48 demora no root
+# 10.113.1.48 
 # VM701333 DEE 10.113.3.67
-# 10.113.3.67 demora no root
+# 10.113.3.67 
 # VM701094 OJS 10.113.1.56
-# 10.113.1.56 demora no root
+# 10.113.1.56 
 # VM027131 Intranet 10.113.1.207
-# 10.113.1.207 demora no root
+# 10.113.1.207 
 # SEPLAGPAEAS12 10.112.7.70
-# 10.112.7.70 demora no root
-# VM701400 OCS 10.113.2.207
-# 10.113.2.207 demora no root
+# 10.112.7.70 
+# VM701400 OCS 
+# 10.113.2.207 
 # VM700454 Zabbix/Grafana 10.113.2.104
-# 10.113.2.104 senha invalida
+# 10.113.2.104 
 # VM701084 Syslog 10.113.2.203
-# 10.113.2.203 senha invalida
+# 10.113.2.203 
 # VM701005 egov homo 10.113.1.250
-# 10.113.1.250 demora no root
+# 10.113.1.250 
 # VM011238 TF Siga Manager 10.113.1.187
 # 10.113.1.187

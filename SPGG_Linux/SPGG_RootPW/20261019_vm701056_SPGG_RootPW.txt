@@ -1,0 +1,134 @@
+
+===== EXECUTIVE SUMMARY =====
+Host: vm701056
+Hostname short: vm701056
+Collected: 2026-10-19T10:24:39-03:00
+Window: 2026-07-01 to 2026-10-01 (end exclusive)
+Global rootpw directive: FOUND (text scan; verify effective scope)
+sudoers mtime: 2026-08-26 11:27:28.130894396 -0300
+root password status: root P 2026-08-03 0 99999 7 -1
+sudoers mtime day: INSIDE REQUESTED WINDOW
+
+===== IDENTIFICATION =====
+OS: Ubuntu 24.04.3 LTS
+Timezone: -03
+Executed as: uid=0(root) gid=0(root) groups=0(root)
+
+===== SUDO EFFECTIVE DEFAULTS (FOR ROOT; NOT PER-USER PROOF) =====
+Matching Defaults entries for root on VM701056:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty, rootpw, !requiretty
+
+User root may run the following commands on VM701056:
+    (ALL : ALL) ALL
+
+===== SUDOERS DIRECTIVES =====
+
+-- /etc/sudoers --
+9:Defaults	env_reset
+10:Defaults	mail_badpass
+11:Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+15:Defaults	use_pty
+16:Defaults        rootpw
+57:@includedir /etc/sudoers.d
+
+-- /etc/sudoers.d/090-oca-vss-plugin-commands --
+
+-- /etc/sudoers.d/100-oracle-cloud-agent-users --
+54:Defaults:snap_daemon !requiretty
+
+-- /etc/sudoers.d/90-cloud-init-users --
+
+-- /etc/sudoers.d/README --
+
+-- /etc/sudoers.d/morpheus-node --
+1:Defaults:morpheus-node !requiretty
+7:Defaults:root !requiretty
+
+===== SUDOERS FILE METADATA =====
+/etc/sudoers | owner=root:root | mode=440 | size=1851 | mtime=2026-08-26 11:27:28.130894396 -0300 | ctime=2026-10-09 06:45:45.145642342 -0300 | birth=2026-08-26 11:26:18.526043778 -0300
+/etc/sudoers.d/090-oca-vss-plugin-commands | owner=root:root | mode=440 | size=746 | mtime=2025-08-28 16:39:51.797924411 -0300 | ctime=2025-08-28 16:39:51.798924411 -0300 | birth=2025-08-28 16:39:51.796924411 -0300
+/etc/sudoers.d/100-oracle-cloud-agent-users | owner=root:root | mode=440 | size=3723 | mtime=2025-08-28 16:39:51.799924411 -0300 | ctime=2025-08-28 16:39:51.800924411 -0300 | birth=2025-08-28 16:39:51.799924411 -0300
+/etc/sudoers.d/90-cloud-init-users | owner=root:root | mode=440 | size=232 | mtime=2025-08-28 16:39:48.361924411 -0300 | ctime=2025-08-28 16:39:48.361924411 -0300 | birth=2025-08-28 16:39:48.314924411 -0300
+/etc/sudoers.d/README | owner=root:root | mode=440 | size=1068 | mtime=2024-01-29 14:09:56.000000000 -0300 | ctime=2025-05-16 07:12:33.753621291 -0300 | birth=2025-05-16 07:12:33.753621291 -0300
+/etc/sudoers.d/morpheus-node | owner=root:root | mode=440 | size=240 | mtime=2025-08-28 16:40:44.754226472 -0300 | ctime=2025-08-28 16:40:44.756226480 -0300 | birth=2025-08-28 16:40:44.753226467 -0300
+
+===== ROOT PASSWORD METADATA (NO HASHES) =====
+root P 2026-08-03 0 99999 7 -1
+Last password change					: Aug 03, 2026
+Password expires					: never
+Password inactive					: never
+Account expires						: never
+Minimum number of days between password change		: 0
+Maximum number of days between password change		: 99999
+Number of days of warning before password expires	: 7
+
+===== LOG SOURCES / RETENTION =====
+/var/log/auth.log | bytes=610520 | mtime=2026-10-19 10:24:39.759149632 -0300
+/var/log/auth.log.1 | bytes=2942061 | mtime=2026-10-17 23:59:46.650863697 -0300
+/var/log/auth.log.2.gz | bytes=184806 | mtime=2026-10-10 23:59:01.927619937 -0300
+/var/log/auth.log.3.gz | bytes=182770 | mtime=2026-10-03 23:59:01.560098647 -0300
+/var/log/auth.log.4.gz | bytes=181264 | mtime=2026-09-26 23:59:01.770800134 -0300
+IDX BOOT ID                          FIRST ENTRY                 LAST ENTRY
+  0 06d2f926568b41418b5daee01e1df08e Wed 2026-08-26 19:33:15 -03 Mon 2026-10-19 10:24:39 -03
+
+===== AUTH LOG - PRIORITIZED EVENTS (MAX 100 HIGH + 60 MEDIUM PER FILE) =====
+NOTE: syslog timestamps usually omit year; year inferred from file mtime (heuristic, not forensic proof).
+NOTE: routine PAM sessions and CRON are counted, not printed. Matches are investigative leads.
+NOTE: HIGH identifies command keywords; it does not prove a configuration change.
+
+-- /var/log/auth.log --
+LOG_OBSERVED_DATE_RANGE=unknown..unknown (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; METADATA_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.1 --
+LOG_OBSERVED_DATE_RANGE=unknown..unknown (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; METADATA_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.2.gz --
+LOG_OBSERVED_DATE_RANGE=unknown..unknown (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; METADATA_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.3.gz --
+LOG_OBSERVED_DATE_RANGE=unknown..unknown (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; METADATA_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.4.gz --
+LOG_OBSERVED_DATE_RANGE=unknown..unknown (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; METADATA_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+===== JOURNAL - PRIORITIZED EVENTS (DATE-PRIORITIZED; MAX 100 HIGH + 60 MEDIUM) =====
+
+-- PRIORITY DATE 2026-08-03 (UTC/local journal time) --
+PRIORITY_HIGH=0; HIGH_DISPLAYED=0; PRIORITY_MEDIUM=0; MEDIUM_DISPLAYED=0; METADATA_SKIPPED=0; ROUTINE_SKIPPED=0
+
+-- PRIORITY DATE 2026-08-05 (UTC/local journal time) --
+PRIORITY_HIGH=0; HIGH_DISPLAYED=0; PRIORITY_MEDIUM=0; MEDIUM_DISPLAYED=0; METADATA_SKIPPED=0; ROUTINE_SKIPPED=0
+
+-- PRIORITY DATE 2026-08-26 (UTC/local journal time) --
+PRIORITY_HIGH=0; HIGH_DISPLAYED=0; PRIORITY_MEDIUM=0; MEDIUM_DISPLAYED=0; METADATA_SKIPPED=0; ROUTINE_SKIPPED=0
+
+-- FULL WINDOW SUMMARY --
+[HIGH] 2026-09-09T11:30:21-03:00 vm701056 sudo[439508]: spezziadmin : TTY=pts/0 ; PWD=/home/spezziadmin ; USER=root ; COMMAND=/usr/sbin/usermod -aG docker spezziadmin
+[HIGH] 2026-09-09T11:30:21-03:00 vm701056 usermod[439510]: add 'spezziadmin' to group 'docker'
+[HIGH] 2026-09-09T11:30:21-03:00 vm701056 usermod[439510]: add 'spezziadmin' to shadow group 'docker'
+JOURNAL_HIGH=3; DISPLAYED=3; JOURNAL_MEDIUM=0; DISPLAYED=0; ROUTINE_SKIPPED=108280; METADATA_SKIPPED=9540
+
+===== SUDOERS MODIFICATION DATE - LOG COVERAGE ASSESSMENT =====
+sudoers mtime day: 2026-08-26
+The log ranges above are inferred observations, not guarantees of complete retention.
+If no source covers the sudoers mtime day, attribution from local retained logs is not possible.
+Even if a source covers that day, only explicit records can support attribution.
+
+===== AUDITD AVAILABILITY =====
+ausearch unavailable
+
+===== LIMITATIONS / SECURITY =====
+READ ONLY: no changes to accounts, sudoers, services or passwords.
+No matching log records does not imply no change; logs may have rotated or never been collected.
+sudoers mtime is not proof of when rootpw was introduced or who changed it.
+Reports may contain usernames and command arguments; keep private and out of Git.

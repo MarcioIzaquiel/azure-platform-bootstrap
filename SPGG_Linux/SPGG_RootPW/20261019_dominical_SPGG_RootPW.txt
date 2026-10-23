@@ -1,0 +1,140 @@
+
+===== EXECUTIVE SUMMARY =====
+Host: dominical
+Hostname short: dominical
+Collected: 2026-10-19T10:44:28-03:00
+Window: 2026-07-01 to 2026-10-01 (end exclusive)
+Global rootpw directive: FOUND (text scan; verify effective scope)
+sudoers mtime: 2026-10-01 10:56:58.400235718 -0300
+root password status: root P 08/03/2026 0 99999 7 -1
+sudoers mtime day: OUTSIDE REQUESTED WINDOW
+
+===== IDENTIFICATION =====
+OS: Ubuntu 20.04.5 LTS
+Timezone: -03
+Executed as: uid=0(root) gid=0(root) groups=0(root)
+
+===== SUDO EFFECTIVE DEFAULTS (FOR ROOT; NOT PER-USER PROOF) =====
+Matching Defaults entries for root on dominical:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, rootpw
+
+User root may run the following commands on dominical:
+    (ALL : ALL) ALL
+
+===== SUDOERS DIRECTIVES =====
+
+-- /etc/sudoers --
+9:Defaults	env_reset
+10:Defaults	mail_badpass
+11:Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+12:Defaults        rootpw
+31:#includedir /etc/sudoers.d
+
+-- /etc/sudoers.d/README --
+
+-- /etc/sudoers.d/deeadmin --
+
+===== SUDOERS FILE METADATA =====
+/etc/sudoers | owner=root:root | mode=440 | size=826 | mtime=2026-10-01 10:56:58.400235718 -0300 | ctime=2026-10-01 10:57:01.516164586 -0300 | birth=-
+/etc/sudoers.d/README | owner=root:root | mode=440 | size=958 | mtime=2020-02-03 11:32:18.000000000 -0300 | ctime=2022-11-09 14:54:18.946256900 -0300 | birth=-
+/etc/sudoers.d/deeadmin | owner=root:root | mode=440 | size=47 | mtime=2026-08-05 15:34:58.640505303 -0300 | ctime=2026-08-05 15:34:58.640505303 -0300 | birth=-
+
+===== ROOT PASSWORD METADATA (NO HASHES) =====
+root P 08/03/2026 0 99999 7 -1
+Last password change					: Aug 03, 2026
+Password expires					: never
+Password inactive					: never
+Account expires						: never
+Minimum number of days between password change		: 0
+Maximum number of days between password change		: 99999
+Number of days of warning before password expires	: 7
+
+===== LOG SOURCES / RETENTION =====
+/var/log/auth.log | bytes=42786 | mtime=2026-10-19 10:44:28.679539139 -0300
+/var/log/auth.log.1 | bytes=175325 | mtime=2026-10-18 00:00:25.075707693 -0300
+/var/log/auth.log.2.gz | bytes=7784 | mtime=2026-10-10 23:39:01.000000000 -0300
+/var/log/auth.log.3.gz | bytes=8691 | mtime=2026-10-03 23:39:01.000000000 -0300
+/var/log/auth.log.4.gz | bytes=7344 | mtime=2026-09-27 00:00:20.000000000 -0300
+ 0 9dd01f3916814eb6b33592d39f04db63 Sat 2026-09-19 00:19:41 -03—Mon 2026-10-19 10:44:28 -03
+
+===== AUTH LOG - PRIORITIZED EVENTS (MAX 100 HIGH + 60 MEDIUM PER FILE) =====
+NOTE: syslog timestamps usually omit year; year inferred from file mtime (heuristic, not forensic proof).
+NOTE: routine PAM sessions and CRON are counted, not printed. Matches are investigative leads.
+NOTE: HIGH identifies command keywords; it does not prove a configuration change.
+
+-- /var/log/auth.log --
+LOG_OBSERVED_DATE_RANGE=2026-10-18..2026-10-19 (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; METADATA_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.1 --
+LOG_OBSERVED_DATE_RANGE=2026-10-11..2026-10-18 (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; METADATA_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.2.gz --
+LOG_OBSERVED_DATE_RANGE=2026-10-04..2026-10-10 (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; METADATA_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.3.gz --
+[MEDIUM inferred 2026-09-27] Sep 27 00:16:12 dominical sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-27] Sep 27 05:16:17 dominical sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-28] Sep 28 01:16:22 dominical sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-28] Sep 28 06:16:27 dominical sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-29] Sep 29 02:16:31 dominical sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-29] Sep 29 07:16:36 dominical sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-30] Sep 30 03:16:41 dominical sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-30] Sep 30 05:12:39 dominical sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[HIGH inferred 2026-09-30] Sep 30 15:20:06 dominical sudo:     root : TTY=pts/0 ; PWD=/root ; USER=root ; COMMAND=/usr/bin/passwd spggadmin
+[HIGH inferred 2026-09-30] Sep 30 15:20:24 dominical passwd[3427155]: pam_unix(passwd:chauthtok): password changed for spggadmin
+LOG_OBSERVED_DATE_RANGE=2026-09-27..2026-10-03 (inferred, not proof of continuous coverage)
+HIGH_MATCHES=2; HIGH_DISPLAYED=2; MEDIUM_MATCHES=8; MEDIUM_DISPLAYED=8; ROUTINE_SKIPPED=631; METADATA_SKIPPED=0; OTHER_SKIPPED=33
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.4.gz --
+[MEDIUM inferred 2026-09-20] Sep 20 03:15:10 dominical sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-20] Sep 20 08:15:14 dominical sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-21] Sep 21 04:15:18 dominical sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-21] Sep 21 09:15:23 dominical sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-22] Sep 22 00:15:27 dominical sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-22] Sep 22 05:15:31 dominical sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-23] Sep 23 01:15:36 dominical sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-23] Sep 23 06:15:40 dominical sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-24] Sep 24 02:15:44 dominical sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-24] Sep 24 07:15:49 dominical sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-25] Sep 25 03:15:53 dominical sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-25] Sep 25 08:15:58 dominical sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-26] Sep 26 04:16:03 dominical sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+[MEDIUM inferred 2026-09-26] Sep 26 09:16:08 dominical sudo:     root : TTY=unknown ; PWD=/ ; USER=root ; COMMAND=list
+LOG_OBSERVED_DATE_RANGE=2026-09-20..2026-09-27 (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=14; MEDIUM_DISPLAYED=14; ROUTINE_SKIPPED=1090; METADATA_SKIPPED=0; OTHER_SKIPPED=39
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+===== JOURNAL - PRIORITIZED EVENTS (DATE-PRIORITIZED; MAX 100 HIGH + 60 MEDIUM) =====
+
+-- PRIORITY DATE 2026-08-03 (UTC/local journal time) --
+PRIORITY_HIGH=0; HIGH_DISPLAYED=0; PRIORITY_MEDIUM=0; MEDIUM_DISPLAYED=0; METADATA_SKIPPED=0; ROUTINE_SKIPPED=0
+
+-- PRIORITY DATE 2026-08-05 (UTC/local journal time) --
+PRIORITY_HIGH=0; HIGH_DISPLAYED=0; PRIORITY_MEDIUM=0; MEDIUM_DISPLAYED=0; METADATA_SKIPPED=0; ROUTINE_SKIPPED=0
+
+-- FULL WINDOW SUMMARY --
+[HIGH] 2026-09-30T15:20:06-0300 dominical sudo[3427154]:     root : TTY=pts/0 ; PWD=/root ; USER=root ; COMMAND=/usr/bin/passwd spggadmin
+[HIGH] 2026-09-30T15:20:24-0300 dominical passwd[3427155]: pam_unix(passwd:chauthtok): password changed for spggadmin
+JOURNAL_HIGH=2; DISPLAYED=2; JOURNAL_MEDIUM=0; DISPLAYED=0; ROUTINE_SKIPPED=2801; METADATA_SKIPPED=0
+
+===== SUDOERS MODIFICATION DATE - LOG COVERAGE ASSESSMENT =====
+sudoers mtime day: 2026-10-01
+The log ranges above are inferred observations, not guarantees of complete retention.
+If no source covers the sudoers mtime day, attribution from local retained logs is not possible.
+Even if a source covers that day, only explicit records can support attribution.
+
+===== AUDITD AVAILABILITY =====
+ausearch unavailable
+
+===== LIMITATIONS / SECURITY =====
+READ ONLY: no changes to accounts, sudoers, services or passwords.
+No matching log records does not imply no change; logs may have rotated or never been collected.
+sudoers mtime is not proof of when rootpw was introduced or who changed it.
+Reports may contain usernames and command arguments; keep private and out of Git.

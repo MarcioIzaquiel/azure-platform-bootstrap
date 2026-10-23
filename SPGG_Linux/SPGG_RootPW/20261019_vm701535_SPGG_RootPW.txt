@@ -1,0 +1,218 @@
+
+===== EXECUTIVE SUMMARY =====
+Host: vm701535
+Hostname short: vm701535
+Collected: 2026-10-19T10:36:57-03:00
+Window: 2026-07-01 to 2026-10-01 (end exclusive)
+Global rootpw directive: FOUND (text scan; verify effective scope)
+sudoers mtime: 2026-08-12 17:39:58.298397237 -0300
+root password status: root P 2026-10-07 0 99999 7 -1
+sudoers mtime day: INSIDE REQUESTED WINDOW
+
+===== IDENTIFICATION =====
+OS: Ubuntu 24.04.4 LTS
+Timezone: -03
+Executed as: uid=0(root) gid=0(root) groups=0(root)
+
+===== SUDO EFFECTIVE DEFAULTS (FOR ROOT; NOT PER-USER PROOF) =====
+Matching Defaults entries for root on VM701535:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty, rootpw, !requiretty
+
+User root may run the following commands on VM701535:
+    (ALL : ALL) ALL
+
+===== SUDOERS DIRECTIVES =====
+
+-- /etc/sudoers --
+9:Defaults	env_reset
+10:Defaults	mail_badpass
+11:Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+15:Defaults	use_pty
+16:Defaults        rootpw
+57:@includedir /etc/sudoers.d
+
+-- /etc/sudoers.d/090-oca-vss-plugin-commands --
+
+-- /etc/sudoers.d/100-oracle-cloud-agent-users --
+
+-- /etc/sudoers.d/90-cloud-init-users --
+
+-- /etc/sudoers.d/README --
+
+-- /etc/sudoers.d/morpheus-node --
+1:Defaults:morpheus-node !requiretty
+7:Defaults:root !requiretty
+
+===== SUDOERS FILE METADATA =====
+/etc/sudoers | owner=root:root | mode=440 | size=1848 | mtime=2026-08-12 17:39:58.298397237 -0300 | ctime=2026-10-09 06:15:18.873460377 -0300 | birth=2026-08-12 17:39:01.397131965 -0300
+/etc/sudoers.d/090-oca-vss-plugin-commands | owner=root:root | mode=440 | size=746 | mtime=2026-05-06 16:16:13.422212545 -0300 | ctime=2026-05-06 16:16:13.423212545 -0300 | birth=2026-05-06 16:16:13.421212545 -0300
+/etc/sudoers.d/100-oracle-cloud-agent-users | owner=root:root | mode=440 | size=3805 | mtime=2026-05-06 16:16:13.425212545 -0300 | ctime=2026-05-06 16:16:13.426212545 -0300 | birth=2026-05-06 16:16:13.424212545 -0300
+/etc/sudoers.d/90-cloud-init-users | owner=root:root | mode=440 | size=230 | mtime=2026-05-06 16:16:10.203212545 -0300 | ctime=2026-05-06 16:16:10.203212545 -0300 | birth=2026-05-06 16:16:10.150212545 -0300
+/etc/sudoers.d/README | owner=root:root | mode=440 | size=1068 | mtime=2024-01-29 14:09:56.000000000 -0300 | ctime=2026-02-28 08:54:53.784752197 -0300 | birth=2026-02-28 08:54:53.784752197 -0300
+/etc/sudoers.d/morpheus-node | owner=root:root | mode=440 | size=240 | mtime=2026-05-06 16:17:04.020331113 -0300 | ctime=2026-05-06 16:17:04.038331149 -0300 | birth=2026-05-06 16:17:04.020331113 -0300
+
+===== ROOT PASSWORD METADATA (NO HASHES) =====
+root P 2026-10-07 0 99999 7 -1
+Last password change					: Oct 07, 2026
+Password expires					: never
+Password inactive					: never
+Account expires						: never
+Minimum number of days between password change		: 0
+Maximum number of days between password change		: 99999
+Number of days of warning before password expires	: 7
+
+===== LOG SOURCES / RETENTION =====
+/var/log/auth.log | bytes=1550233 | mtime=2026-10-19 10:36:57.227985891 -0300
+/var/log/auth.log.1 | bytes=7556657 | mtime=2026-10-18 00:00:02.029489264 -0300
+/var/log/auth.log.2.gz | bytes=550630 | mtime=2026-10-11 00:00:01.777730074 -0300
+/var/log/auth.log.3.gz | bytes=475493 | mtime=2026-10-04 00:00:02.850780262 -0300
+/var/log/auth.log.4.gz | bytes=765465 | mtime=2026-09-27 00:00:01.629127491 -0300
+IDX BOOT ID                          FIRST ENTRY                 LAST ENTRY
+ -7 4c9bc72484384b97861353673cc3845b Fri 2026-07-17 02:16:24 -03 Thu 2026-09-17 23:25:35 -03
+ -6 76e7a1ab019540c6819d8b4bb244a138 Fri 2026-09-18 08:18:50 -03 Thu 2026-09-24 11:49:44 -03
+ -5 f970a6f2b2664d21957124d46dee2d7d Thu 2026-09-24 14:37:44 -03 Fri 2026-09-25 09:35:19 -03
+ -4 277446ad845e4897bd9f295a2d87cb12 Fri 2026-09-25 09:58:02 -03 Mon 2026-09-28 18:46:04 -03
+ -3 c0aa60182f294b8fbff4a981d115a6ee Mon 2026-09-28 19:51:12 -03 Tue 2026-09-29 01:36:08 -03
+ -2 ed5e90b4719a4067a6791c7843faa244 Tue 2026-09-29 07:23:43 -03 Tue 2026-09-29 10:00:02 -03
+ -1 f604f9d4192c4431ad4228b00d9cd166 Tue 2026-09-29 10:03:34 -03 Tue 2026-09-29 10:05:11 -03
+  0 b5ecb08d37e6405bb740e2e126c8ad08 Tue 2026-09-29 10:07:38 -03 Mon 2026-10-19 10:36:57 -03
+
+===== AUTH LOG - PRIORITIZED EVENTS (MAX 100 HIGH + 60 MEDIUM PER FILE) =====
+NOTE: syslog timestamps usually omit year; year inferred from file mtime (heuristic, not forensic proof).
+NOTE: routine PAM sessions and CRON are counted, not printed. Matches are investigative leads.
+NOTE: HIGH identifies command keywords; it does not prove a configuration change.
+
+-- /var/log/auth.log --
+LOG_OBSERVED_DATE_RANGE=unknown..unknown (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; METADATA_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.1 --
+LOG_OBSERVED_DATE_RANGE=unknown..unknown (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; METADATA_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.2.gz --
+LOG_OBSERVED_DATE_RANGE=unknown..unknown (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; METADATA_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.3.gz --
+LOG_OBSERVED_DATE_RANGE=unknown..unknown (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; METADATA_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+-- /var/log/auth.log.4.gz --
+LOG_OBSERVED_DATE_RANGE=unknown..unknown (inferred, not proof of continuous coverage)
+HIGH_MATCHES=0; HIGH_DISPLAYED=0; MEDIUM_MATCHES=0; MEDIUM_DISPLAYED=0; ROUTINE_SKIPPED=0; METADATA_SKIPPED=0; OTHER_SKIPPED=0
+PRIORITIZED_EVENTS_ON_SUDOERS_MTIME_DAY=0 (absence does not rule out activity)
+
+===== JOURNAL - PRIORITIZED EVENTS (DATE-PRIORITIZED; MAX 100 HIGH + 60 MEDIUM) =====
+
+-- PRIORITY DATE 2026-08-03 (UTC/local journal time) --
+[HIGH] 2026-08-03T12:38:37-03:00 vm701535 sudo[4178834]: cdsadmin : TTY=pts/0 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/bin/passwd root
+[HIGH] 2026-08-03T12:38:50-03:00 vm701535 passwd[4178968]: pam_unix(passwd:chauthtok): password changed for root
+[HIGH] 2026-08-03T12:38:55-03:00 vm701535 sudo[4179364]: cdsadmin : TTY=pts/0 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/sbin/visudo
+PRIORITY_HIGH=3; HIGH_DISPLAYED=3; PRIORITY_MEDIUM=0; MEDIUM_DISPLAYED=0; METADATA_SKIPPED=284; ROUTINE_SKIPPED=2421
+
+-- PRIORITY DATE 2026-08-05 (UTC/local journal time) --
+[MEDIUM] 2026-08-05T11:28:02-03:00 vm701535 sudo[2578879]: pam_unix(sudo:auth): authentication failure; logname=spggadmin uid=1000 euid=0 tty=/dev/pts/0 ruser=spggadmin rhost=  user=root
+[HIGH] 2026-08-05T11:33:30-03:00 vm701535 sudo[2583575]: cdsadmin : TTY=pts/1 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/sbin/usermod -aG sudo,www-data,users spggadmin
+[HIGH] 2026-08-05T11:33:30-03:00 vm701535 usermod[2583806]: add 'spggadmin' to group 'sudo'
+[HIGH] 2026-08-05T11:33:30-03:00 vm701535 usermod[2583806]: add 'spggadmin' to group 'www-data'
+[HIGH] 2026-08-05T11:33:30-03:00 vm701535 usermod[2583806]: add 'spggadmin' to group 'users'
+[HIGH] 2026-08-05T11:33:30-03:00 vm701535 usermod[2583806]: add 'spggadmin' to shadow group 'sudo'
+[HIGH] 2026-08-05T11:33:30-03:00 vm701535 usermod[2583806]: add 'spggadmin' to shadow group 'www-data'
+[HIGH] 2026-08-05T11:33:30-03:00 vm701535 usermod[2583806]: add 'spggadmin' to shadow group 'users'
+PRIORITY_HIGH=7; HIGH_DISPLAYED=7; PRIORITY_MEDIUM=1; MEDIUM_DISPLAYED=1; METADATA_SKIPPED=292; ROUTINE_SKIPPED=2398
+
+-- PRIORITY DATE 2026-08-12 (UTC/local journal time) --
+[HIGH] 2026-08-12T17:39:01-03:00 vm701535 sudo[4139526]: cdsadmin : TTY=pts/1 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/sbin/visudo
+PRIORITY_HIGH=1; HIGH_DISPLAYED=1; PRIORITY_MEDIUM=0; MEDIUM_DISPLAYED=0; METADATA_SKIPPED=284; ROUTINE_SKIPPED=2418
+
+-- FULL WINDOW SUMMARY --
+[MEDIUM] 2026-07-27T01:15:47-03:00 vm701535 sudo[760433]: pam_unix(sudo:auth): authentication failure; logname=devadmin uid=1003 euid=0 tty=/dev/pts/0 ruser=devadmin rhost=  user=devadmin
+[HIGH] 2026-07-29T17:55:24-03:00 vm701535 chpasswd[1632694]: pam_unix(chpasswd:chauthtok): password changed for spggadmin
+[HIGH] 2026-07-29T17:55:24-03:00 vm701535 chpasswd[1632699]: pam_unix(chpasswd:chauthtok): password changed for cdsadmin
+[HIGH] 2026-07-29T17:55:24-03:00 vm701535 chpasswd[1632704]: pam_unix(chpasswd:chauthtok): password changed for procergs
+[HIGH] 2026-07-29T17:55:24-03:00 vm701535 chpasswd[1632710]: pam_unix(chpasswd:chauthtok): password changed for devadmin
+[HIGH] 2026-07-29T17:55:24-03:00 vm701535 useradd[1632714]: new group: name=spezziadmin, GID=1005
+[HIGH] 2026-07-29T17:55:24-03:00 vm701535 useradd[1632714]: new user: name=spezziadmin, UID=1005, GID=1005, home=/home/spezziadmin, shell=/bin/bash, from=/dev/pts/1
+[HIGH] 2026-07-29T17:55:25-03:00 vm701535 chpasswd[1632723]: pam_unix(chpasswd:chauthtok): password changed for spezziadmin
+[HIGH] 2026-07-30T15:36:07-03:00 vm701535 sudo[1920629]: spezziadmin : user NOT in sudoers ; TTY=pts/1 ; PWD=/var/www/html ; USER=root ; COMMAND=/usr/bin/mkdir teste.txt
+[HIGH] 2026-07-30T15:37:21-03:00 vm701535 sudo[1920951]: spezziadmin : user NOT in sudoers ; TTY=pts/1 ; PWD=/var/www/html ; USER=root ; COMMAND=/usr/bin/touch teste.txt
+[HIGH] 2026-07-30T15:37:30-03:00 vm701535 sudo[1920998]: spezziadmin : user NOT in sudoers ; TTY=pts/1 ; PWD=/var/www/html ; USER=root ; COMMAND=/usr/bin/touch teste.txt
+[HIGH] 2026-07-30T15:51:17-03:00 vm701535 sudo[1925531]: cdsadmin : TTY=pts/0 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/sbin/usermod -aG sudo spezziadmin
+[HIGH] 2026-07-30T15:51:17-03:00 vm701535 usermod[1925564]: add 'spezziadmin' to group 'sudo'
+[HIGH] 2026-07-30T15:51:17-03:00 vm701535 usermod[1925564]: add 'spezziadmin' to shadow group 'sudo'
+[HIGH] 2026-07-30T15:52:03-03:00 vm701535 sudo[1922637]: spezziadmin : user NOT in sudoers ; TTY=pts/1 ; PWD=/var/www/html ; USER=root ; COMMAND=/usr/bin/touch teste.txt
+[MEDIUM] 2026-07-30T15:54:22-03:00 vm701535 sudo[1926707]: pam_unix(sudo:auth): authentication failure; logname=spezziadmin uid=1005 euid=0 tty=/dev/pts/2 ruser=spezziadmin rhost=  user=spezziadmin
+[HIGH] 2026-07-30T15:54:25-03:00 vm701535 sudo[1926707]: spezziadmin : user NOT in sudoers ; TTY=pts/2 ; PWD=/var/www/html ; USER=root ; COMMAND=/usr/bin/touch teste.txt
+[HIGH] 2026-07-30T15:54:31-03:00 vm701535 sudo[1927057]: spezziadmin : user NOT in sudoers ; TTY=pts/2 ; PWD=/var/www/html ; USER=root ; COMMAND=/usr/bin/touch teste.txt
+[HIGH] 2026-07-30T16:10:36-03:00 vm701535 sudo[1930723]: cdsadmin : TTY=pts/1 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/sbin/usermod -aG sudo,www-data,users spezziadmin
+[HIGH] 2026-07-30T16:10:36-03:00 vm701535 usermod[1930725]: add 'spezziadmin' to group 'www-data'
+[HIGH] 2026-07-30T16:10:36-03:00 vm701535 usermod[1930725]: add 'spezziadmin' to group 'users'
+[HIGH] 2026-07-30T16:10:36-03:00 vm701535 usermod[1930725]: add 'spezziadmin' to shadow group 'www-data'
+[HIGH] 2026-07-30T16:10:36-03:00 vm701535 usermod[1930725]: add 'spezziadmin' to shadow group 'users'
+[HIGH] 2026-07-30T16:24:32-03:00 vm701535 sudo[1936224]: cdsadmin : TTY=pts/1 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/sbin/usermod -aG docker spezziadmin
+[HIGH] 2026-07-30T16:24:33-03:00 vm701535 usermod[1936226]: add 'spezziadmin' to group 'docker'
+[HIGH] 2026-07-30T16:24:33-03:00 vm701535 usermod[1936226]: add 'spezziadmin' to shadow group 'docker'
+[HIGH] 2026-07-30T16:24:44-03:00 vm701535 sudo[1936458]: cdsadmin : TTY=pts/1 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/sbin/usermod -aG docker devadmin
+[HIGH] 2026-07-30T16:24:44-03:00 vm701535 usermod[1936460]: add 'devadmin' to group 'docker'
+[HIGH] 2026-07-30T16:24:44-03:00 vm701535 usermod[1936460]: add 'devadmin' to shadow group 'docker'
+[HIGH] 2026-07-30T16:24:56-03:00 vm701535 sudo[1936481]: cdsadmin : TTY=pts/1 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/sbin/usermod -aG docker cdsadmin
+[HIGH] 2026-07-30T16:24:56-03:00 vm701535 usermod[1936483]: add 'cdsadmin' to group 'docker'
+[HIGH] 2026-07-30T16:24:56-03:00 vm701535 usermod[1936483]: add 'cdsadmin' to shadow group 'docker'
+[MEDIUM] 2026-07-31T13:19:17-03:00 vm701535 sudo[2484267]: pam_unix(sudo:auth): authentication failure; logname=cdsadmin uid=1002 euid=0 tty=/dev/pts/1 ruser=cdsadmin rhost=  user=cdsadmin
+[HIGH] 2026-08-03T12:38:37-03:00 vm701535 sudo[4178834]: cdsadmin : TTY=pts/0 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/bin/passwd root
+[HIGH] 2026-08-03T12:38:50-03:00 vm701535 passwd[4178968]: pam_unix(passwd:chauthtok): password changed for root
+[HIGH] 2026-08-03T12:38:55-03:00 vm701535 sudo[4179364]: cdsadmin : TTY=pts/0 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/sbin/visudo
+[MEDIUM] 2026-08-05T11:28:02-03:00 vm701535 sudo[2578879]: pam_unix(sudo:auth): authentication failure; logname=spggadmin uid=1000 euid=0 tty=/dev/pts/0 ruser=spggadmin rhost=  user=root
+[HIGH] 2026-08-05T11:33:30-03:00 vm701535 sudo[2583575]: cdsadmin : TTY=pts/1 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/sbin/usermod -aG sudo,www-data,users spggadmin
+[HIGH] 2026-08-05T11:33:30-03:00 vm701535 usermod[2583806]: add 'spggadmin' to group 'sudo'
+[HIGH] 2026-08-05T11:33:30-03:00 vm701535 usermod[2583806]: add 'spggadmin' to group 'www-data'
+[HIGH] 2026-08-05T11:33:30-03:00 vm701535 usermod[2583806]: add 'spggadmin' to group 'users'
+[HIGH] 2026-08-05T11:33:30-03:00 vm701535 usermod[2583806]: add 'spggadmin' to shadow group 'sudo'
+[HIGH] 2026-08-05T11:33:30-03:00 vm701535 usermod[2583806]: add 'spggadmin' to shadow group 'www-data'
+[HIGH] 2026-08-05T11:33:30-03:00 vm701535 usermod[2583806]: add 'spggadmin' to shadow group 'users'
+[MEDIUM] 2026-08-07T14:25:03-03:00 vm701535 sudo[1289890]: pam_unix(sudo:auth): authentication failure; logname=spezziadmin uid=1005 euid=0 tty=/dev/pts/2 ruser=spezziadmin rhost=  user=root
+[MEDIUM] 2026-08-10T16:51:56-03:00 vm701535 sudo[1326020]: pam_unix(sudo:auth): authentication failure; logname=procergs uid=1004 euid=0 tty=/dev/pts/1 ruser=procergs rhost=  user=root
+[MEDIUM] 2026-08-10T16:52:22-03:00 vm701535 sudo[1326275]: pam_unix(sudo:auth): authentication failure; logname=procergs uid=1004 euid=0 tty=/dev/pts/1 ruser=procergs rhost=  user=root
+[MEDIUM] 2026-08-10T16:55:30-03:00 vm701535 sudo[1329446]: pam_unix(sudo:auth): authentication failure; logname=procergs uid=1004 euid=0 tty=/dev/pts/1 ruser=procergs rhost=  user=root
+[MEDIUM] 2026-08-10T17:00:48-03:00 vm701535 sudo[1333751]: pam_unix(sudo:auth): authentication failure; logname=procergs uid=1004 euid=0 tty=/dev/pts/1 ruser=procergs rhost=  user=root
+[MEDIUM] 2026-08-11T08:11:46-03:00 vm701535 sudo[2199925]: pam_unix(sudo:auth): authentication failure; logname=procergs uid=1004 euid=0 tty=/dev/pts/1 ruser=procergs rhost=  user=root
+[HIGH] 2026-08-11T09:11:56-03:00 vm701535 sudo[2256745]: spggadmin : TTY=pts/1 ; PWD=/home/spggadmin ; USER=root ; COMMAND=/usr/bin/passwd procergs
+[HIGH] 2026-08-11T09:12:33-03:00 vm701535 sudo[2258045]: spggadmin : TTY=pts/1 ; PWD=/home/spggadmin ; USER=root ; COMMAND=/usr/bin/passwd procergs
+[HIGH] 2026-08-11T09:13:09-03:00 vm701535 sudo[2258532]: spggadmin : TTY=pts/1 ; PWD=/home/spggadmin ; USER=root ; COMMAND=/usr/bin/passwd procergs
+[HIGH] 2026-08-11T09:13:42-03:00 vm701535 passwd[2258534]: pam_unix(passwd:chauthtok): password changed for procergs
+[MEDIUM] 2026-08-11T09:21:48-03:00 vm701535 sudo[2266808]: pam_unix(sudo:auth): authentication failure; logname=procergs uid=1004 euid=0 tty=/dev/pts/1 ruser=procergs rhost=  user=root
+[MEDIUM] 2026-08-11T09:22:10-03:00 vm701535 sudo[2267139]: pam_unix(sudo:auth): authentication failure; logname=procergs uid=1004 euid=0 tty=/dev/pts/1 ruser=procergs rhost=  user=root
+[MEDIUM] 2026-08-11T09:39:58-03:00 vm701535 sudo[2283829]: pam_unix(sudo:auth): authentication failure; logname=procergs uid=1004 euid=0 tty=/dev/pts/1 ruser=procergs rhost=  user=root
+[MEDIUM] 2026-08-11T10:11:04-03:00 vm701535 sudo[2313554]: pam_unix(sudo:auth): authentication failure; logname=procergs uid=1004 euid=0 tty=/dev/pts/1 ruser=procergs rhost=  user=root
+[MEDIUM] 2026-08-11T13:50:42-03:00 vm701535 sudo[2525876]: pam_unix(sudo:auth): authentication failure; logname=procergs uid=1004 euid=0 tty=/dev/pts/1 ruser=procergs rhost=  user=root
+[MEDIUM] 2026-08-11T13:51:04-03:00 vm701535 sudo[2526125]: pam_unix(sudo:auth): authentication failure; logname=procergs uid=1004 euid=0 tty=/dev/pts/1 ruser=procergs rhost=  user=root
+[MEDIUM] 2026-08-11T13:51:47-03:00 vm701535 sudo[2526977]: pam_unix(sudo:auth): authentication failure; logname=procergs uid=1004 euid=0 tty=/dev/pts/1 ruser=procergs rhost=  user=root
+[MEDIUM] 2026-08-11T14:51:14-03:00 vm701535 sudo[2583207]: pam_unix(sudo:auth): authentication failure; logname=procergs uid=1004 euid=0 tty=/dev/pts/1 ruser=procergs rhost=  user=root
+[MEDIUM] 2026-08-11T15:28:51-03:00 vm701535 sudo[2622801]: pam_unix(sudo:auth): authentication failure; logname=procergs uid=1004 euid=0 tty=/dev/pts/1 ruser=procergs rhost=  user=root
+[HIGH] 2026-08-12T17:39:01-03:00 vm701535 sudo[4139526]: cdsadmin : TTY=pts/1 ; PWD=/home/cdsadmin ; USER=root ; COMMAND=/usr/sbin/visudo
+[MEDIUM] 2026-09-24T15:19:35-03:00 vm701535 sudo[16871]: pam_unix(sudo:auth): authentication failure; logname=spezziadmin uid=1005 euid=0 tty=/dev/pts/1 ruser=spezziadmin rhost=  user=root
+[MEDIUM] 2026-09-29T08:03:28-03:00 vm701535 sudo[16065]: pam_unix(sudo:auth): authentication failure; logname=devadmin uid=1003 euid=0 tty=/dev/pts/0 ruser=devadmin rhost=  user=root
+[MEDIUM] 2026-09-29T08:39:00-03:00 vm701535 sudo[68647]: pam_unix(sudo:auth): authentication failure; logname=devadmin uid=1003 euid=0 tty=/dev/pts/1 ruser=devadmin rhost=  user=root
+[MEDIUM] 2026-09-29T15:21:38-03:00 vm701535 sudo[226306]: pam_unix(sudo:auth): authentication failure; logname=devadmin uid=1003 euid=0 tty=/dev/pts/0 ruser=devadmin rhost=  user=root
+[MEDIUM] 2026-09-30T16:06:18-03:00 vm701535 sudo[842412]: pam_unix(sudo:auth): authentication failure; logname=devadmin uid=1003 euid=0 tty=/dev/pts/1 ruser=devadmin rhost=  user=root
+JOURNAL_HIGH=45; DISPLAYED=45; JOURNAL_MEDIUM=24; DISPLAYED=24; ROUTINE_SKIPPED=302725; METADATA_SKIPPED=19460
+
+===== SUDOERS MODIFICATION DATE - LOG COVERAGE ASSESSMENT =====
+sudoers mtime day: 2026-08-12
+The log ranges above are inferred observations, not guarantees of complete retention.
+If no source covers the sudoers mtime day, attribution from local retained logs is not possible.
+Even if a source covers that day, only explicit records can support attribution.
+
+===== AUDITD AVAILABILITY =====
+ausearch unavailable
+
+===== LIMITATIONS / SECURITY =====
+READ ONLY: no changes to accounts, sudoers, services or passwords.
+No matching log records does not imply no change; logs may have rotated or never been collected.
+sudoers mtime is not proof of when rootpw was introduced or who changed it.
+Reports may contain usernames and command arguments; keep private and out of Git.

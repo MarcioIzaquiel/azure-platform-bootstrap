@@ -1,0 +1,129 @@
+
+===== IDENTIFICACAO =====
+HOSTNAME=vm701791
+COLLECTED=2026-10-20T19:41:17+00:00
+OS=Ubuntu 24.04.4 LTS
+IP_IPV4=ens3:10.113.1.102/24
+MODE=READ_ONLY
+
+===== ROOT =====
+ROOT_PASSWD_STATUS=root L 2026-07-11 0 99999 7 -1
+ROOT_PASSWD_STATE=L
+ROOT_LAST_CHANGE=2026-07-11
+ROOT_SHELL=/bin/bash
+
+===== ACESSO ADMINISTRATIVO =====
+USER_PROCERGS_EXISTS=YES
+USER_PROCERGS_GROUPS=procergs,sudo,users
+USER_PROCERGS_PASSWD=P
+
+-- SUDO_RULES procergs --
+Matching Defaults entries for procergs on VM701791:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty
+
+User procergs may run the following commands on VM701791:
+    (ALL : ALL) ALL
+USER_SPGGADMIN_EXISTS=YES
+USER_SPGGADMIN_GROUPS=spggadmin,sudo
+USER_SPGGADMIN_PASSWD=P
+
+-- SUDO_RULES spggadmin --
+Matching Defaults entries for spggadmin on VM701791:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty
+
+User spggadmin may run the following commands on VM701791:
+    (ALL : ALL) ALL
+    (ALL) ALL
+USER_CDSADMIN_EXISTS=YES
+USER_CDSADMIN_GROUPS=cdsadmin,sudo,users
+USER_CDSADMIN_PASSWD=P
+
+-- SUDO_RULES cdsadmin --
+Matching Defaults entries for cdsadmin on VM701791:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty
+
+User cdsadmin may run the following commands on VM701791:
+    (ALL : ALL) ALL
+GROUP_SUDO=sudo:x:27:spggadmin,deeadmin,procergs,cdsadmin
+GROUP_WHEEL=
+
+-- UID 0 accounts --
+root:0:/bin/bash
+
+-- Sudo/wheel memberships (local and NSS) --
+spggadmin: spggadmin sudo
+deeadmin: deeadmin sudo users
+procergs: procergs sudo users
+cdsadmin: cdsadmin sudo users
+
+===== SUDOERS =====
+SUDOERS_SYNTAX=/etc/sudoers.d/morpheus-node: parsed OK
+SUDOERS_FILE=/etc/sudoers|owner=root:root|mode=440|mtime=2026-09-25 12:48:17.311775567 +0000|sha256= 5bac27ce5ff1a78ace8f3ef81bfd60cbd44810ac3f3d280da9d7649fe90c18f8
+DIRECTIVE /etc/sudoers:9:Defaults	env_reset
+DIRECTIVE /etc/sudoers:10:Defaults	mail_badpass
+DIRECTIVE /etc/sudoers:11:Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+DIRECTIVE /etc/sudoers:15:Defaults	use_pty
+DIRECTIVE /etc/sudoers:57:@includedir /etc/sudoers.d
+SUDOERS_FILE=/etc/sudoers.d/090-oca-vss-plugin-commands|owner=root:root|mode=440|mtime=2026-09-25 12:47:54.930079263 +0000|sha256= 19a274080602a60948cab89e70df7e60ff0d9fcc58e9ae92c7440332645fbb68
+SUDOERS_FILE=/etc/sudoers.d/100-oracle-cloud-agent-users|owner=root:root|mode=440|mtime=2026-09-25 12:47:54.933119869 +0000|sha256= b42750c6a11bc7a54195e041bb42370bbb2bb016170aebab38f22c52c86235e7
+SUDOERS_FILE=/etc/sudoers.d/90-cloud-init-users|owner=root:root|mode=440|mtime=2026-09-25 12:47:50.474079263 +0000|sha256= 7b62a7fd6d8894d5c9c074d4166c76014784ccf71e387637a9d5b7f26425f071
+SUDOERS_FILE=/etc/sudoers.d/README|owner=root:root|mode=440|mtime=2024-01-29 17:09:56.000000000 +0000|sha256= b428c9b673c3c806370f2aa28a98293a9cb578c70c3a8a2d1a39031861b3dbd8
+SUDOERS_FILE=/etc/sudoers.d/morpheus-node|owner=root:root|mode=440|mtime=2026-09-25 12:48:48.360777127 +0000|sha256= 28bacc3825c2bc6baed92638b92ab7b5139390eb526c0cd726051dadb314717a
+DIRECTIVE /etc/sudoers.d/morpheus-node:1:Defaults:morpheus-node !requiretty
+DIRECTIVE /etc/sudoers.d/morpheus-node:7:Defaults:root !requiretty
+GLOBAL_ROOTPW_TEXT=NOT_FOUND
+SUDO_PASSWORD_DIRECTIVES_PRESENT=NO
+
+===== SSH =====
+SSH_SERVICE_ACTIVE=active
+SSHD_CONFIG_TEST=OK
+
+-- SSH_EFFECTIVE_ROOT addr=10.113.1.102 --
+port 22
+permitrootlogin without-password
+pubkeyauthentication yes
+passwordauthentication yes
+kbdinteractiveauthentication no
+authenticationmethods any
+
+-- SSH_DEFAULT --
+port 22
+permitrootlogin without-password
+pubkeyauthentication yes
+passwordauthentication yes
+kbdinteractiveauthentication no
+authenticationmethods any
+
+===== PAM_AND_SSSD =====
+CONFIG_FILE=/etc/pam.d/sudo|owner=root:root|mode=644|mtime=2024-01-29 17:09:56.000000000 +0000
+4:session    required   pam_limits.so
+6:session    required   pam_env.so readenv=1 user_readenv=0
+7:session    required   pam_env.so readenv=1 envfile=/etc/default/locale user_readenv=0
+9:@include common-auth
+10:@include common-account
+11:@include common-session-noninteractive
+CONFIG_FILE=/etc/pam.d/sshd|owner=root:root|mode=644|mtime=2026-04-28 00:29:48.000000000 +0000
+4:@include common-auth
+7:account    required     pam_nologin.so
+14:@include common-account
+19:session [success=ok ignore=ignore module_unknown=ignore default=bad]        pam_selinux.so close
+22:session    required     pam_loginuid.so
+25:session    optional     pam_keyinit.so force revoke
+28:@include common-session
+33:session    optional     pam_motd.so  motd=/run/motd.dynamic
+34:session    optional     pam_motd.so noupdate
+37:session    optional     pam_mail.so standard noenv # [1]
+40:session    required     pam_limits.so
+44:session    required     pam_env.so # [1]
+47:session    required     pam_env.so user_readenv=1 envfile=/etc/default/locale
+52:session [success=ok ignore=ignore module_unknown=ignore default=bad]        pam_selinux.so open
+55:@include common-password
+CONFIG_FILE=/etc/nsswitch.conf|owner=root:root|mode=644|mtime=2026-07-11 12:08:38.438867083 +0000
+SSSD_ACTIVE=inactive
+unavailable
+
+===== LIMITACOES =====
+READ ONLY: sem mudancas de configuracao ou senha.
+sshd -T -C depende do contexto Match; IP do cliente real deve ser validado.
+sudo -l -U nao demonstra que senha sera pedida em sessao interativa.
+Nunca armazenar senhas ou hashes em relatorios.
