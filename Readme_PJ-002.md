@@ -228,146 +228,129 @@ Ao concluir, teremos um ambiente capaz de demonstrar:
 
 ### 4. Inventariar hardware e licenciamento
 
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
 
-
----
----
----
----
----
----
----
----
----
----
 # Instalar Debian 12 -> Proxmox 8 -> Proxmox 9
 
-## Debian 12
+## XPS -> Debian 12 -> Proxmox 8 -> Proxmox 9
 
-`cat /etc/apt/sources.list`
-
-`ls -l /etc/apt/sources.list.d/`
-
-`nano /etc/apt/sources.list` (Salve com Ctrl+O, Enter e saia com Ctrl+X.)
-- #cdrom
-- deb http://deb.debian.org/debian bookworm main contrib non-free-firmware
-- deb http://deb.debian.org/debian bookworm-updates main contrib non-free-firmware
-- deb http://security.debian.org/debian-security bookworm-security main 
-
-`contrib non-free-firmware`
-
-`apt update`
-
-`apt install openssh-server -y`
-
-`systemctl enable --now ssh`
-
-`systemctl status ssh`
-
-`ss -tlnp | grep ':22'`
-
-`systemctl poweroff`
-
-`lscpu | grep -E 'Model name|Virtualization|Architecture'`
-
-`cp /etc/hosts /etc/hosts.bak`
-
-`nano /etc/hosts`
-- Substitua:
-  - 127.0.0.1 localhost
-  - 127.0.1.1 XPS
-- Por:
-  - 127.0.0.1       localhost
-  - 192.168.1.201   XPS.home.arpa XPS
-
-`apt update
-apt install ifupdown2 bridge-utils -y
-command -v ifreload`
-
-`nano /etc/network/interfaces`
-- auto lo
-- iface lo inet loopback
-- auto enp5s0
-- iface enp5s0 inet manual
-- auto vmbr0
-- iface vmbr0 inet static
-    address 192.168.1.201/24
-    gateway 192.168.1.1
-    bridge-ports enp5s0
-    bridge-stp off
-    bridge-fd 0
-
-`ifreload -a`
-
-`ip -br addr`
-
-`ip route`
-
-`ping -c 4 192.168.1.1`
-
-`ping -c 4 8.8.8.8`
-
-`apt install wget ca-certificates gnupg -y`
-
-`wget https://enterprise.proxmox.com/debian/proxmox-release-bookworm.gpg \
+- [x] Instalação mínima do Debian 12
+  - `systemctl poweroff`
+  - `su -`
+- [x] Configuração dos repositórios Debian
+  - `cat /etc/apt/sources.list`
+  - `ls -l /etc/apt/sources.list.d/`
+  - `nano /etc/apt/sources.list`
+    - # cdrom
+    - deb http://deb.debian.org/debian bookworm main contrib non-free-firmware
+    - deb http://deb.debian.org/debian bookworm-updates main contrib non-free-firmware
+    - deb http://security.debian.org/debian-security bookworm-security main contrib non-free-firmware
+  - `apt update`
+  - `apt list --upgradable`
+  - `apt upgrade`
+- [x] Instalação e habilitação do SSH
+  - `apt install openssh-server -y`
+  - `systemctl enable --now ssh`
+  - `systemctl status ssh`
+  - `ss -tlnp | grep ':22'`
+- [x] Verificação de hardware e virtualização
+  - `lscpu | grep -E 'Model name|Virtualization|Architecture'`
+  - `lspci -nnk | grep -A 4 -i ethernet`
+  - `apt install ethtool -y`
+  - `ethtool -i enp5s0`  
+- [x] Configuração do hostname e resolução local
+  - `cp /etc/hosts /etc/hosts.bak`
+  - `nano /etc/hosts`
+    - 127.0.0.1       localhost
+    - 192.168.1.201   XPS.home.arpa XPS
+- [x] Configuração da bridge vmbr0 e IP fixo
+  - `apt update`
+  - `apt install ifupdown2 bridge-utils -y`
+  - `command -v ifreload`
+  - `cp -a /etc/network/interfaces /etc/network/interfaces.bak` 
+  - `nano /etc/network/interfaces`
+    - auto lo
+    - iface lo inet loopback
+    - auto enp5s0
+    - iface enp5s0 inet manual
+    - 
+    - auto vmbr0
+    - iface vmbr0 inet static
+      - address 192.168.1.201/24
+      - gateway 192.168.1.1
+      - bridge-ports enp5s0
+      - bridge-stp off
+      - bridge-fd 0
+      - #enp5s0 inet manual	Deixa a interface física sem IP próprio
+      - #auto vmbr0	Ativa a bridge automaticamente
+      - #inet static	Define IP fixo
+      - #address	IP de gerenciamento do XPS
+      - #gateway	Roteador da rede SOHO
+      - #bridge-ports enp5s0	Conecta a bridge à Ethernet física
+      - #bridge-stp off	Desabilita STP nessa bridge
+      - #bridge-fd 0	Define atraso de encaminhamento como zero
+  - `ifreload -a`
+  - `ip -br addr`
+  - `ip route`
+  - `bridge link`
+- [x] Adição do repositório Proxmox
+  - `apt install wget ca-certificates gnupg -y`
+  - `wget https://enterprise.proxmox.com/debian/proxmox-release-bookworm.gpg \
   -O /etc/apt/trusted.gpg.d/proxmox-release-bookworm.gpg`
-
-`echo "deb http://download.proxmox.com/debian/pve bookworm pve-no-subscription" \
+  - `echo "deb http://download.proxmox.com/debian/pve bookworm pve-no-subscription" \
   > /etc/apt/sources.list.d/pve-install-repo.list`
-
-`apt update`
-
-`apt-cache policy proxmox-default-kernel`
-
-`apt-cache policy proxmox-ve`
-
-`apt install proxmox-default-kernel`
-
-`apt-get -s install proxmox-ve postfix open-iscsi`
-
-`apt-get -s install proxmox-ve postfix open-iscsi | grep -E '^(Inst|Remv|Conf) (proxmox-ve|pve-manager|qemu-server|pve-cluster|postfix|open-iscsi|ifupdown2|openssh-server)'`
-
-`apt-cache policy proxmox-ve pve-manager` 
-
-`apt-get -s install proxmox-ve postfix open-iscsi | grep -E '^(Inst|Remv) (proxmox-ve|pve-manager|qemu-server|pve-cluster|postfix|open-iscsi|ifupdown2|openssh-server) '`
-
-`apt install proxmox-ve postfix open-iscsi`
-
-`pveversion -v`
-
-`systemctl status pveproxy --no-pager
-systemctl status pvedaemon --no-pager
-systemctl status pve-cluster --no-pager`
-
-https://192.168.1.201:8006
-
-`dpkg -l pve-edk2-firmware`
-
-`apt-cache policy pve-edk2-firmware`
-
-`dpkg --audit`
-
-`pvesm status`
-
-`cat /etc/pve/storage.cfg`
-
-`pvs
-vgs
-lvs`
-
-`pvesm add dir local --path /var/lib/vz --content images,rootdir,iso,vztmpl,backup,snippets`
-
-`pvesm add dir local --path /var/lib/vz --content images,rootdir,iso,vztmpl,backup,snippets`
-
-`pvesm list local --content images`
-
-`pvesm list local --content iso`
-
-`pvesm set local --content images,rootdir,iso,vztmpl,backup,snippets`
-
-`cat /etc/pve/storage.cfg`
-
-
+  - `apt update`
+  - `apt-cache policy proxmox-default-kernel
+apt-cache policy proxmox-ve`
+- [x] Instalação do kernel Proxmox 6.8
+  - `df -h /boot`
+  - `apt install proxmox-default-kernel`
+  - `dpkg -l 'proxmox-kernel*' 'proxmox-default-kernel'`
+  - `df -h /boot`
+  - `reboot`
+  - `uname -r`  
+- [x] Instalação do Proxmox VE 8.4
+  - `apt-get -s install proxmox-ve postfix open-iscsi`
+  - `apt-get -s install proxmox-ve postfix open-iscsi \
+  | grep -E '^(Inst|Remv) (proxmox-ve|pve-manager|qemu-server|pve-cluster|postfix|open-iscsi|ifupdown2|openssh-server) '`
+  - `apt-cache policy proxmox-ve pve-manager`
+  - `apt install proxmox-ve postfix open-iscsi`  
+- [x] Acesso à interface web
+  - https://192.168.1.201:8006
+  - user: root senha do root do s.o.
+- [x] Validação dos serviços e pacotes
+  - `pveversion -v`  
+  - `systemctl status pveproxy --no-pager`
+  - `systemctl status pvedaemon --no-pager`
+  - `systemctl status pve-cluster --no-pager`
+  - `dpkg -l pve-edk2-firmware`
+  - `apt-cache policy pve-edk2-firmware`
+  - `dpkg --audit`
+  - `apt-get -s install pve-edk2-firmware`
+  - `apt install pve-edk2-firmware`
+  - `dpkg -l pve-edk2-firmware`  
+- [x] Configuração do armazenamento local
+  - `pvesm status`
+  - `pvs`
+  - `vgs`
+  - `lvs`
+  - `cat /etc/pve/storage.cfg`
+  - `pvesm add dir local --path /var/lib/vz --content images,rootdir,iso,vztmpl,backup,snippets`
+  - `pvesm list local --content images`
+  - `pvesm list local --content iso`
+  - `pvesm set local --content images,rootdir,iso,vztmpl,backup,snippets`
+  - `cat /etc/pve/storage.cfg`
+- [ ] Verificação de compatibilidade pve8to9
+- [ ] Migração para Proxmox VE 9
 
 
 # Instalar Windows 2025 DC ad.marciolab.test server core

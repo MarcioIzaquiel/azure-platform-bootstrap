@@ -5,7 +5,7 @@
 #
 # Grupo 1 - SisMUP:
 # VM701794 SisMUP 10.113.3.73
-# 10.113.3.73
+10.113.3.73
 # VM701793 SisMUP 10.113.3.114
 # 10.113.3.114
 # VM701792 SisMUP 10.113.1.203
@@ -15,7 +15,7 @@
 # VM701790 SisMUP 10.113.3.129
 # 10.113.3.129
 # VM701789 SisMUP 10.113.1.134
-10.113.1.134
+# 10.113.1.134
 # Fim do Grupo 1
 #
 # Grupo 2 - Back-Banco PostgreSQL e MySQL HSM
@@ -23,9 +23,9 @@
 # 10.113.1.251
 # VM701070 Producao Nova (PostgreSQL) 10.113.3.176
 # 10.113.3.176
-# VM701096 Producao Nova ETL (Backend do PostgreSQL) 10.113.1.167
+# VM701096 Homologacao Nova ETL (Backend do PostgreSQL) 10.113.1.167
 # 10.113.1.167 
-# VM701239 Producao Nova ETL (PostgreSQL) 10.113.3.64
+# VM701239 Homologacao Nova ETL (PostgreSQL) 10.113.3.64
 # 10.113.3.64 
 # VM701535 Legados Homologacao (Backend do MySQL) 10.113.1.13 *Senha
 # 10.113.1.13

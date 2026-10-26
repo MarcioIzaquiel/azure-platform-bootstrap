@@ -1,0 +1,198 @@
+
+===== IDENTIFICACAO =====
+HOSTNAME=vm701096
+COLLECTED=2026-10-26T12:38:24+00:00
+OS=Ubuntu 24.04.2 LTS
+IP_IPV4=ens3:10.113.1.167/24,docker_gwbridge:172.31.0.1/16,docker0:172.17.0.1/16,br-85d60a0281ee:172.30.0.1/16,br-194559ae9240:172.18.0.1/16,br-f5fd302d874a:172.19.0.1/16,br-228064714d0a:172.20.0.1/16,br-1cd5656c38fa:10.80.0.1/24,br-27bb5313a836:172.21.0.1/16
+MODE=READ_ONLY
+
+===== ROOT =====
+ROOT_PASSWD_STATUS=root P 2026-08-03 0 99999 7 -1
+ROOT_PASSWD_STATE=P
+ROOT_LAST_CHANGE=2026-08-03
+ROOT_SHELL=/bin/bash
+
+===== ACESSO ADMINISTRATIVO =====
+USER_PROCERGS_EXISTS=YES
+USER_PROCERGS_GROUPS=procergs,sudo,users
+USER_PROCERGS_PASSWD=P
+
+-- SUDO_RULES procergs --
+Matching Defaults entries for procergs on VM701096:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty, rootpw
+
+User procergs may run the following commands on VM701096:
+    (ALL : ALL) ALL
+USER_SPGGADMIN_EXISTS=YES
+USER_SPGGADMIN_GROUPS=spggadmin,sudo,www-data,users
+USER_SPGGADMIN_PASSWD=P
+
+-- SUDO_RULES spggadmin --
+Matching Defaults entries for spggadmin on VM701096:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty, rootpw
+
+User spggadmin may run the following commands on VM701096:
+    (ALL : ALL) ALL
+    (ALL) ALL
+USER_CDSADMIN_EXISTS=YES
+USER_CDSADMIN_GROUPS=cdsadmin,sudo,users
+USER_CDSADMIN_PASSWD=P
+
+-- SUDO_RULES cdsadmin --
+Matching Defaults entries for cdsadmin on VM701096:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty, rootpw
+
+User cdsadmin may run the following commands on VM701096:
+    (ALL : ALL) ALL
+GROUP_SUDO=sudo:x:27:spggadmin,cdsadmin,procergs,devadmin,spezziadmin,cdsdevadmin,monitoramento
+GROUP_WHEEL=
+
+-- UID 0 accounts --
+root:0:/bin/bash
+
+-- Sudo/wheel memberships (local and NSS) --
+spggadmin: spggadmin sudo www-data users
+cdsadmin: cdsadmin sudo users
+procergs: procergs sudo users
+devadmin: devadmin sudo users
+spezziadmin: spezziadmin sudo www-data users docker
+cdsdevadmin: cdsdevadmin sudo users
+monitoramento: monitoramento sudo users
+
+===== SUDOERS =====
+SUDOERS_SYNTAX=/etc/sudoers.d/morpheus-node: parsed OK
+SUDOERS_FILE=/etc/sudoers|owner=root:root|mode=440|mtime=2026-08-03 14:33:02.378889311 +0000|sha256= e7e050e8228967cd549d40dc36a145275766d7a8699400affde8090d5533ae7a
+DIRECTIVE /etc/sudoers:9:Defaults	env_reset
+DIRECTIVE /etc/sudoers:10:Defaults	mail_badpass
+DIRECTIVE /etc/sudoers:11:Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+DIRECTIVE /etc/sudoers:15:Defaults	use_pty
+DIRECTIVE /etc/sudoers:16:Defaults        rootpw
+DIRECTIVE /etc/sudoers:57:@includedir /etc/sudoers.d
+SUDOERS_FILE=/etc/sudoers.d/090-oca-vss-plugin-commands|owner=root:root|mode=440|mtime=2025-09-24 14:36:41.500888436 +0000|sha256= 19a274080602a60948cab89e70df7e60ff0d9fcc58e9ae92c7440332645fbb68
+SUDOERS_FILE=/etc/sudoers.d/100-oracle-cloud-agent-users|owner=root:root|mode=440|mtime=2025-09-24 14:36:41.502888436 +0000|sha256= cc48ceccdde6762d1d2390fc73e0bfc144952ee9882f6f0d3d976928cee75728
+DIRECTIVE /etc/sudoers.d/100-oracle-cloud-agent-users:54:Defaults:snap_daemon !requiretty
+SUDOERS_FILE=/etc/sudoers.d/90-cloud-init-users|owner=root:root|mode=440|mtime=2025-09-24 14:36:37.971888436 +0000|sha256= bcee700bef71a0de0b6f0c582a8fad753d58e2c1a38f7a822b1539d0d5efe3bd
+SUDOERS_FILE=/etc/sudoers.d/README|owner=root:root|mode=440|mtime=2024-01-29 17:09:56.000000000 +0000|sha256= b428c9b673c3c806370f2aa28a98293a9cb578c70c3a8a2d1a39031861b3dbd8
+SUDOERS_FILE=/etc/sudoers.d/morpheus-node|owner=root:root|mode=440|mtime=2025-09-24 14:37:36.841581529 +0000|sha256= 28bacc3825c2bc6baed92638b92ab7b5139390eb526c0cd726051dadb314717a
+DIRECTIVE /etc/sudoers.d/morpheus-node:1:Defaults:morpheus-node !requiretty
+DIRECTIVE /etc/sudoers.d/morpheus-node:7:Defaults:root !requiretty
+GLOBAL_ROOTPW_TEXT=FOUND
+SUDO_PASSWORD_DIRECTIVES_PRESENT=YES
+
+===== SSH =====
+SSH_SERVICE_ACTIVE=active
+SSHD_CONFIG_TEST=OK
+
+-- SSH_EFFECTIVE_ROOT addr=10.113.1.167 --
+port 22
+permitrootlogin without-password
+pubkeyauthentication yes
+passwordauthentication yes
+kbdinteractiveauthentication no
+authenticationmethods any
+
+-- SSH_EFFECTIVE_ROOT addr=172.31.0.1 --
+port 22
+permitrootlogin without-password
+pubkeyauthentication yes
+passwordauthentication yes
+kbdinteractiveauthentication no
+authenticationmethods any
+
+-- SSH_EFFECTIVE_ROOT addr=172.17.0.1 --
+port 22
+permitrootlogin without-password
+pubkeyauthentication yes
+passwordauthentication yes
+kbdinteractiveauthentication no
+authenticationmethods any
+
+-- SSH_EFFECTIVE_ROOT addr=172.30.0.1 --
+port 22
+permitrootlogin without-password
+pubkeyauthentication yes
+passwordauthentication yes
+kbdinteractiveauthentication no
+authenticationmethods any
+
+-- SSH_EFFECTIVE_ROOT addr=172.18.0.1 --
+port 22
+permitrootlogin without-password
+pubkeyauthentication yes
+passwordauthentication yes
+kbdinteractiveauthentication no
+authenticationmethods any
+
+-- SSH_EFFECTIVE_ROOT addr=172.19.0.1 --
+port 22
+permitrootlogin without-password
+pubkeyauthentication yes
+passwordauthentication yes
+kbdinteractiveauthentication no
+authenticationmethods any
+
+-- SSH_EFFECTIVE_ROOT addr=172.20.0.1 --
+port 22
+permitrootlogin without-password
+pubkeyauthentication yes
+passwordauthentication yes
+kbdinteractiveauthentication no
+authenticationmethods any
+
+-- SSH_EFFECTIVE_ROOT addr=10.80.0.1 --
+port 22
+permitrootlogin without-password
+pubkeyauthentication yes
+passwordauthentication yes
+kbdinteractiveauthentication no
+authenticationmethods any
+
+-- SSH_EFFECTIVE_ROOT addr=172.21.0.1 --
+port 22
+permitrootlogin without-password
+pubkeyauthentication yes
+passwordauthentication yes
+kbdinteractiveauthentication no
+authenticationmethods any
+
+-- SSH_DEFAULT --
+port 22
+permitrootlogin without-password
+pubkeyauthentication yes
+passwordauthentication yes
+kbdinteractiveauthentication no
+authenticationmethods any
+
+===== PAM_AND_SSSD =====
+CONFIG_FILE=/etc/pam.d/sudo|owner=root:root|mode=644|mtime=2024-01-29 17:09:56.000000000 +0000
+4:session    required   pam_limits.so
+6:session    required   pam_env.so readenv=1 user_readenv=0
+7:session    required   pam_env.so readenv=1 envfile=/etc/default/locale user_readenv=0
+9:@include common-auth
+10:@include common-account
+11:@include common-session-noninteractive
+CONFIG_FILE=/etc/pam.d/sshd|owner=root:root|mode=644|mtime=2025-04-22 11:51:46.000000000 +0000
+4:@include common-auth
+7:account    required     pam_nologin.so
+14:@include common-account
+19:session [success=ok ignore=ignore module_unknown=ignore default=bad]        pam_selinux.so close
+22:session    required     pam_loginuid.so
+25:session    optional     pam_keyinit.so force revoke
+28:@include common-session
+33:session    optional     pam_motd.so  motd=/run/motd.dynamic
+34:session    optional     pam_motd.so noupdate
+37:session    optional     pam_mail.so standard noenv # [1]
+40:session    required     pam_limits.so
+44:session    required     pam_env.so # [1]
+47:session    required     pam_env.so user_readenv=1 envfile=/etc/default/locale
+52:session [success=ok ignore=ignore module_unknown=ignore default=bad]        pam_selinux.so open
+55:@include common-password
+CONFIG_FILE=/etc/nsswitch.conf|owner=root:root|mode=644|mtime=2025-05-16 10:10:08.298822280 +0000
+SSSD_ACTIVE=inactive
+unavailable
+
+===== LIMITACOES =====
+READ ONLY: sem mudancas de configuracao ou senha.
+sshd -T -C depende do contexto Match; IP do cliente real deve ser validado.
+sudo -l -U nao demonstra que senha sera pedida em sessao interativa.
+Nunca armazenar senhas ou hashes em relatorios.
