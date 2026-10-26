@@ -14,16 +14,16 @@
 ## Estratégia de implementação: Roadmap de execução: 
 
 ### 0. Governança e planejamento 
-1. [ ] Definir objetivos, escopo e critérios de aceite 
-2. [ ] Definir arquitetura lógica e física 
-3. [ ] Definir naming e tags 
-4. [ ] Inventariar hardware e licenciamento 
+1. [x] Definir objetivos, escopo e critérios de aceite 
+2. [x] Definir arquitetura lógica e física 
+3. [x] Definir naming e tags 
+4. [ ] Inventariar hardware e licenciamento
 5. [ ] Estimar custos locais e Azure 
 6. [ ] Registrar Cost Gate GO / NO-GO 
 
 ### 1. Fundação local, infraestrutura local 
 1. [ ] Validar hardware, BIOS, e virtualização 
-2. [ ] Preparar SSD do Vostro 
+2. [ ] Preparar SSD do Vostro e E6510
 3. [ ] Instalar e configurar Proxmox 01 
 4. [ ] Instalar e configurar Proxmox 02 
 5. [ ] Definir redes e isolamento do laboratório 
@@ -36,7 +36,7 @@
 3. [ ] Testar Wake-on-LAN dos hosts 
 Entrega: acesso seguro de uma rede externa, sem publicar interfaces administrativas na Internet. 
 
-### 3. Active Directory + Linux (Identidade, Arc, Monitoramento, Segurança)    
+### 3. Active Directory + Linux (Identidade, Segurança)    
 1. [ ] Criar domínio raiz  
 2. [ ] Criar domínio filho 
 3. [ ] Configurar DNS e sincronização de horário 
@@ -108,6 +108,7 @@ Entrega: dashboards operacionais e notificações validadas por incidentes simul
 ---
 
 ## 0. Governança e planejamento 
+
 ### 1. Definir objetivos, escopo e critérios de aceite 
 
 #### Construção do AS IS, para simular a SPGG hoje: 
@@ -142,9 +143,27 @@ Entrega: dashboards operacionais e notificações validadas por incidentes simul
 - Defender/IA 
 - MDM para o iPAD
 
+#### Resultados esperados:
+Ao concluir, teremos um ambiente capaz de demonstrar:
+- Autenticação centralizada de servidores Linux utilizando AD, SSSD e PAM.
+- Padronização de privilégios administrativos e aplicação de políticas.
+- Atualização e gestão de patches Linux.
+- Inventário centralizado de equipamentos com OCS Inventory.
+- Monitoramento e alertas com Zabbix e Grafana.
+- Acesso remoto seguro ao laboratório.
+- Integração de identidade e recursos com Azure.
+- Procedimentos de operação, recuperação e desligamento documentados.
+
+#### Pontos de atenção:
+- A assinatura Azure existente não concede automaticamente todas as licenças Microsoft 365, Entra ID Premium ou Intune. A elegibilidade e os custos deverão ser verificados antes de cada laboratório.
+- O Intune será estudado para gerenciamento de dispositivos compatíveis. Para patch management de servidores, a prioridade será Azure Update Manager e/ou ferramentas locais apropriadas.
+- O Key Vault poderá ser utilizado para segredos e certificados, mas a integração de certificados com serviços internos exigirá avaliar distribuição, confiança e renovação.
+- A sincronização com Entra ID exigirá um domínio UPN verificável. O sufixo .test permanecerá restrito ao AD interno.
+
 ### 2. Definir arquitetura lógica e física 
+
 #### Laboratorio SOHO local: 
-- E6510: 8GB, 240GB SSD, Lubuntu Administração + (KVM + QEMU + Virt-Manager)
+- E6510: 8GB, 120GB SSD, Lubuntu Administração + (KVM + QEMU + Virt-Manager)
 - XPS l502x: 16GB, 447GB SSD, Proxmox 01
 - Vostro V131: 8GB, 240GB SSD, Proxmox 02
 - Thinkpad E14: 16GB, 473GB SSD, Windows 11 Pro (note pessoal) + administração e VirtualBox
@@ -153,18 +172,208 @@ Entrega: dashboards operacionais e notificações validadas por incidentes simul
 
 #### Setup:
 ##### XPS L502x: Proxmox 01
-- Hostname, IP:
+- Hostname/IP: XPS, 192.168.1.201 (192.168.1.123)
 - Hosts de VMs:
   - VM ?
   - VM ?
+  - VM ?
 ##### Vostro v131: Proxmox 02
-- Hostname, IP:
+- Hostname/IP: Vostro, 192.168.1.202 (192.168.1.114)
 - Hosts de VMs:
   - VM ?
   - VM ?
   - https://www.youtube.com/watch?v=iYBMLHyTGPg
 ##### E6510: Lubuntu + (KVM + QEMU + Virt-Manager)
-- Hostname, IP: E6510, DHCP
+- Hostname/IP: E6510, DHCP
 - Administração
 - Host de VMs:
   - VM ?
+##### iPad geração 10
+- Administração e operação do ambiente e testes de MDM
+##### VMs
+- VM AD root ad.marciolab.test, IP: 192.168.1.205
+- VM AD subdomain sub.ad.marciolab.test, IP: 192.168.1.206
+- VM OCS Inventory, IP: 192.168.1.207
+- VM Zabbix/Grafana, IP: 192.168.1.208
+- VM Graylog/Syslog, IP: 192.168.1.209
+- VM Linux para SSSD/PAM/ADsys, IP: 192.168.1.210
+##### Azure subscription 
+
+### 3. Definir naming e tags 
+
+#### Naming convention e tags para VMs:
+##### TIPO-PROJETO-AMBIENTE-REGIAO-INSTANCIA
+- Promox 1: pve-spgg-lab-01 = XPS
+- Promox 2: pve-spgg-lab-02 = Vostro
+- DC principal: vm-dc-01
+- DC sub: vm-dc-02
+- VM Linux: vm-lin-01
+- VM Windows: vm-win-01
+- VM OCS: vm-ocs-01
+- VM Zabbix/Grafana: vm-zbx-01
+- VM Syslog: vm-syslog-01
+- Management Group: MG-MarcioLab
+- Subscription: Sub-MarcioLab
+- Resource Group: rg-spgg-lab
+- Key Vault: kv-spgg-lab-eus-01
+- Log Analytics, se necessário: log-spgg-lab-eus-01
+- VM Azure: vm-spgg-lab-eus-01
+#### Tags convention:
+- Owner: Marcio
+- Environment: Lab
+- Project: SPGG-Lab
+- CostCenter: Learning
+- ManagedBy: Manual
+- Lifecycle: Temporary
+
+### 4. Inventariar hardware e licenciamento
+
+
+
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+# Instalar Debian 12 -> Proxmox 8 -> Proxmox 9
+
+## Debian 12
+
+`cat /etc/apt/sources.list`
+
+`ls -l /etc/apt/sources.list.d/`
+
+`nano /etc/apt/sources.list` (Salve com Ctrl+O, Enter e saia com Ctrl+X.)
+- #cdrom
+- deb http://deb.debian.org/debian bookworm main contrib non-free-firmware
+- deb http://deb.debian.org/debian bookworm-updates main contrib non-free-firmware
+- deb http://security.debian.org/debian-security bookworm-security main 
+
+`contrib non-free-firmware`
+
+`apt update`
+
+`apt install openssh-server -y`
+
+`systemctl enable --now ssh`
+
+`systemctl status ssh`
+
+`ss -tlnp | grep ':22'`
+
+`systemctl poweroff`
+
+`lscpu | grep -E 'Model name|Virtualization|Architecture'`
+
+`cp /etc/hosts /etc/hosts.bak`
+
+`nano /etc/hosts`
+- Substitua:
+  - 127.0.0.1 localhost
+  - 127.0.1.1 XPS
+- Por:
+  - 127.0.0.1       localhost
+  - 192.168.1.201   XPS.home.arpa XPS
+
+`apt update
+apt install ifupdown2 bridge-utils -y
+command -v ifreload`
+
+`nano /etc/network/interfaces`
+- auto lo
+- iface lo inet loopback
+- auto enp5s0
+- iface enp5s0 inet manual
+- auto vmbr0
+- iface vmbr0 inet static
+    address 192.168.1.201/24
+    gateway 192.168.1.1
+    bridge-ports enp5s0
+    bridge-stp off
+    bridge-fd 0
+
+`ifreload -a`
+
+`ip -br addr`
+
+`ip route`
+
+`ping -c 4 192.168.1.1`
+
+`ping -c 4 8.8.8.8`
+
+`apt install wget ca-certificates gnupg -y`
+
+`wget https://enterprise.proxmox.com/debian/proxmox-release-bookworm.gpg \
+  -O /etc/apt/trusted.gpg.d/proxmox-release-bookworm.gpg`
+
+`echo "deb http://download.proxmox.com/debian/pve bookworm pve-no-subscription" \
+  > /etc/apt/sources.list.d/pve-install-repo.list`
+
+`apt update`
+
+`apt-cache policy proxmox-default-kernel`
+
+`apt-cache policy proxmox-ve`
+
+`apt install proxmox-default-kernel`
+
+`apt-get -s install proxmox-ve postfix open-iscsi`
+
+`apt-get -s install proxmox-ve postfix open-iscsi | grep -E '^(Inst|Remv|Conf) (proxmox-ve|pve-manager|qemu-server|pve-cluster|postfix|open-iscsi|ifupdown2|openssh-server)'`
+
+`apt-cache policy proxmox-ve pve-manager` 
+
+`apt-get -s install proxmox-ve postfix open-iscsi | grep -E '^(Inst|Remv) (proxmox-ve|pve-manager|qemu-server|pve-cluster|postfix|open-iscsi|ifupdown2|openssh-server) '`
+
+`apt install proxmox-ve postfix open-iscsi`
+
+`pveversion -v`
+
+`systemctl status pveproxy --no-pager
+systemctl status pvedaemon --no-pager
+systemctl status pve-cluster --no-pager`
+
+https://192.168.1.201:8006
+
+`dpkg -l pve-edk2-firmware`
+
+`apt-cache policy pve-edk2-firmware`
+
+`dpkg --audit`
+
+`pvesm status`
+
+`cat /etc/pve/storage.cfg`
+
+`pvs
+vgs
+lvs`
+
+`pvesm add dir local --path /var/lib/vz --content images,rootdir,iso,vztmpl,backup,snippets`
+
+`pvesm add dir local --path /var/lib/vz --content images,rootdir,iso,vztmpl,backup,snippets`
+
+`pvesm list local --content images`
+
+`pvesm list local --content iso`
+
+`pvesm set local --content images,rootdir,iso,vztmpl,backup,snippets`
+
+`cat /etc/pve/storage.cfg`
+
+
+
+
+# Instalar Windows 2025 DC ad.marciolab.test server core
+
+# Instalar Windows 2025 DC sub.ad.marciolab.test server core
+
+# Instalar Ubuntu Server 24.04.5 LTS 
+https://ubuntu.com/download/server/thank-you?version=24.04.5&architecture=amd64&lts=true
+
