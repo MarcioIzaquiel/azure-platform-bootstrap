@@ -1,7 +1,7 @@
 
 ===== IDENTIFICACAO =====
-HOSTNAME=vm701794
-COLLECTED=2026-10-26T19:40:50+00:00
+HOSTNAME=vm701792
+COLLECTED=2026-10-27T16:41:25+00:00
 OS=Ubuntu 24.04.4 LTS
 MODE=READ_ONLY
 
@@ -14,11 +14,11 @@ authorizedkeysfile .ssh/authorized_keys .ssh/authorized_keys2
 authenticationmethods any
 
 ===== DIRETORIO ROOT SSH =====
-drwx------ 2 root root 4096 Sep 25 13:27 /root/.ssh
+drwx------ 2 root root 4096 Sep 25 12:50 /root/.ssh
 ROOT_SSH_DIR=EXISTS
 
 ===== ARQUIVO authorized_keys =====
--rw------- 1 root root 0 Sep 25 13:27 /root/.ssh/authorized_keys
+-rw------- 1 root root 0 Sep 25 12:50 /root/.ssh/authorized_keys
 AUTHORIZED_KEYS_FILE=EXISTS
 AUTHORIZED_KEYS_KEYS_SIMPLE_GREP_COUNT=0
 AUTHORIZED_KEYS_KEYS_INDICATIVE_COUNT=0

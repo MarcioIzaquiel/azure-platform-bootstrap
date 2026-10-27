@@ -1,0 +1,125 @@
+
+===== IDENTIFICACAO =====
+HOSTNAME=nogales
+COLLECTED=2026-10-27T15:01:18-03:00
+OS=Ubuntu 24.04.3 LTS
+IP_IPV4=ens192:200.198.145.173/28
+MODE=READ_ONLY
+
+===== ROOT =====
+ROOT_PASSWD_STATUS=root P 2026-08-03 0 99999 7 -1
+ROOT_PASSWD_STATE=P
+ROOT_LAST_CHANGE=2026-08-03
+ROOT_SHELL=/bin/bash
+
+===== ACESSO ADMINISTRATIVO =====
+USER_PROCERGS_EXISTS=YES
+USER_PROCERGS_GROUPS=procergs,adm,cdrom,sudo,dip,plugdev,lxd
+USER_PROCERGS_PASSWD=P
+
+-- SUDO_RULES procergs --
+Matching Defaults entries for procergs on nogales:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty, rootpw
+
+User procergs may run the following commands on nogales:
+    (ALL : ALL) ALL
+USER_SPGGADMIN_EXISTS=YES
+USER_SPGGADMIN_GROUPS=spggadmin,sudo,www-data,users
+USER_SPGGADMIN_PASSWD=P
+
+-- SUDO_RULES spggadmin --
+Matching Defaults entries for spggadmin on nogales:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty, rootpw
+
+User spggadmin may run the following commands on nogales:
+    (ALL : ALL) ALL
+USER_CDSADMIN_EXISTS=YES
+USER_CDSADMIN_GROUPS=cdsadmin,sudo,users
+USER_CDSADMIN_PASSWD=P
+
+-- SUDO_RULES cdsadmin --
+Matching Defaults entries for cdsadmin on nogales:
+    env_reset, mail_badpass, secure_path=/usr/local/sbin\:/usr/local/bin\:/usr/sbin\:/usr/bin\:/sbin\:/bin\:/snap/bin, use_pty, rootpw
+
+User cdsadmin may run the following commands on nogales:
+    (ALL : ALL) ALL
+GROUP_SUDO=sudo:x:27:procergs,spggadmin,cdsadmin,devadmin,monitoramento
+GROUP_WHEEL=
+
+-- UID 0 accounts --
+root:0:/bin/bash
+
+-- Sudo/wheel memberships (local and NSS) --
+procergs: procergs adm cdrom sudo dip plugdev lxd
+spggadmin: spggadmin sudo www-data users
+cdsadmin: cdsadmin sudo users
+devadmin: devadmin sudo www-data users
+monitoramento: monitoramento sudo users
+
+===== SUDOERS =====
+SUDOERS_SYNTAX=/etc/sudoers.d/README: parsed OK
+SUDOERS_FILE=/etc/sudoers|owner=root:root|mode=440|mtime=2026-08-03 11:54:19.528340490 -0300|sha256= e7e050e8228967cd549d40dc36a145275766d7a8699400affde8090d5533ae7a
+DIRECTIVE /etc/sudoers:9:Defaults	env_reset
+DIRECTIVE /etc/sudoers:10:Defaults	mail_badpass
+DIRECTIVE /etc/sudoers:11:Defaults	secure_path="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/snap/bin"
+DIRECTIVE /etc/sudoers:15:Defaults	use_pty
+DIRECTIVE /etc/sudoers:16:Defaults        rootpw
+DIRECTIVE /etc/sudoers:57:@includedir /etc/sudoers.d
+SUDOERS_FILE=/etc/sudoers.d/README|owner=root:root|mode=440|mtime=2024-01-29 14:09:56.000000000 -0300|sha256= b428c9b673c3c806370f2aa28a98293a9cb578c70c3a8a2d1a39031861b3dbd8
+SUDOERS_FILE=/etc/sudoers.d/devadmin|owner=root:root|mode=644|mtime=2026-03-09 18:41:49.326733983 -0300|sha256= 05e010357ce60ad5067c652e25e9a3224ef9829901d27a1310d3601dd59ba0e0
+GLOBAL_ROOTPW_TEXT=FOUND
+SUDO_PASSWORD_DIRECTIVES_PRESENT=YES
+
+===== SSH =====
+SSH_SERVICE_ACTIVE=active
+SSHD_CONFIG_TEST=OK
+
+-- SSH_EFFECTIVE_ROOT addr=200.198.145.173 --
+port 22
+permitrootlogin yes
+pubkeyauthentication yes
+passwordauthentication yes
+kbdinteractiveauthentication no
+authenticationmethods any
+
+-- SSH_DEFAULT --
+port 22
+permitrootlogin yes
+pubkeyauthentication yes
+passwordauthentication yes
+kbdinteractiveauthentication no
+authenticationmethods any
+
+===== PAM_AND_SSSD =====
+CONFIG_FILE=/etc/pam.d/sudo|owner=root:root|mode=644|mtime=2024-01-29 14:09:56.000000000 -0300
+4:session    required   pam_limits.so
+6:session    required   pam_env.so readenv=1 user_readenv=0
+7:session    required   pam_env.so readenv=1 envfile=/etc/default/locale user_readenv=0
+9:@include common-auth
+10:@include common-account
+11:@include common-session-noninteractive
+CONFIG_FILE=/etc/pam.d/sshd|owner=root:root|mode=644|mtime=2024-08-08 23:33:22.000000000 -0300
+4:@include common-auth
+7:account    required     pam_nologin.so
+14:@include common-account
+19:session [success=ok ignore=ignore module_unknown=ignore default=bad]        pam_selinux.so close
+22:session    required     pam_loginuid.so
+25:session    optional     pam_keyinit.so force revoke
+28:@include common-session
+33:session    optional     pam_motd.so  motd=/run/motd.dynamic
+34:session    optional     pam_motd.so noupdate
+37:session    optional     pam_mail.so standard noenv # [1]
+40:session    required     pam_limits.so
+44:session    required     pam_env.so # [1]
+47:session    required     pam_env.so user_readenv=1 envfile=/etc/default/locale
+52:session [success=ok ignore=ignore module_unknown=ignore default=bad]        pam_selinux.so open
+55:@include common-password
+CONFIG_FILE=/etc/nsswitch.conf|owner=root:root|mode=644|mtime=2024-04-23 06:40:28.000000000 -0300
+SSSD_ACTIVE=inactive
+unavailable
+
+===== LIMITACOES =====
+READ ONLY: sem mudancas de configuracao ou senha.
+sshd -T -C depende do contexto Match; IP do cliente real deve ser validado.
+sudo -l -U nao demonstra que senha sera pedida em sessao interativa.
+Nunca armazenar senhas ou hashes em relatorios.

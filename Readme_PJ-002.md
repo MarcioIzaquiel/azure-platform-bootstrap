@@ -40,6 +40,7 @@ Entrega: acesso seguro de uma rede externa, sem publicar interfaces administrati
 1. [ ] Criar domínio raiz  
 2. [ ] Criar domínio filho 
 3. [ ] Configurar DNS e sincronização de horário 
+3. [ ] Testar GPOs
 4. [ ] Instalar Linux cliente de teste 
 5. [ ] Integrar SSSD e PAM ao domínio filho 
 6. [ ] Configurar SSH e privilégios sudo 
@@ -78,11 +79,12 @@ Entrega: dashboards operacionais e notificações validadas por incidentes simul
 2. [ ] Criar RG somente quando necessário 
 3. [ ] Verificar custos antes de cada serviço 
 4. [ ] Testar integração híbrida de identidade (Entra ID, sincronização híbrida, Microsoft Entra Connect Sync ou Cloud Sync) 
-5. [ ] Avaliar Azure Arc 
+5. [ ] Avaliar Azure Arc, Windows Admin Center on Azure Portal 
 6. [ ] Azure Monitor, Log Analytics, Azure Update Manager 
 7. [ ] Testar Key Vault e certificados 
-8. [ ] Avaliar Intune e inscrição do iPad (MDM) 
+8. [ ] Avaliar Intune, políticas, atualizações e inscrição do iPad (MDM) 
 9. [ ] Comparar alternativas de VPN e acesso híbrido 
+9. [ ] Segurança, opções Defender
 10. [ ] Verificar Cost Management e métricas 
 - Entrega: dispositivo de testes gerenciado, conforme licenciamento disponível 
 - Entrega: prova de conceito de gestão híbrida com custos controlados. 

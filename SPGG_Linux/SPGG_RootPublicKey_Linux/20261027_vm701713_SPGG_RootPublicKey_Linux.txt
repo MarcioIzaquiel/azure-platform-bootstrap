@@ -1,0 +1,43 @@
+
+===== IDENTIFICACAO =====
+HOSTNAME=VM701713
+COLLECTED=2026-10-27T16:49:15+00:00
+OS=Ubuntu 24.04.4 LTS
+MODE=READ_ONLY
+
+===== CONFIGURACAO SSH EFETIVA (PADRAO) =====
+permitrootlogin without-password
+pubkeyauthentication yes
+passwordauthentication yes
+authorizedkeyscommand none
+authorizedkeysfile .ssh/authorized_keys .ssh/authorized_keys2
+authenticationmethods any
+
+===== DIRETORIO ROOT SSH =====
+drwx------ 2 root root 4096 Aug 25 14:08 /root/.ssh
+ROOT_SSH_DIR=EXISTS
+
+===== ARQUIVO authorized_keys =====
+-rw------- 1 root root 1166 Aug 25 14:08 /root/.ssh/authorized_keys
+AUTHORIZED_KEYS_FILE=EXISTS
+AUTHORIZED_KEYS_KEYS_SIMPLE_GREP_COUNT=2
+AUTHORIZED_KEYS_KEYS_INDICATIVE_COUNT=2
+AUTHORIZED_KEYS_READ=OK
+
+===== ARQUIVO authorized_keys2 =====
+AUTHORIZED_KEYS2_FILE=ABSENT
+AUTHORIZED_KEYS2_KEYS_SIMPLE_GREP_COUNT=0
+AUTHORIZED_KEYS2_KEYS_INDICATIVE_COUNT=0
+AUTHORIZED_KEYS2_READ=NOT_APPLICABLE
+
+===== RESUMO CHAVES LOCAIS ROOT =====
+ROOT_LOCAL_KEYS_TOTAL=2
+ROOT_PUBLIC_KEY_STATUS=KEYS_PRESENT_LOCAL_FILES
+
+===== LIMITACOES =====
+Uma chave cadastrada NAO comprova login SSH efetivamente realizado.
+A configuracao sshd pode variar por Match, usuario, IP do cliente e outras restricoes.
+AuthorizedKeysFile pode apontar para outros arquivos; AuthorizedKeysCommand pode fornecer chaves externamente.
+As contagens sao indicativas; opcoes, revogacoes e restricoes podem impedir o login.
+Nao sao exibidos conteudos de chaves, hashes, senhas ou logs de autenticacao.
+READ ONLY: nenhuma alteracao de configuracao remota.

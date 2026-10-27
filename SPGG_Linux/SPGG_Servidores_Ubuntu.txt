@@ -5,7 +5,7 @@
 #
 # Grupo 1 - SisMUP:
 # VM701794 SisMUP 10.113.3.73
-10.113.3.73
+# 10.113.3.73
 # VM701793 SisMUP 10.113.3.114
 # 10.113.3.114
 # VM701792 SisMUP 10.113.1.203
@@ -29,12 +29,10 @@
 # 10.113.3.64 
 # VM701535 Legados Homologacao (Backend do MySQL) 10.113.1.13 *Senha
 # 10.113.1.13
-# VM701713 Producao Nova MySQL DB 10.113.3.216
+# VM701713 Producao Nova MySQL DB 10.113.3.216 (obs: 2 chaves publicas)
 # 10.113.3.216 
-# Fim do Grupo 2:
+# Fim do Grupo 2
 # 
-# NOGALES 200.198.145.173
-# 200.198.145.173
 # VM026858 DEE DataRS 10.113.3.31
 # 10.113.3.31 
 # Dominical DEE 200.198.145.172
@@ -49,17 +47,25 @@
 # 10.113.3.67 
 # VM701094 OJS 10.113.1.56
 # 10.113.1.56 
+#
+# Grupo 3 - Outros sistemas SPGG
 # VM027131 Intranet 10.113.1.207
-# 10.113.1.207 
+10.113.1.207 
+# NOGALES 200.198.145.173
+200.198.145.173
+# VM701005 egov homo 10.113.1.250
+10.113.1.250 
+# Fim do Grupo 3
+#
 # SEPLAGPAEAS12 10.112.7.70
-# 10.112.7.70 
+# 10.112.7.70
+#
+# VM011238 TF Siga Manager 10.113.1.187
+# 10.113.1.187
+#
 # VM701400 OCS 
 # 10.113.2.207 
 # VM700454 Zabbix/Grafana 10.113.2.104
 # 10.113.2.104 
 # VM701084 Syslog 10.113.2.203
-# 10.113.2.203 
-# VM701005 egov homo 10.113.1.250
-# 10.113.1.250 
-# VM011238 TF Siga Manager 10.113.1.187
-# 10.113.1.187
+# 10.113.2.203
