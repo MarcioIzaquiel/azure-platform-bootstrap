@@ -352,8 +352,72 @@ apt-cache policy proxmox-ve`
   - `pvesm set local --content images,rootdir,iso,vztmpl,backup,snippets`
   - `cat /etc/pve/storage.cfg`
 - [ ] Verificação de compatibilidade pve8to9
+  - `pve8to9 --full`
+  - `apt update`
+  - `apt full-upgrade`
+  - `apt install chrony`
+  - `systemctl status chrony --no-pager
+chronyc tracking`  
+  - `pveversion
+df -h /boot
+uname -r`
+  - `pve8to9 --full`
 - [ ] Migração para Proxmox VE 9
-
+  - `cat /etc/apt/sources.list`
+  - `ls -l /etc/apt/sources.list.d/`
+  - `grep -R -nE 'bookworm|trixie|proxmox|enterprise' \
+  /etc/apt/sources.list /etc/apt/sources.list.d/`
+  - `mkdir -p /root/backup-pre-pve9`
+  - `cp -a /etc/apt/sources.list /root/backup-pre-pve9/`
+  - `cp -a /etc/apt/sources.list.d /root/backup-pre-pve9/`
+  - `cp -a /etc/network/interfaces /root/backup-pre-pve9/`
+  - `cp -a /etc/hosts /root/backup-pre-pve9/`
+  - `nano /etc/apt/sources.list`
+    - Substituia por
+    - deb http://deb.debian.org/debian trixie main contrib non-free - non-free-firmware
+    - deb http://deb.debian.org/debian trixie-updates main contrib non-free non-free-firmware
+    - deb http://security.debian.org/debian-security trixie-security main contrib non-free non-free-firmware
+- `nano /etc/apt/sources.list.d/pve-install-repo.list`
+  - Substituia por
+    - deb [signed-by=/etc/apt/trusted.gpg.d/proxmox-release-trixie.gpg] http://download.proxmox.com/debian/pve trixie pve-no-subscription
+  - `cat /etc/apt/sources.list`
+  - `cat /etc/apt/sources.list.d/pve-install-repo.list`
+  - `grep -R -nE '^[[:space:]]*deb .*bookworm|^[[:space:]]*deb .*trixie' \
+  /etc/apt/sources.list /etc/apt/sources.list.d/`
+  - `apt update`
+  - `apt-cache policy proxmox-ve pve-manager`
+  - `apt-get -s dist-upgrade`
+  - `apt-get -s dist-upgrade | grep -E '^(Remv|Inst proxmox-ve|Inst pve-manager|Inst proxmox-default-kernel|Inst pve-cluster|Inst qemu-server|Inst ifupdown2|Inst openssh-server)'`
+  - `apt-get -s dist-upgrade | grep '^Remv ' | grep -E '^Remv (proxmox-ve|pve-manager|pve-cluster|qemu-server|pve-qemu-kvm|openssh-server|ifupdown2|proxmox-default-kernel)( |:)'`
+  - `apt-get -s dist-upgrade 2>&1 | tail -n 20`
+  - `apt-get -s dist-upgrade | grep '^Remv ' | grep -E '^Remv (proxmox-ve|pve-manager|pve-cluster|qemu-server|pve-qemu-kvm|openssh-server|ifupdown2|proxmox-default-kernel)( |:)'`
+  - `apt-get -s dist-upgrade 2>&1 | grep -E 'upgraded,|newly installed,|to remove|not upgraded|^E:|^W:'`
+  - `jobs -l`
+  - `apt install tmux`
+  - `tmux new -s upgrade-pve9`
+  - `hostname
+cat /etc/os-release
+pveversion`
+  - `dpkg --audit`
+  - `tmux -V`
+  - `tmux new -s upgrade-pve9`
+    - echo "Sessao tmux ativa"
+    - echo "$TMUX"    
+  - `tmux attach -t upgrade-pve9`
+  - `dpkg --audit`
+  - `apt-mark showhold`
+  - `apt-get check`
+  - `cat /etc/os-release`
+  - `apt-get -s dist-upgrade 2>&1 | tee /root/simulacao-upgrade-pve9.txt | grep -E '^(Remv|Inst) (proxmox-ve|pve-manager|proxmox-default-kernel|pve-cluster|qemu-server|ifupdown2|openssh-server) |[0-9]+ upgraded,'`
+  - `grep '^Remv ' /root/simulacao-upgrade-pve9.txt | awk '{print $2}'`
+  - `grep '^Inst proxmox-kernel-' /root/simulacao-upgrade-pve9.txt`
+  - `apt-get -s dist-upgrade 2>&1 | grep -E '^(E:|W:|[0-9]+ upgraded,)'`
+  - `apt-get dist-upgrade`
+  - `dpkg --audit
+pveversion -v
+uname -r
+systemctl is-active pveproxy pvedaemon pve-cluster ssh`
+  - ``
 
 # Instalar Windows 2025 DC ad.marciolab.test server core
 
