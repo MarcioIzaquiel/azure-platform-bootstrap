@@ -17,18 +17,17 @@
 1. [x] Definir objetivos, escopo e critérios de aceite 
 2. [x] Definir arquitetura lógica e física 
 3. [x] Definir naming e tags 
-4. [ ] Inventariar hardware e licenciamento
+4. [x] Inventariar hardware e licenciamento
 5. [ ] Estimar custos locais e Azure 
 6. [ ] Registrar Cost Gate GO / NO-GO 
 
 ### 1. Fundação local, infraestrutura local 
-1. [ ] Validar hardware, BIOS, e virtualização 
-2. [ ] Preparar SSD do Vostro e E6510
-3. [ ] Instalar e configurar Proxmox 01 
-4. [ ] Instalar e configurar Proxmox 02 
-5. [ ] Definir redes e isolamento do laboratório 
-6. [ ] Configurar backups e snapshots 
-7. [ ] Validar acesso remoto seguro 
+1. [x] Validar hardware, BIOS, e virtualização 
+2. [x] Preparar SSD do XPS, Vostro e E6510
+3. [x] Instalar e configurar Proxmox 01, Proxmox 02, Proxmox 03
+4. [x] Definir redes e isolamento do laboratório 
+5. [ ] Configurar backups e snapshots 
+6. [ ] Validar acesso remoto seguro 
 
 ### 2. Acesso remoto seguro (Tailscale ou WireGuard, administração dos hipervisores e teste de acesso externo. VPN privada, autenticação, controle de acesso). 
 1. [ ] Testar acesso fora da LAN 
@@ -40,13 +39,13 @@ Entrega: acesso seguro de uma rede externa, sem publicar interfaces administrati
 1. [ ] Criar domínio raiz  
 2. [ ] Criar domínio filho 
 3. [ ] Configurar DNS e sincronização de horário 
-3. [ ] Testar GPOs
-4. [ ] Instalar Linux cliente de teste 
-5. [ ] Integrar SSSD e PAM ao domínio filho 
-6. [ ] Configurar SSH e privilégios sudo 
-7. [ ] Testar ADsys e políticas aplicáveis (GPOs) 
-8. [ ] Configurar gestão de patches 
-9. [ ] Documentar evidências e rollback 
+4. [ ] Testar GPOs
+5. [ ] Instalar Linux cliente de teste 
+6. [ ] Integrar SSSD e PAM ao domínio filho 
+7. [ ] Configurar SSH e privilégios sudo 
+8. [ ] Testar ADsys e políticas aplicáveis (GPOs) 
+9. [ ] Configurar gestão de patches 
+10. [ ] Documentar evidências e rollback 
 Entrega: Linux autenticando usuários do domínio filho e aplicando privilégios administrativos controlados. 
 
 ### 4. OCS Inventory    
@@ -74,7 +73,9 @@ Entrega: dashboards operacionais e notificações validadas por incidentes simul
 2. [ ] Validar centralização e retenção de logs 
 3. Entrega: logs Linux centralizados e pesquisáveis. 
 
-### 7. Integração Azure    
+### 7. Docker
+
+### 8. Integração Azure    
 1. [ ] Verificar Azure Policy e RBAC 
 2. [ ] Criar RG somente quando necessário 
 3. [ ] Verificar custos antes de cada serviço 
@@ -89,7 +90,7 @@ Entrega: dashboards operacionais e notificações validadas por incidentes simul
 - Entrega: dispositivo de testes gerenciado, conforme licenciamento disponível 
 - Entrega: prova de conceito de gestão híbrida com custos controlados. 
 
-### 8. Validação operacional    
+### 9. Validação operacional    
 - Segurança, custos, desligamento, religamento, recuperação e documentação final. 
 1. [ ] Testar suspensão dos componentes locais 
 2. [ ] Testar reativação e dependências 
@@ -111,10 +112,10 @@ Entrega: dashboards operacionais e notificações validadas por incidentes simul
 
 ## 0. Governança e planejamento 
 
-### 1. Definir objetivos, escopo e critérios de aceite 
+### 0.1. Definir objetivos, escopo e critérios de aceite 
 
 #### Construção do AS IS, para simular a SPGG hoje: 
-- AD de dominio principal (intra.rs.gov.br) e um subsdominio (spgg.intra.rs.gov.br), simulando o serviço de AD (ADS) prestado pela PROCERGS a SPGG. Sugestão de dominio: ad.marciolab.test e sub.ad.marciolab.test 
+- A SPGG hoje faz parte de um AD de dominio principal (intra.rs.gov.br) e um subsdominio (seplag.intra.rs.gov.br), simulando o serviço de AD (ADS) prestado pela PROCERGS a SPGG. Sugestão de dominio: ad.marciolab.test e sub.ad.marciolab.test 
 - Os servidores linux despadronizados, quanto ao acesso e segurança e as ferramentas, como OCS Inventory, Zabbix/Grafana (e se der tempo e espaço, o Syslog(Graylog)).  
 - Essas VMs serão distribuídas nos XPS502l 16GB e Vostro v131 8GB com Promox. Também podemos usar ocasionalmente, na memoria que sobra do uso normal, o E6510 Lubuntu (KVM + QEMU + Virt-Manager) 8GB e o Thinkpad E14 Windows 11 Pro + VirtualBox 16GB (notebook pessoal) 
 - Azure/Microsoft 365/Entra ID atual usado pela SPGG: @spgg.rs.gov.br. Sugestão, usar o meu Azure subscription que estamos usando na trilha. 
@@ -162,58 +163,57 @@ Ao concluir, teremos um ambiente capaz de demonstrar:
 - O Key Vault poderá ser utilizado para segredos e certificados, mas a integração de certificados com serviços internos exigirá avaliar distribuição, confiança e renovação.
 - A sincronização com Entra ID exigirá um domínio UPN verificável. O sufixo .test permanecerá restrito ao AD interno.
 
-### 2. Definir arquitetura lógica e física 
+### 0.2. Definir arquitetura lógica e física 
 
 #### Laboratorio SOHO local: 
-- E6510: 8GB, 120GB SSD, Lubuntu Administração + (KVM + QEMU + Virt-Manager)
 - XPS l502x: 16GB, 447GB SSD, Proxmox 01
 - Vostro V131: 8GB, 240GB SSD, Proxmox 02
+- E6510: 8GB, 120GB SSD, Proxmox 03
 - Thinkpad E14: 16GB, 473GB SSD, Windows 11 Pro (note pessoal) + administração e VirtualBox
 - iPAD 10 pessoal 
 - Azure subscription usada na trilha de aprendizagem 
 
 #### Setup:
 ##### XPS L502x: Proxmox 01
-- Hostname/IP: XPS, 192.168.1.201 (192.168.1.123)
+- Hostname/IP: XPS, 192.168.1.201
 - Hosts de VMs:
-  - VM ?
-  - VM ?
-  - VM ?
+  - VM AD root ad.marciolab.test, IP: 192.168.1.210
+  - VM AD subdomain sub.ad.marciolab.test, IP: 192.168.1.211
+  - VM Linux para SSSD/PAM/ADsys, IP: 192.168.1.212
 ##### Vostro v131: Proxmox 02
-- Hostname/IP: Vostro, 192.168.1.202 (192.168.1.114)
+- Hostname/IP: Vostro, 192.168.1.202
 - Hosts de VMs:
   - VM ?
   - VM ?
   - https://www.youtube.com/watch?v=iYBMLHyTGPg
-##### E6510: Lubuntu + (KVM + QEMU + Virt-Manager)
-- Hostname/IP: E6510, DHCP
-- Administração
+##### E6510: Proxmox 03
+- Hostname/IP: E6510, 192.168.1.203
 - Host de VMs:
   - VM ?
 ##### iPad geração 10
 - Administração e operação do ambiente e testes de MDM
 ##### VMs
-- VM AD root ad.marciolab.test, IP: 192.168.1.205
-- VM AD subdomain sub.ad.marciolab.test, IP: 192.168.1.206
-- VM OCS Inventory, IP: 192.168.1.207
-- VM Zabbix/Grafana, IP: 192.168.1.208
-- VM Graylog/Syslog, IP: 192.168.1.209
-- VM Linux para SSSD/PAM/ADsys, IP: 192.168.1.210
+- VM OCS Inventory, IP: 192.168.1.213
+- VM Zabbix/Grafana, IP: 192.168.1.214
+- VM Graylog/Syslog, IP: 192.168.1.215
+- VM Windows cliente, IP: DHCP
+- VM Lubuntu cliente, IP: DHCP
 ##### Azure subscription 
 
-### 3. Definir naming e tags 
+### 0.3. Definir naming e tags 
 
 #### Naming convention e tags para VMs:
 ##### TIPO-PROJETO-AMBIENTE-REGIAO-INSTANCIA
-- Promox 1: pve-spgg-lab-01 = XPS
-- Promox 2: pve-spgg-lab-02 = Vostro
+- Proxmox 1: pve-spgg-lab-01 = XPS
+- Proxmox 2: pve-spgg-lab-02 = Vostro
+- Proxmox 3: pve-spgg-lab-03 = E6510
 - DC principal: vm-dc-01
 - DC sub: vm-dc-02
-- VM Linux: vm-lin-01
+- VM Linux: vm-ubu-01
 - VM Windows: vm-win-01
 - VM OCS: vm-ocs-01
 - VM Zabbix/Grafana: vm-zbx-01
-- VM Syslog: vm-syslog-01
+- VM Syslog: vm-log-01
 - Management Group: MG-MarcioLab
 - Subscription: Sub-MarcioLab
 - Resource Group: rg-spgg-lab
@@ -228,7 +228,7 @@ Ao concluir, teremos um ambiente capaz de demonstrar:
 - ManagedBy: Manual
 - Lifecycle: Temporary
 
-### 4. Inventariar hardware e licenciamento
+### 0.4. Inventariar hardware e licenciamento
 
 ---
 ---
@@ -241,9 +241,11 @@ Ao concluir, teremos um ambiente capaz de demonstrar:
 ---
 ---
 
-# Instalar Debian 12 -> Proxmox 8 -> Proxmox 9
+## 1. Fundação local, infraestrutura local 
 
-## XPS -> Debian 12 -> Proxmox 8 -> Proxmox 9
+### 1.1, 1.2 vide 0.2. Definir arquitetura lógica e física 
+
+### 1.3 Instalar Debian 12 -> Proxmox 8 -> Proxmox 9 -> Debian 13 (XPS)
 
 - [x] Instalação mínima do Debian 12
   - `systemctl poweroff`
@@ -252,7 +254,7 @@ Ao concluir, teremos um ambiente capaz de demonstrar:
   - `cat /etc/apt/sources.list`
   - `ls -l /etc/apt/sources.list.d/`
   - `nano /etc/apt/sources.list`
-    - # cdrom
+    - #cdrom
     - deb http://deb.debian.org/debian bookworm main contrib non-free-firmware
     - deb http://deb.debian.org/debian bookworm-updates main contrib non-free-firmware
     - deb http://security.debian.org/debian-security bookworm-security main contrib non-free-firmware
@@ -351,7 +353,7 @@ apt-cache policy proxmox-ve`
   - `pvesm list local --content iso`
   - `pvesm set local --content images,rootdir,iso,vztmpl,backup,snippets`
   - `cat /etc/pve/storage.cfg`
-- [ ] Verificação de compatibilidade pve8to9
+- [x] Verificação de compatibilidade pve8to9
   - `pve8to9 --full`
   - `apt update`
   - `apt full-upgrade`
@@ -362,67 +364,180 @@ chronyc tracking`
 df -h /boot
 uname -r`
   - `pve8to9 --full`
-- [ ] Migração para Proxmox VE 9
-  - `cat /etc/apt/sources.list`
-  - `ls -l /etc/apt/sources.list.d/`
-  - `grep -R -nE 'bookworm|trixie|proxmox|enterprise' \
-  /etc/apt/sources.list /etc/apt/sources.list.d/`
-  - `mkdir -p /root/backup-pre-pve9`
-  - `cp -a /etc/apt/sources.list /root/backup-pre-pve9/`
-  - `cp -a /etc/apt/sources.list.d /root/backup-pre-pve9/`
-  - `cp -a /etc/network/interfaces /root/backup-pre-pve9/`
-  - `cp -a /etc/hosts /root/backup-pre-pve9/`
-  - `nano /etc/apt/sources.list`
-    - Substituia por
-    - deb http://deb.debian.org/debian trixie main contrib non-free - non-free-firmware
-    - deb http://deb.debian.org/debian trixie-updates main contrib non-free non-free-firmware
-    - deb http://security.debian.org/debian-security trixie-security main contrib non-free non-free-firmware
-- `nano /etc/apt/sources.list.d/pve-install-repo.list`
-  - Substituia por
-    - deb [signed-by=/etc/apt/trusted.gpg.d/proxmox-release-trixie.gpg] http://download.proxmox.com/debian/pve trixie pve-no-subscription
-  - `cat /etc/apt/sources.list`
-  - `cat /etc/apt/sources.list.d/pve-install-repo.list`
-  - `grep -R -nE '^[[:space:]]*deb .*bookworm|^[[:space:]]*deb .*trixie' \
-  /etc/apt/sources.list /etc/apt/sources.list.d/`
-  - `apt update`
-  - `apt-cache policy proxmox-ve pve-manager`
-  - `apt-get -s dist-upgrade`
-  - `apt-get -s dist-upgrade | grep -E '^(Remv|Inst proxmox-ve|Inst pve-manager|Inst proxmox-default-kernel|Inst pve-cluster|Inst qemu-server|Inst ifupdown2|Inst openssh-server)'`
-  - `apt-get -s dist-upgrade | grep '^Remv ' | grep -E '^Remv (proxmox-ve|pve-manager|pve-cluster|qemu-server|pve-qemu-kvm|openssh-server|ifupdown2|proxmox-default-kernel)( |:)'`
-  - `apt-get -s dist-upgrade 2>&1 | tail -n 20`
-  - `apt-get -s dist-upgrade | grep '^Remv ' | grep -E '^Remv (proxmox-ve|pve-manager|pve-cluster|qemu-server|pve-qemu-kvm|openssh-server|ifupdown2|proxmox-default-kernel)( |:)'`
-  - `apt-get -s dist-upgrade 2>&1 | grep -E 'upgraded,|newly installed,|to remove|not upgraded|^E:|^W:'`
-  - `jobs -l`
-  - `apt install tmux`
-  - `tmux new -s upgrade-pve9`
-  - `hostname
-cat /etc/os-release
-pveversion`
-  - `dpkg --audit`
-  - `tmux -V`
-  - `tmux new -s upgrade-pve9`
-    - echo "Sessao tmux ativa"
-    - echo "$TMUX"    
-  - `tmux attach -t upgrade-pve9`
-  - `dpkg --audit`
-  - `apt-mark showhold`
-  - `apt-get check`
-  - `cat /etc/os-release`
-  - `apt-get -s dist-upgrade 2>&1 | tee /root/simulacao-upgrade-pve9.txt | grep -E '^(Remv|Inst) (proxmox-ve|pve-manager|proxmox-default-kernel|pve-cluster|qemu-server|ifupdown2|openssh-server) |[0-9]+ upgraded,'`
-  - `grep '^Remv ' /root/simulacao-upgrade-pve9.txt | awk '{print $2}'`
-  - `grep '^Inst proxmox-kernel-' /root/simulacao-upgrade-pve9.txt`
-  - `apt-get -s dist-upgrade 2>&1 | grep -E '^(E:|W:|[0-9]+ upgraded,)'`
-  - `apt-get dist-upgrade`
-  - `dpkg --audit
-pveversion -v
-uname -r
-systemctl is-active pveproxy pvedaemon pve-cluster ssh`
-  - ``
 
-# Instalar Windows 2025 DC ad.marciolab.test server core
+- [x] Migração para Proxmox VE 9
+  - Verificação dos repositórios existentes
+    - `cat /etc/apt/sources.list`
+    - `ls -l /etc/apt/sources.list.d/`
+    - `grep -R -nE 'bookworm|trixie|proxmox|enterprise' /etc/apt/sources.list /etc/apt/sources.list.d/`
+  - Backup das configurações antes da migração
+    - `mkdir -p /root/backup-pre-pve9`
+    - `cp -a /etc/apt/sources.list /root/backup-pre-pve9/`
+    - `cp -a /etc/apt/sources.list.d /root/backup-pre-pve9/`
+    - `cp -a /etc/network/interfaces /root/backup-pre-pve9/`
+    - `cp -a /etc/hosts /root/backup-pre-pve9/`
+  - Atualização dos repositórios Debian 12 → Debian 13
+    - `nano /etc/apt/sources.list`
+    - Substituir `bookworm` por `trixie`:
+      ```text
+      deb http://deb.debian.org/debian trixie main contrib non-free non-free-firmware
+      deb http://deb.debian.org/debian trixie-updates main contrib non-free non-free-firmware
+      deb http://security.debian.org/debian-security trixie-security main contrib non-free non-free-firmware
+      ```
+  - Atualização do repositório Proxmox VE 8 → VE 9
+    - `nano /etc/apt/sources.list.d/pve-install-repo.list`
+    - Configurar:
+      ```text
+      deb [signed-by=/etc/apt/trusted.gpg.d/proxmox-release-trixie.gpg] http://download.proxmox.com/debian/pve trixie pve-no-subscription
+      ```
+    - `cat /etc/apt/sources.list`
+    - `cat /etc/apt/sources.list.d/pve-install-repo.list`
+    - `apt update`
+    - `apt-cache policy proxmox-ve pve-manager`
+    - Verificar se as versões candidatas pertencem ao Proxmox VE 9.
+  - Simulação e análise de dependências
+    - `apt-get -s dist-upgrade`
+    - `apt-get -s dist-upgrade | grep -E '^(Remv|Inst proxmox-ve|Inst pve-manager|Inst proxmox-default-kernel|Inst pve-cluster|Inst qemu-server|Inst ifupdown2|Inst openssh-server)'`
+    - `apt-get -s dist-upgrade | grep '^Remv ' | grep -E '^Remv (proxmox-ve|pve-manager|pve-cluster|qemu-server|pve-qemu-kvm|openssh-server|ifupdown2|proxmox-default-kernel)( |:)'`
+    - `apt-get -s dist-upgrade 2>&1 | grep -E 'upgraded,|newly installed,|to remove|not upgraded|^E:|^W:'`
+    - Confirmar que os pacotes essenciais do Proxmox não serão removidos.
+    - Remoções de bibliotecas antigas podem ocorrer durante a atualização do Debian 12 para o Debian 13.
+  - Preparação de sessão persistente via SSH
+    - `apt install tmux`
+    - `tmux -V`
+    - `tmux new -s upgrade-pve9`
+    - `echo "$TMUX"`
+    - A sessão `tmux` permite manter a atualização em execução caso a conexão SSH seja interrompida.
+    - Para reconectar, a partir de uma sessão externa ao `tmux`: `tmux attach -t upgrade-pve9`
+  - Verificações antes da execução
+    - `hostname`
+    - `cat /etc/os-release`
+    - `pveversion`
+    - `dpkg --audit`
+    - `apt-mark showhold`
+    - `apt-get check`
+  - Simulação final e registro
+    - `apt-get -s dist-upgrade 2>&1 | tee /root/simulacao-upgrade-pve9.txt | grep -E '^(Remv|Inst) (proxmox-ve|pve-manager|proxmox-default-kernel|pve-cluster|qemu-server|ifupdown2|openssh-server) |[0-9]+ upgraded,'`
+    - `grep '^Remv ' /root/simulacao-upgrade-pve9.txt | awk '{print $2}'`
+    - `grep '^Inst proxmox-kernel-' /root/simulacao-upgrade-pve9.txt`
+    - `apt-get -s dist-upgrade 2>&1 | grep -E '^(E:|W:|[0-9]+ upgraded,)'`
+    - Resultado da simulação: 733 pacotes atualizados, 192 novos, 63 removidos e nenhum pendente.
+    - Kernel Proxmox 7.0 identificado para instalação.
+  - Execução da migração
+    - `apt-get dist-upgrade`
+    - Aguardar download, instalação, substituição e configuração dos pacotes.
+    - Resolver eventuais perguntas sobre arquivos de configuração conforme as alterações existentes.
+    - Não interromper a atualização.
+  - Validação após a migração
+    - `dpkg --audit`
+    - `pveversion -v`
+    - `uname -r`
+    - `systemctl is-active pveproxy pvedaemon pve-cluster pvestatd`
+    - `pvesm status`
+    - Confirmado: Proxmox VE **9.2.0**, `pve-manager` 9.2.24 e kernel 7.0.14-26-pve.
+    - Serviços principais ativos e armazenamento `local` ativo.
+  
+ - [x] Correção da tela preta no XPS após reinicialização
+    - Problema identificado: tela preta após GRUB, apesar de o sistema continuar acessível via SSH.
+    - Hardware gráfico: Intel HD Graphics (driver `i915`) e NVIDIA GeForce GT 525M (driver `nouveau`).
+    - Diagnóstico:
+      - `lspci -nnk | grep -A 4 -Ei 'VGA|3D|Display'`
+      - `journalctl -b --no-pager | grep -Ei 'drm|i915|nouveau|nvidia|fbcon|framebuffer|simpledrm' | tail -n 70`
+      - `cat /proc/cmdline`
+    - Correção: desabilitar o carregamento do driver `nouveau` por parâmetro do kernel.
+    - Parâmetro aplicado: `modprobe.blacklist=nouveau`
+    - Manter o driver Intel `i915` ativo.
+    - Após reinicialização:
+      - `cat /proc/cmdline`
+      - `lsmod | grep -E 'nouveau|i915'`
+      - `uname -r`
+    - Resultado: console local restaurado, acesso SSH mantido e kernel Proxmox 7.0 operacional.
+  - Validação final
+    - `pveversion -v`
+    - `systemctl is-active pveproxy pvedaemon pve-cluster pvestatd`
+    - `dpkg --audit`
+    - `pvesm status`
+    - Interface web: https://192.168.1.201:8006
+    - Resultado: migração para Proxmox VE 9 concluída com sucesso.
 
-# Instalar Windows 2025 DC sub.ad.marciolab.test server core
+- [x] Configuração ethernet e video E6510:
+  - Eth: no E6510, a interface é eno1, não enp5s0
+  - Vide0: no arquivo `/etc/default/grub`:
+    - GRUB_CMDLINE_LINUX_DEFAULT="quiet i915.modeset=0"
+    - GRUB_GFXMODE=1280x800
+    - GRUB_GFXPAYLOAD_LINUX=keep
+  - `update-grub`
+  - `reboot`
 
-# Instalar Ubuntu Server 24.04.5 LTS 
+- [x] Para iniciar o grafico no Windows e o boot
+  - `qm set 102 --cpu host` (host Proxmox)
+  - `bootsect /nt60 C: /mbr` (dentro da VM do Windows)
+
+- [x] Cliente Proxmox para VMs, baixar a ISO:
+  - https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/latest-virtio/virtio-win.iso
+  - VM -> Hardware -> CD/DVD Drive -> virtuo-win.iso
+  - VM -> Hardware -> Add -> VirtIO RNG
+  - VM -> Options -> habilite QEMU Guest Agent
+  - VM -> Console -> Execute no DVD -> guest-agent\qemu-ga-x86_64.msi
+
+
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+
+## 2. Acesso remoto seguro (Tailscale ou WireGuard, administração dos hipervisores e teste de acesso externo. VPN privada, autenticação, controle de acesso). 
+- Tomada Inteligente Wi-Fi TP-Link Tapo P110
+  - https://www.amazon.com.br/gp/product/B0CPFT8QQK/ref=ox_sc_act_title_1?smid=A3LMEN05VBTH19&psc=1
+
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+
+## 3. Active Directory + Linux (Identidade, Segurança)    
+
+### 3.01. Instalar Windows 2025 DC ad.marciolab.test
+
+### 3.02. Instalar Windows 2025 DC sub.ad.marciolab.test
+
+### 3.03. Configurar DNS e sincronização de horário
+
+### 3.04. Testar GPOs 
+- Impressoras, WSUS, Agentes OCS e Zabbix/Grafana
+
+### 3.05. Instalar Ubuntu Server 24.04.5 LTS 
 https://ubuntu.com/download/server/thank-you?version=24.04.5&architecture=amd64&lts=true
 
+### 3.06. Integrar SSSD e PAM ao domínio filho
+
+### 3.07. Configurar SSH e privilégios sudo
+
+### 3.08. Testar ADsys e políticas aplicáveis (GPOs)
+- Sudo, RootPW, SSH + Chave Pública
+- Grupos Admin Linux no AD
+- PAM?
+
+### 3.09. Configurar gestão de patches
+
+### 3.10 Documentar evidências e rollback
+
+## 4. OCS Inventory, 5. Zabbix/Grafana, 6. Graylog
+- Agentes OCS, Zabbix/Grafana, Graylog
+- OCS Campos administrativos
+- OCS MySQL admin
+- Zabbix/Grafana Dashboards
+- Zabbix/Grafana Alertas
+- Zabbix/Grafana Monitoramento de Certificados Digitais
