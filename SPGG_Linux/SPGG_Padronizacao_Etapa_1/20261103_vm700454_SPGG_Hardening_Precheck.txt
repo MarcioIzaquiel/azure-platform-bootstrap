@@ -1,0 +1,171 @@
+
+===== IDENTIFICACAO =====
+HOSTNAME=VM700454
+COLLECTED=2026-11-03T10:47:37+00:00
+OS=Rocky Linux 9.5 (Blue Onyx)
+IP_IPV4=eth0:10.113.2.104/24,docker0:172.17.0.1/16,br-1b7a093862cb:172.18.0.1/16,br-d0844ada6121:10.10.0.1/24
+MODE=READ_ONLY
+
+===== ROOT =====
+ROOT_PASSWD_STATUS=root PS 2025-09-04 0 99999 7 -1 (Password set, SHA512 crypt.)
+ROOT_PASSWD_STATE=PS
+ROOT_LAST_CHANGE=2025-09-04
+ROOT_SHELL=/bin/bash
+
+===== ACESSO ADMINISTRATIVO =====
+USER_PROCERGS_EXISTS=YES
+USER_PROCERGS_GROUPS=procergs,adm,wheel,systemd-journal,rocky
+USER_PROCERGS_PASSWD=PS
+
+-- SUDO_RULES procergs --
+Matching Defaults entries for procergs on VM700454:
+    always_set_home, match_group_by_gid, always_query_group_plugin, env_reset,
+    env_keep="COLORS DISPLAY HOSTNAME HISTSIZE KDEDIR LS_COLORS",
+    env_keep+="MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE",
+    env_keep+="LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES",
+    env_keep+="LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE",
+    env_keep+="LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY",
+    secure_path=/sbin\:/bin\:/usr/sbin\:/usr/bin
+
+User procergs may run the following commands on VM700454:
+    (ALL) ALL
+USER_SPGGADMIN_EXISTS=YES
+USER_SPGGADMIN_GROUPS=spggadmin,wheel
+USER_SPGGADMIN_PASSWD=PS
+
+-- SUDO_RULES spggadmin --
+Matching Defaults entries for spggadmin on VM700454:
+    always_set_home, match_group_by_gid, always_query_group_plugin, env_reset,
+    env_keep="COLORS DISPLAY HOSTNAME HISTSIZE KDEDIR LS_COLORS",
+    env_keep+="MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE",
+    env_keep+="LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES",
+    env_keep+="LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE",
+    env_keep+="LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY",
+    secure_path=/sbin\:/bin\:/usr/sbin\:/usr/bin
+
+User spggadmin may run the following commands on VM700454:
+    (ALL) ALL
+USER_CDSADMIN_EXISTS=YES
+USER_CDSADMIN_GROUPS=cdsadmin,wheel
+USER_CDSADMIN_PASSWD=PS
+
+-- SUDO_RULES cdsadmin --
+Matching Defaults entries for cdsadmin on VM700454:
+    always_set_home, match_group_by_gid, always_query_group_plugin, env_reset,
+    env_keep="COLORS DISPLAY HOSTNAME HISTSIZE KDEDIR LS_COLORS",
+    env_keep+="MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE",
+    env_keep+="LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES",
+    env_keep+="LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE",
+    env_keep+="LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY",
+    secure_path=/sbin\:/bin\:/usr/sbin\:/usr/bin
+
+User cdsadmin may run the following commands on VM700454:
+    (ALL) ALL
+GROUP_SUDO=
+GROUP_WHEEL=wheel:x:10:procergs,spggadmin,cdsadmin,monitoramento
+
+-- UID 0 accounts --
+root:0:/bin/bash
+
+-- Sudo/wheel memberships (local and NSS) --
+procergs: procergs adm wheel systemd-journal rocky
+spggadmin: spggadmin wheel
+cdsadmin: cdsadmin wheel
+monitoramento: monitoramento wheel docker
+
+===== SUDOERS =====
+SUDOERS_SYNTAX=/etc/sudoers.d/morpheus-node: parsed OK
+SUDOERS_FILE=/etc/sudoers|owner=root:root|mode=440|mtime=2025-05-20 19:45:42.018285524 +0000|sha256= b2d834f6b0ddb7d5dc861217928756a898ca868dcfde791c0b7eadd1e1bfb002
+DIRECTIVE /etc/sudoers:64:Defaults    always_set_home
+DIRECTIVE /etc/sudoers:65:Defaults    match_group_by_gid
+DIRECTIVE /etc/sudoers:73:Defaults    always_query_group_plugin
+DIRECTIVE /etc/sudoers:75:Defaults    env_reset
+DIRECTIVE /etc/sudoers:76:Defaults    env_keep =  "COLORS DISPLAY HOSTNAME HISTSIZE KDEDIR LS_COLORS"
+DIRECTIVE /etc/sudoers:77:Defaults    env_keep += "MAIL PS1 PS2 QTDIR USERNAME LANG LC_ADDRESS LC_CTYPE"
+DIRECTIVE /etc/sudoers:78:Defaults    env_keep += "LC_COLLATE LC_IDENTIFICATION LC_MEASUREMENT LC_MESSAGES"
+DIRECTIVE /etc/sudoers:79:Defaults    env_keep += "LC_MONETARY LC_NAME LC_NUMERIC LC_PAPER LC_TELEPHONE"
+DIRECTIVE /etc/sudoers:80:Defaults    env_keep += "LC_TIME LC_ALL LANGUAGE LINGUAS _XKB_CHARSET XAUTHORITY"
+DIRECTIVE /etc/sudoers:88:Defaults    secure_path = /sbin:/bin:/usr/sbin:/usr/bin
+DIRECTIVE /etc/sudoers:120:#includedir /etc/sudoers.d
+SUDOERS_FILE=/etc/sudoers.d/90-cloud-init-users|owner=root:root|mode=440|mtime=2024-12-06 14:56:42.770332693 +0000|sha256= 6e46e9e8dccb78040b9c9ac96c8bf0b515c78f8ef8eb3b256852ad6e7bf75d31
+SUDOERS_FILE=/etc/sudoers.d/morpheus-node|owner=root:root|mode=440|mtime=2024-12-06 14:57:28.428832925 +0000|sha256= 28bacc3825c2bc6baed92638b92ab7b5139390eb526c0cd726051dadb314717a
+DIRECTIVE /etc/sudoers.d/morpheus-node:1:Defaults:morpheus-node !requiretty
+DIRECTIVE /etc/sudoers.d/morpheus-node:7:Defaults:root !requiretty
+GLOBAL_ROOTPW_TEXT=NOT_FOUND
+SUDO_PASSWORD_DIRECTIVES_PRESENT=NO
+
+===== SSH =====
+SSH_SERVICE_ACTIVE=inactive
+active
+SSHD_CONFIG_TEST=OK
+
+-- SSH_EFFECTIVE_ROOT addr=10.113.2.104 --
+port 22
+permitrootlogin yes
+pubkeyauthentication yes
+passwordauthentication yes
+kbdinteractiveauthentication no
+authenticationmethods any
+
+-- SSH_EFFECTIVE_ROOT addr=172.17.0.1 --
+port 22
+permitrootlogin yes
+pubkeyauthentication yes
+passwordauthentication yes
+kbdinteractiveauthentication no
+authenticationmethods any
+
+-- SSH_EFFECTIVE_ROOT addr=172.18.0.1 --
+port 22
+permitrootlogin yes
+pubkeyauthentication yes
+passwordauthentication yes
+kbdinteractiveauthentication no
+authenticationmethods any
+
+-- SSH_EFFECTIVE_ROOT addr=10.10.0.1 --
+port 22
+permitrootlogin yes
+pubkeyauthentication yes
+passwordauthentication yes
+kbdinteractiveauthentication no
+authenticationmethods any
+
+-- SSH_DEFAULT --
+port 22
+permitrootlogin yes
+pubkeyauthentication yes
+passwordauthentication yes
+kbdinteractiveauthentication no
+authenticationmethods any
+
+===== PAM_AND_SSSD =====
+CONFIG_FILE=/etc/pam.d/sudo|owner=root:root|mode=644|mtime=2024-02-14 19:23:37.000000000 +0000
+2:auth       include      system-auth
+3:account    include      system-auth
+4:password   include      system-auth
+5:session    include      system-auth
+CONFIG_FILE=/etc/pam.d/sshd|owner=root:root|mode=644|mtime=2024-11-05 03:38:45.000000000 +0000
+2:auth       substack     password-auth
+3:auth       include      postlogin
+4:account    required     pam_sepermit.so
+5:account    required     pam_nologin.so
+6:account    include      password-auth
+7:password   include      password-auth
+9:session    required     pam_selinux.so close
+10:session    required     pam_loginuid.so
+12:session    required     pam_selinux.so open env_params
+13:session    required     pam_namespace.so
+14:session    optional     pam_keyinit.so force revoke
+15:session    optional     pam_motd.so
+16:session    include      password-auth
+17:session    include      postlogin
+CONFIG_FILE=/etc/nsswitch.conf|owner=root:root|mode=777|mtime=2024-12-10 14:27:48.833604400 +0000
+SSSD_ACTIVE=inactive
+unavailable
+
+===== LIMITACOES =====
+READ ONLY: sem mudancas de configuracao ou senha.
+sshd -T -C depende do contexto Match; IP do cliente real deve ser validado.
+sudo -l -U nao demonstra que senha sera pedida em sessao interativa.
+Nunca armazenar senhas ou hashes em relatorios.

@@ -36,7 +36,7 @@
 Entrega: acesso seguro de uma rede externa, sem publicar interfaces administrativas na Internet. 
 
 ### 3. Active Directory + Linux (Identidade, Segurança)    
-1. [ ] Criar domínio raiz  
+1. [x] Criar domínio raiz  
 2. [ ] Criar domínio filho 
 3. [ ] Configurar DNS e sincronização de horário 
 4. [ ] Testar GPOs
@@ -67,15 +67,13 @@ Entrega: inventário consultável de servidores e estações simuladas.
 8. [ ] Simular falhas e validar alertas 
 Entrega: dashboards operacionais e notificações validadas por incidentes simulados. 
 
-### 6. Syslog (opcional) Centralização de logs, correlação básica e retenção. 
+### 6. Syslog/Graylog (opcional) Centralização de logs, correlação básica e retenção. 
 - rsyslog/syslog-ng, retenção, consultas e encaminhamento de eventos. Ferramenta usada pelo SPGG é Graylog. 
 1. [ ] Avaliar servidor Syslog 
 2. [ ] Validar centralização e retenção de logs 
 3. Entrega: logs Linux centralizados e pesquisáveis. 
 
-### 7. Docker
-
-### 8. Integração Azure    
+### 7. Integração Azure (Hybrid Cloud)   
 1. [ ] Verificar Azure Policy e RBAC 
 2. [ ] Criar RG somente quando necessário 
 3. [ ] Verificar custos antes de cada serviço 
@@ -84,11 +82,18 @@ Entrega: dashboards operacionais e notificações validadas por incidentes simul
 6. [ ] Azure Monitor, Log Analytics, Azure Update Manager 
 7. [ ] Testar Key Vault e certificados 
 8. [ ] Avaliar Intune, políticas, atualizações e inscrição do iPad (MDM) 
-9. [ ] Comparar alternativas de VPN e acesso híbrido 
+9. [ ] Comparar alternativas de VPN, acesso híbrido, acesso remoto
 9. [ ] Segurança, opções Defender
 10. [ ] Verificar Cost Management e métricas 
 - Entrega: dispositivo de testes gerenciado, conforme licenciamento disponível 
 - Entrega: prova de conceito de gestão híbrida com custos controlados. 
+
+### 8. Outros  (opcional)
+1. [ ] Docker (simulando legado HSP para HSM)
+2. [ ] Docker consolidando OCS, Zabbix/Grafana, Graylog na mesma VM ou na Azure
+3. [ ] WSUS atendendo 2 dominios (simulando SPGG e TF)
+4. [ ] Azure Hybrid Cloud + GitHub
+
 
 ### 9. Validação operacional    
 - Segurança, custos, desligamento, religamento, recuperação e documentação final. 
@@ -117,7 +122,7 @@ Entrega: dashboards operacionais e notificações validadas por incidentes simul
 #### Construção do AS IS, para simular a SPGG hoje: 
 - A SPGG hoje faz parte de um AD de dominio principal (intra.rs.gov.br) e um subsdominio (seplag.intra.rs.gov.br), simulando o serviço de AD (ADS) prestado pela PROCERGS a SPGG. Sugestão de dominio: ad.marciolab.test e sub.ad.marciolab.test 
 - Os servidores linux despadronizados, quanto ao acesso e segurança e as ferramentas, como OCS Inventory, Zabbix/Grafana (e se der tempo e espaço, o Syslog(Graylog)).  
-- Essas VMs serão distribuídas nos XPS502l 16GB e Vostro v131 8GB com Promox. Também podemos usar ocasionalmente, na memoria que sobra do uso normal, o E6510 Lubuntu (KVM + QEMU + Virt-Manager) 8GB e o Thinkpad E14 Windows 11 Pro + VirtualBox 16GB (notebook pessoal) 
+- Essas VMs serão distribuídas nos XPS502l 16GB, Vostro v131 8GB e E6510 8GB com Promox. Também podemos usar ocasionalmente, na memoria que sobra do uso normal o Thinkpad E14 Windows 11 Pro + VirtualBox 16GB (notebook pessoal) 
 - Azure/Microsoft 365/Entra ID atual usado pela SPGG: @spgg.rs.gov.br. Sugestão, usar o meu Azure subscription que estamos usando na trilha. 
 - Esse ambiente deve ser acessado externamente, com possibilidade de ligar e desligar os notes VMs remotamente. Para eu poder estudar e usar fora de casa. 
 - OCS Inventory: inventário padrão 
@@ -492,6 +497,7 @@ uname -r`
 ---
 ---
 
+
 ## 2. Acesso remoto seguro (Tailscale ou WireGuard, administração dos hipervisores e teste de acesso externo. VPN privada, autenticação, controle de acesso). 
 - Tomada Inteligente Wi-Fi TP-Link Tapo P110
   - https://www.amazon.com.br/gp/product/B0CPFT8QQK/ref=ox_sc_act_title_1?smid=A3LMEN05VBTH19&psc=1
@@ -510,6 +516,20 @@ uname -r`
 ## 3. Active Directory + Linux (Identidade, Segurança)    
 
 ### 3.01. Instalar Windows 2025 DC ad.marciolab.test
+- [x] VM-DC-01 — Windows Server 2025 Standard	atualizado
+- [x] Hostname	VM-DC-01; IP	192.168.1.210
+- [x] Domínio AD DS	Instalado e promovido: ad.marciolab.test
+  - Windows Server 2016
+  - `Install-WindowsFeature RSAT-DFS-Mgmt-Con`
+- [x] DNS	Registros LDAP/SRV validados
+- [x] Global Catalog	Habilitado
+- [x] FSMO	Cinco funções na VM-DC-01
+- [x] SYSVOL / NETLOGON	Disponíveis
+- [x] DFS Replication
+- [x] NTP	Configurado e validado
+  - `Set-TimeZone -Id "E. South America Standard Time"`
+  - `w32tm /config /manualpeerlist:"a.ntp.br,0x8 b.ntp.br,0x8 c.ntp.br,0x8" /syncfromflags:manual /reliable:yes /update`
+* *Importante sobre o DNS: antes da criação da floresta, ainda não existe um servidor DNS do Active Directory. Durante a promoção, instalaremos a função DNS na VM-DC-01 e depois configuraremos seu endereço 192.168.1.210 como resolvedor do próprio domínio, com encaminhadores para consultas externas.*
 
 ### 3.02. Instalar Windows 2025 DC sub.ad.marciolab.test
 
@@ -519,7 +539,8 @@ uname -r`
 - Impressoras, WSUS, Agentes OCS e Zabbix/Grafana
 
 ### 3.05. Instalar Ubuntu Server 24.04.5 LTS 
-https://ubuntu.com/download/server/thank-you?version=24.04.5&architecture=amd64&lts=true
+- site: https://ubuntu.com/download/server/thank-you?version=24.04.5&architecture=amd64&lts=true
+- Atualizar
 
 ### 3.06. Integrar SSSD e PAM ao domínio filho
 
@@ -534,6 +555,17 @@ https://ubuntu.com/download/server/thank-you?version=24.04.5&architecture=amd64&
 
 ### 3.10 Documentar evidências e rollback
 
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
+
 ## 4. OCS Inventory, 5. Zabbix/Grafana, 6. Graylog
 - Agentes OCS, Zabbix/Grafana, Graylog
 - OCS Campos administrativos
@@ -541,3 +573,14 @@ https://ubuntu.com/download/server/thank-you?version=24.04.5&architecture=amd64&
 - Zabbix/Grafana Dashboards
 - Zabbix/Grafana Alertas
 - Zabbix/Grafana Monitoramento de Certificados Digitais
+
+---
+---
+---
+---
+---
+---
+---
+---
+---
+---
