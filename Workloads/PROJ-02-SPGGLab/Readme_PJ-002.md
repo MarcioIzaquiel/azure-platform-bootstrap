@@ -93,6 +93,8 @@ Entrega: dashboards operacionais e notificações validadas por incidentes simul
 2. [ ] Docker consolidando OCS, Zabbix/Grafana, Graylog na mesma VM ou na Azure
 3. [ ] WSUS atendendo 2 dominios (simulando SPGG e TF)
 4. [ ] Azure Hybrid Cloud + GitHub
+5. [ ] Script para recriar dc-01 e dc-02
+6. [ ] Certificados (OCS Inventory, Grafana)
 
 
 ### 9. Validação operacional    
@@ -182,13 +184,13 @@ Ao concluir, teremos um ambiente capaz de demonstrar:
 ##### XPS L502x: Proxmox 01
 - Hostname/IP: XPS, 192.168.1.201
 - Hosts de VMs:
-  - VM AD root ad.marciolab.test, IP: 192.168.1.210
-  - VM AD subdomain sub.ad.marciolab.test, IP: 192.168.1.211
-  - VM Linux para SSSD/PAM/ADsys, IP: 192.168.1.212
+  - VM-DC-01 AD root ad.marciolab.test, IP: 192.168.1.210
+  - VM-DC-02 AD subdomain sub.ad.marciolab.test, IP: 192.168.1.211
+  - VM-UBU-01 Ubuntu Server para lab SSSD/PAM/ADsys, IP: 192.168.1.212
 ##### Vostro v131: Proxmox 02
 - Hostname/IP: Vostro, 192.168.1.202
 - Hosts de VMs:
-  - VM ?
+  - VM-OCS-01 OCS Inventory, IP: 192.168.1.213
   - VM ?
   - https://www.youtube.com/watch?v=iYBMLHyTGPg
 ##### E6510: Proxmox 03
@@ -536,7 +538,7 @@ uname -r`
 ### 3.03. Configurar DNS e sincronização de horário
 
 ### 3.04. Testar GPOs 
-- Impressoras, WSUS, Agentes OCS e Zabbix/Grafana
+- Impressoras, WSUS, papel de parede com informações de ip, hostname, Agentes OCS e Zabbix/Grafana
 
 ### 3.05. Instalar Ubuntu Server 24.04.5 LTS 
 - site: https://ubuntu.com/download/server/thank-you?version=24.04.5&architecture=amd64&lts=true
@@ -573,6 +575,588 @@ uname -r`
 - Zabbix/Grafana Dashboards
 - Zabbix/Grafana Alertas
 - Zabbix/Grafana Monitoramento de Certificados Digitais
+
+### 4.01. Instalar OCS Inventory Server — VM-OCS-01
+- [x] VM-OCS-01 — Ubuntu Server 24.04 LTS
+  - Hypervisor: Proxmox 02
+  - Hostname: `vm-ocs-01`
+  - IP: `192.168.1.213`
+  - Rede: `192.168.1.0/24`
+  - nano /etc/netplan/50-cloud-init.yaml
+    - Substituir por:
+            network:
+             version: 2
+             ethernets:
+              ens18:
+               dhcp4: false
+               addresses:
+                - 192.168.1.213/24
+               routes:
+                - to: default
+                 via: 192.168.1.1
+               nameservers:
+                addresses:
+                - 186.250.15.1
+                - 1.1.1.1
+- [x] Sistema operacional instalado e atualizado
+  - `apt update`
+  - `apt upgrade -y`
+- [x] Instalação dos componentes do OCS Inventory
+
+  - PHP e módulos necessários
+  - Perl e mod_perl
+  - OCS Inventory Server
+  - OCS Inventory Reports
+
+  - `sudo apt install -y \
+      curl \
+      wget \
+      git \
+      unzip \
+      ca-certificates \
+      gnupg \
+      software-properties-common \
+      build-essential`
+
+- [x] MariaDB Server 10.11
+  - Database: `ocsweb`
+  - Usuário: `ocs`
+  - Host: `localhost`
+  - Porta: `3306`
+  - `sudo apt install -y mariadb-server mariadb-client` 
+  - `sudo systemctl enable mariadb`
+  - `systemctl status mariadb`
+  - `sudo mariadb`
+  - `CREATE DATABASE ocsweb
+     CHARACTER SET utf8mb4
+     COLLATE utf8mb4_unicode_ci;`
+  - `CREATE USER 'ocsuser'@'localhost'
+     IDENTIFIED BY 'SUA_SENHA_FORTE_AQUI';`
+  - `GRANT ALL PRIVILEGES ON ocsweb.*
+     TO 'ocsuser'@'localhost';`
+  - `SHOW TABLES;`  
+  - Resultado: 106 tabelas identificadas.
+  - `mariadb -h localhost -u ocs -p ocsweb` 
+
+- [x] Apache HTTP Server
+  - `sudo apt install -y apache2`
+  - `sudo systemctl enable --now apache2`
+  - `apache2 -v`
+  - `sudo systemctl status apache2 --no-pager`
+  - `curl -I http://127.0.0.1`
+  - `http://192.168.1.213/`
+  
+- [x] PHP 8.3
+  - `sudo apt install -y \
+   php8.3 \
+   libapache2-mod-php8.3 \
+   php8.3-cli \
+   php8.3-common \
+   php8.3-mysql \
+   php8.3-gd \
+   php8.3-curl \
+   php8.3-mbstring \
+   php8.3-xml \
+   php8.3-zip \
+   php8.3-intl \
+   php8.3-soap`
+  - `php -v`
+  - `php -m`
+  - `sudo systemctl restart apache2`
+  - `sudo systemctl status apache2 --no-pager`
+  - `http://192.168.1.213`
+
+- [x] Preparar o Apache para o OCS Inventory 2.12.3 - Módulo Perl
+  - `sudo apt update
+  sudo apt install -y libapache2-mod-perl2`
+  - `sudo a2enmod rewrite
+  sudo systemctl restart apache2`
+  - `echo "ServerName vm-ocs-01" | sudo tee /etc/apache2/conf-available/servername.conf`
+  - `sudo a2enconf servername
+  sudo apache2ctl configtest
+  sudo systemctl reload apache2`
+  - `sudo systemctl status apache2 --no-pager`
+
+- [x] OCS Inventory Server 2.12.3
+  - `git ls-remote --tags --refs \
+  https://github.com/OCSInventory-NG/OCSInventory-ocsreports.git \
+  | awk -F/ '{print $NF}' \
+  | sort -V \
+  | tail -20`
+  - `git ls-remote --tags --refs \
+  https://github.com/OCSInventory-NG/OCSInventory-Server.git \
+  | awk -F/ '{print $NF}' \
+  | sort -V \
+  | tail -20`
+  - `curl -sS -L \
+  https://api.github.com/repos/OCSInventory-NG/OCSInventory-Server-Packages/releases \
+  | grep '"tag_name"' \
+  | head -20`
+  - `curl -sS -L \
+  https://api.github.com/repos/OCSInventory-NG/OCSInventory-Server/contents \
+  | grep '"name"'`
+  - `curl -sS -L \
+  https://api.github.com/repos/OCSInventory-NG/OCSInventory-ocsreports/contents?ref=2.12.3 \
+  | grep '"name"'`
+  - `curl -sSL \
+  https://api.github.com/repos/OCSInventory-NG/OCSInventory-Server \
+  | grep -E '"default_branch"|"pushed_at"|"archived"'`
+  - `curl -sSL \
+  https://raw.githubusercontent.com/OCSInventory-NG/OCSInventory-Server/master/INSTALL \
+  | head -80`
+  - `curl -sSL \
+  https://raw.githubusercontent.com/OCSInventory-NG/OCSInventory-Server/master/README.md \
+  | head -100`
+  - `curl -sSL \
+  'https://api.github.com/repos/OCSInventory-NG/OCSInventory-Server/tags?per_page=20' \
+  | grep '"name"'`
+  - `curl -sSL \
+  'https://api.github.com/repos/OCSInventory-NG/OCSInventory-ocsreports/releases/tags/2.12.3' \
+  | grep -E '"tag_name"|"name"|"browser_download_url"'`
+  - `cd ~/ocs-install`
+  - `curl -fL \
+  -o OCSNG_UNIX_SERVER-2.12.3.tar.gz \
+  https://github.com/OCSInventory-NG/OCSInventory-ocsreports/releases/download/2.12.3/OCSNG_UNIX_SERVER-2.12.3.tar.gz` 
+  - `ls -lh OCSNG_UNIX_SERVER-2.12.3.tar.gz`
+  - `file OCSNG_UNIX_SERVER-2.12.3.tar.gz`
+  - `tar -tzf OCSNG_UNIX_SERVER-2.12.3.tar.gz | head -40`
+  - `cd ~/ocs-install`
+  - `tar -xzf OCSNG_UNIX_SERVER-2.12.3.tar.gz`
+  - `cd OCSNG_UNIX_SERVER-2.12.3`
+  - `ls -lah`
+  - `cat INSTALL`
+  - `find . -maxdepth 2 -type f \
+  \( -name 'setup.sh' -o -name 'README*' -o -name 'INSTALL' \) \
+  -print`
+  - `dpkg -l | grep -E \
+'libapache2-mod-perl2|libdbi-perl|libdbd-mariadb-perl|libdbd-mysql-perl|libxml-simple-perl|libnet-ip-perl|libarchive-zip-perl|make|gcc'`
+  - `for module in \
+  DBI \
+  DBD::mysql \
+  DBD::MariaDB \
+  XML::Simple \
+  Net::IP \
+  Archive::Zip \
+  Apache::DBI
+do
+  if perl -M"$module" -e 1 2>/dev/null; then
+    echo "[OK] $module"
+  else
+    echo "[AUSENTE] $module"
+  fi
+done`
+  - `sudo systemctl is-active mariadb`
+  - `sudo mariadb -e "SELECT VERSION();"`
+  - `sudo apt update`
+  - `sudo apt install -y \
+  libxml-simple-perl \
+  libnet-ip-perl \
+  libarchive-zip-perl \
+  libapache-dbi-perl`
+  - `for module in \
+  DBI \
+  DBD::mysql \
+  XML::Simple \
+  Net::IP \
+  Archive::Zip \
+  Apache::DBI
+do
+  if perl -M"$module" -e 1 2>/dev/null; then
+    echo "[OK] $module"
+  else
+    echo "[AUSENTE] $module"
+  fi
+done`
+ - `php -m | grep -Ei 'curl|gd|mbstring|mysqli|pdo_mysql|xml|zip'`
+ - `sudo apache2ctl -M | grep -Ei 'perl|php|rewrite'`
+ - `dpkg -l | grep -E '^ii  (php8.3-|libapache2-mod-perl2|libapache2-mod-php8.3)'`
+ - `cd ~/ocs-install/OCSNG_UNIX_SERVER-2.12.3`
+ - `sudo ./setup.sh`
+ - `sudo apt update
+sudo apt install -y libmojolicious-perl`
+- `perl -MMojolicious::Lite -e 'print "Mojolicious OK\n"'`
+- `sudo ./setup.sh`
+- `sudo apt install -y libswitch-perl`
+- `perl -MSwitch -e 'print "Switch OK\n"'`
+- `cd ~/ocs-install/OCSNG_UNIX_SERVER-2.12.3`
+- `sudo ./setup.sh`
+- `sudo systemctl is-active apache2`
+- `sudo systemctl is-active mariadb`
+- `sudo apache2ctl -M | grep -Ei 'perl|php|rewrite'`
+- `sudo ls -lah /etc/apache2/conf-available/ | grep -i ocs`
+- `sudo ls -lah /etc/apache2/conf-enabled/ | grep -i ocs`
+- `sudo apache2ctl configtest`
+- `sudo a2enconf z-ocsinventory-server`
+- `sudo a2enconf ocsinventory-reports`
+- `sudo a2enconf zz-ocsinventory-restapi`
+- `sudo apache2ctl configtest`
+- `sudo systemctl restart apache2`
+- `sudo systemctl is-active apache2`
+- `ls -lah /etc/apache2/conf-enabled/ | grep -i ocs`
+- `perl -MXML::Entities -e 'print "XML::Entities OK\n"'`
+- `perl -MSOAP::Transport::HTTP -e 'print "SOAP::Transport::HTTP OK\n"'`
+- `apt-cache policy libxml-entities-perl libsoap-lite-perl`
+- `sudo apt install -y libsoap-lite-perl`
+- `perl -MSOAP::Transport::HTTP -e 'print "SOAP OK\n"'`
+- `apt-cache search xml | grep -i entities`
+- `apt-cache search libxml | grep perl`
+- `sudo apt install -y cpanminus`
+- `sudo cpanm XML::Entities`
+- `perl -MXML::Entities -e 'print "XML::Entities OK\n"'`
+- `sudo apache2ctl configtest`
+- `sudo systemctl restart apache2`
+- `sudo systemctl is-active apache2`
+- `sudo perl -MSOAP::Transport::HTTP -e 'print "SOAP ROOT OK\n"'`
+- `sudo -u www-data perl -MSOAP::Transport::HTTP -e 'print "SOAP APACHE OK\n"'`
+- `dpkg -l | grep -E 'libsoap-lite-perl|libxml-entities-perl'`
+- `sudo tail -n 30 /var/log/apache2/error.log`
+- `sudo perl -e '
+eval {
+    require SOAP::Transport::HTTP;
+    SOAP::Transport::HTTP->import();
+};
+if ($@) {
+    print "ERRO: $@\n";
+} else {
+    print "SOAP carregado corretamente\n";
+}
+'`
+- `sudo grep -Rn -B 8 -A 12 \
+"Can't load SOAP::Transport::HTTP" \
+/usr/local/share/perl /usr/share/perl5 /etc/ocsinventory-server \
+2>/dev/null`
+- `sudo grep -Rn -B 8 -A 12 \
+"Can't load SOAP::Transport::HTTP" \
+/usr/local/share/perl /usr/share/perl5 /etc/ocsinventory-server \
+2>/dev/null`
+- `sudo perl -e '
+eval {
+    require SOAP::Transport::HTTP;
+    SOAP::Transport::HTTP->import();
+};
+if ($@) {
+    print "ERRO: $@\n";
+} else {
+    print "SOAP carregado corretamente\n";
+}
+'`
+- `require SOAP::Transport::HTTP2;
+our $server = SOAP::Transport::HTTP2::Apache->dispatch_to(...);`
+- `SOAP::Transport::HTTP`
+- `sudo perl -MSOAP::Transport::HTTP2 -e 'print "SOAP HTTP2 OK\n"'`
+- `dpkg -L libsoap-lite-perl | grep -E 'SOAP/Transport/HTTP2?\.pm'`
+- `sudo sed -n '15,52p' \
+/usr/local/share/perl/5.38.2/Apache/Ocsinventory/SOAP.pm`
+- `sudo grep -RnE \
+'OCS_MODPERL_VERSION|OCS_OPT_WEB_SERVICE_ENABLED|SOAP' \
+/etc/apache2/conf-available/*ocs* \
+/etc/ocsinventory-server/ 2>/dev/null`
+- `find ~/ocs-install/OCSNG_UNIX_SERVER-2.12.3 \
+  -type f \
+  \( -iname '*SOAP*' -o -iname '*HTTP2*' \)`
+- `sudo sed -n '330,375p' \
+/etc/apache2/conf-available/z-ocsinventory-server.conf`
+- `sudo cp -a \
+/etc/apache2/conf-available/z-ocsinventory-server.conf \
+/etc/apache2/conf-available/z-ocsinventory-server.conf.bak`
+- `sudo nano /etc/apache2/conf-available/z-ocsinventory-server.conf`
+- `sudo apache2ctl configtest`
+- `sudo systemctl restart apache2`
+- `sudo systemctl is-active apache2`
+- `sudo apache2ctl configtest`
+- `curl -I http://localhost/ocsreports/`
+- `curl -I http://localhost/ocsinventory`
+- `http://192.168.1.213/ocsreports/`
+- `sudo cat /etc/apache2/conf-available/ocsinventory-reports.conf`
+- `sudo ls -lah /usr/share/ocsinventory-reports/`
+- `sudo tail -n 30 /var/log/apache2/error.log`
+- `sudo find / -type f -name "index.php" 2>/dev/null | grep -Ei 'ocs|reports'`
+- `sudo find / -type d -name "ocsreports" 2>/dev/null`
+- `sudo ls -ld /etc/apache2/Y /etc/apache2/Y/ocsreports 2>&1`
+- `sudo du -sh \
+/home/marcio/ocs-install/OCSNG_UNIX_SERVER-2.12.3/ocsreports \
+/home/marcio/ocs-install/OCSNG_UNIX_SERVER-2.12.3/Y/ocsreports`
+- `sudo ls -lah \
+/home/marcio/ocs-install/OCSNG_UNIX_SERVER-2.12.3/ocsreports/`
+- `sudo ls -lah \
+/home/marcio/ocs-install/OCSNG_UNIX_SERVER-2.12.3/Y/ocsreports/`
+- `sudo cp -a \
+/home/marcio/ocs-install/OCSNG_UNIX_SERVER-2.12.3/Y/ocsreports \
+/var/www/`  
+- `sudo ls -lah /var/www/ocsreports/index.php`
+- `sudo chown -R www-data:www-data /var/www/ocsreports`
+- `sudo find /var/www/ocsreports -type d -exec chmod 755 {} \;`
+- `sudo find /var/www/ocsreports -type f -exec chmod 644 {} \;`
+- `sudo cp -a \
+/etc/apache2/conf-available/ocsinventory-reports.conf \
+/etc/apache2/conf-available/ocsinventory-reports.conf.bak`
+- `sudo nano /etc/apache2/conf-available/ocsinventory-reports.conf`
+Localize: Alias /ocsreports Y/ocsreports
+Substitua por: Alias /ocsreports /var/www/ocsreports
+Localize: <Directory Y/ocsreports>
+Substitua: <Directory /var/www/ocsreports>
+- `sudo apache2ctl configtest`
+- `sudo systemctl restart apache2`
+- `sudo systemctl is-active apache2`
+- `http://192.168.1.213/ocsreports/`
+- `sudo ls -ld /var/lib/ocsinventory-reports`
+- `sudo -u www-data test -w /var/lib/ocsinventory-reports && echo "ESCRITA OK" || echo "SEM PERMISSAO"`
+- `sudo chown -R www-data:www-data /var/lib/ocsinventory-reports`
+- `sudo mariadb`
+- `CREATE DATABASE IF NOT EXISTS ocsweb
+CHARACTER SET utf8mb4
+COLLATE utf8mb4_unicode_ci;`
+- `CREATE USER IF NOT EXISTS 'ocs'@'localhost'
+IDENTIFIED BY 'SUA_SENHA_FORTE_AQUI';`
+- `GRANT ALL PRIVILEGES ON ocsweb.* TO 'ocs'@'localhost';`
+- Preencher o instalador Web:
+  | Campo | Valor |
+  |---|---|
+  | MySQL login | `ocs` |
+  | MySQL password | Senha definida anteriormente |
+  | Name of Database | `ocsweb` |
+  | MySQL HostName | `localhost` |
+  | MySQL Port | `3306` |
+  | Enable SSL | `No` |
+  | SSL mode | Manter padrão |
+  | SSL key path | Vazio |
+  | SSL certificat path | Vazio |
+  | CA certificat path | Vazio |
+- `mariadb -u ocs -p -h localhost ocsweb -e "SELECT DATABASE(), CURRENT_USER();"`
+- mysqli_client_ssl
+- `sudo mariadb`
+- `SELECT User, Host, plugin
+FROM mysql.user
+WHERE User = 'ocs';`
+- `SHOW GRANTS FOR 'ocs'@'localhost';`
+- `ALTER USER 'ocs'@'localhost'
+IDENTIFIED BY 'SUA_NOVA_SENHA_FORTE';`
+- `exit`
+- `mariadb -u ocs -p -h localhost ocsweb -e "SELECT DATABASE(), CURRENT_USER();"`
+- `sudo tail -n 80 /var/log/apache2/error.log`
+- `sudo systemctl is-active mariadb`
+- `sudo grep -nE 'OCS_DB_(HOST|NAME|USER|PORT)' \
+/etc/apache2/conf-available/z-ocsinventory-server.conf`
+- `mariadb -h localhost -u ocs -p ocsweb`
+- `sudo grep -nE 'OCS_DB_|OCS_MODPERL_VERSION' \
+/etc/apache2/conf-available/z-ocsinventory-server.conf`
+- `sudo perl -MDBI -MDBD::mysql -e \
+'print "DBI: $DBI::VERSION\nDBD::mysql: $DBD::mysql::VERSION\n"'`
+- `sudo perl -MDBI -e '
+print "Senha do MariaDB para o usuario ocs: ";
+system("stty -echo");
+chomp(my $password = <STDIN>);
+system("stty echo");
+print "\n";
+
+my $dbh = DBI->connect(
+    "DBI:mysql:database=ocsweb;host=localhost;port=3306",
+    "ocs",
+    $password,
+    { RaiseError => 0, PrintError => 0 }
+);
+
+if ($dbh) {
+    print "SUCESSO: Perl conectou ao MariaDB!\n";
+    $dbh->disconnect;
+} else {
+    print "ERRO: " . DBI->errstr . "\n";
+}
+'`
+- `sudo nl -ba \
+/usr/local/share/perl/5.38.2/Apache/Ocsinventory/Server/System.pm \
+| sed -n '280,345p'`
+- `sudo grep -Rn \
+'OCS_DB_PWD\|OCS_DB_HOST\|DBI->connect' \
+/usr/local/share/perl/5.38.2/Apache/Ocsinventory/Server/`
+- `sudo nl -ba \
+/usr/local/share/perl/5.38.2/Apache/Ocsinventory/Server/System.pm \
+| sed -n '130,245p'`
+- `sudo grep -nE 'OCS_OPT_LOG|OCS_OPT_DBI|OCS_DB_' \
+/etc/apache2/conf-available/z-ocsinventory-server.conf \
+| sed -E 's/(OCS_DB_PWD[[:space:]]+).*/\1[REDACTED]/'`
+- `sudo ls -lah /var/log/ocsinventory-server/`
+- `sudo find /var/log/ocsinventory-server/ -maxdepth 1 -type f -printf '%f %s bytes\n'`
+- `sudo cat /var/log/ocsinventory-server/activity.log`
+- `sudo perl -MDBI -e '
+use strict;
+use warnings;
+
+my $conf = "/etc/apache2/conf-available/z-ocsinventory-server.conf";
+
+open(my $fh, "<", $conf) or die "Erro ao abrir configuracao: $!";
+
+my $password;
+
+while (my $line = <$fh>) {
+    if ($line =~ /^\s*PerlSetVar\s+OCS_DB_PWD\s+(.+?)\s*$/) {
+        $password = $1;
+        $password =~ s/^["\x27]//;
+        $password =~ s/["\x27]$//;
+        last;
+    }
+}
+
+close($fh);
+
+die "OCS_DB_PWD nao encontrada\n" unless defined $password;
+
+my $dbh = DBI->connect(
+    "DBI:mysql:database=ocsweb;host=localhost;port=3306",
+    "ocs",
+    $password,
+    { RaiseError => 0, PrintError => 0 }
+);
+
+if ($dbh) {
+    print "SUCESSO: Senha configurada no Apache autentica no MariaDB!\n";
+    $dbh->disconnect;
+} else {
+    print "ERRO: Senha configurada no Apache NAO autentica no MariaDB!\n";
+    print "Detalhes: " . DBI->errstr . "\n";
+}
+'`
+- `sudo cp -a \
+/etc/apache2/conf-available/z-ocsinventory-server.conf \
+/etc/apache2/conf-available/z-ocsinventory-server.conf.bak`
+- `sudo nano /etc/apache2/conf-available/z-ocsinventory-server.conf`
+- `sudo apache2ctl configtest`
+- `sudo systemctl restart apache2`
+- `sudo systemctl status apache2 --no-pager`
+- `sudo ocsinventory-agent \
+--server=http://192.168.1.213/ocsinventory \
+--debug`
+
+**Importante:** o OCS Inventory utiliza dois caminhos distintos: `/ocsreports` para administração e `/ocsinventory` para comunicação dos agentes. O erro HTTP 500 identificado durante a implantação foi causado pela autenticação do backend com o MariaDB, e não por falha de conectividade de rede.
+
+### 4.02. Instalar OCS Inventory Agent — Linux
+
+- [x] Instalação do agente na VM-OCS-01
+  - `apt update`
+  - `apt install ocsinventory-agent`
+  - Modo de comunicação selecionado: `http`
+  - Servidor de Inventário:
+    - http://192.168.1.213/ocsinventory
+  - Endpoint utilizado pelos agentes:
+    - http://192.168.1.213/ocsreports
+
+- [x] Configuração do servidor OCS
+  - Arquivo: `/etc/ocsinventory/ocsinventory-agent.cfg`
+  - `server=http://192.168.1.213/ocsinventory`
+  - `cat /etc/ocsinventory/ocsinventory-agent.cfg`
+
+- [x] Execução manual do inventário
+  - `ocsinventory-agent --server=http://192.168.1.213/ocsinventory --debug`
+  - Comunicação com o servidor validada.
+  - Inventário enviado com sucesso.
+
+- [x] Automatização da execução do agente
+  - Serviço: `ocsinventory-agent.service`
+  - Timer: `ocsinventory-agent.timer`
+  - `systemctl status ocsinventory-agent.timer --no-pager`
+  - `systemctl cat ocsinventory-agent.timer`
+  - `systemctl list-timers --all | grep ocsinventory`
+
+- [x] Configuração do timer systemd
+  - `OnCalendar=daily`
+  - `AccuracySec=1h`
+  - `RandomizedDelaySec=240`
+  - `Persistent=true`
+  - Status: `active (waiting)`
+  - Periodicidade: diária, com tolerância de agendamento e atraso aleatório.
+
+- [x] Validação do inventário
+  - OCS Inventory → `All Computers`
+  - Equipamento `vm-ocs-01` identificado.
+  - Informações de hardware e software disponíveis.
+
+- [x] Instalação e validação do agente em uma VM cliente Ubuntu
+  - Servidor: `http://192.168.1.213/ocsinventory`
+  - Comunicação validada.
+  - Inventário recebido pelo OCS Server.
+
+**Importante:** o pacote Linux utiliza um timer do systemd para executar o inventário automaticamente. Com `OnCalendar=daily`, não é necessário criar uma tarefa adicional no cron. A opção `Persistent=true` permite recuperar execuções perdidas enquanto a VM estava desligada.
+
+---
+
+### 4.03. Instalar OCS Inventory Agent — Windows
+
+- [x] Download e instalação do OCS Inventory NG Agent
+  - Versão: `2.11.0.1`
+  - Arquitetura: `x64`
+  - Instalador: `OCS-Windows-Agent-2.11.0.1_x64`
+
+- [x] Configuração do servidor OCS
+  - Server URL: `http://192.168.1.213/ocsinventory`
+  - User: vazio
+  - Password: vazio
+  - Validate certificates: desabilitado para conexão HTTP
+  - CA Certificate path: não utilizado
+
+- [x] Configuração das opções gerais
+  - Enable verbose log: desabilitado
+  - Do not scan for installed Software: desabilitado
+  - Instalação do agente como serviço do Windows.
+
+- [x] Configuração das opções WMI
+  - Behavior of WMI calls: `COMPLETE`
+  - Default user domain: vazio
+
+- [x] Execução e validação do agente
+  - Instalação concluída.
+  - Inventário executado com sucesso.
+  - Comunicação com o OCS Server validada.
+  - Equipamento Windows identificado em `All Computers`.
+
+**Importante:** a opção `Do not scan for installed Software` deve permanecer desabilitada para permitir o inventário dos softwares instalados. O modo WMI `COMPLETE` permite coletar informações adicionais do sistema e do usuário de domínio, quando disponíveis.
+
+---
+
+### 4.04. Validar OCS Inventory — Servidor e agentes
+
+- [x] Interface administrativa acessível
+  - `http://192.168.1.213/ocsreports`
+
+- [x] Endpoint dos agentes operacional
+  - `http://192.168.1.213/ocsinventory`
+
+- [x] Banco MariaDB operacional
+  - Database: `ocsweb`
+  - 106 tabelas identificadas.
+  - Autenticação do backend validada.
+
+- [x] Inventário Linux validado
+  - VM-OCS-01.
+  - Uma VM cliente Ubuntu.
+
+- [x] Inventário Windows validado
+  - Uma VM cliente Windows.
+
+- [x] Consulta centralizada de equipamentos
+  - OCS Inventory → `All Computers`
+  - Três equipamentos inventariados com sucesso.
+  - Informações de hardware e software disponíveis.
+
+- [x] Execução automática do agente Linux
+  - Timer systemd habilitado.
+  - Periodicidade diária configurada.
+
+- [x] Troubleshooting concluído
+  - Erro HTTP 500 corrigido.
+  - Autenticação Apache/Perl/MariaDB validada.
+  - Comunicação dos agentes operacional.
+
+- [ ] Expandir a instalação dos agentes para as demais VMs Linux e Windows.
+- [ ] Padronizar TAGs dos equipamentos.
+- [ ] Criar campos administrativos.
+- [ ] Configurar filtros e relatórios.
+- [ ] Configurar backup do MariaDB e da VM.
+- [ ] Implementar HTTPS e validação de certificados.
+- [ ] Revisar usuários e permissões administrativas.
+
+**Resultado:** OCS Inventory Server instalado e operacional na VM-OCS-01 (`192.168.1.213`), com inventário centralizado de equipamentos Linux e Windows. Implantação básica concluída e validada.
+
+**Próxima etapa:** expansão do inventário e configuração dos recursos administrativos do OCS Inventory.
 
 ---
 ---
