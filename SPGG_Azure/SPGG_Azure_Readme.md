@@ -81,14 +81,22 @@
       - Application Gateway /WAF (Distribuir e encaminhar tráfego HTTP/HTTPS / Proteger aplicações web contra determinadas ameaças)
       - Key Vault (Armazenar e controlar o acesso a segredos, chaves e certificados)
     - Recursos:
+  
+      | Camada | Recursos Encontrados | Função |
+      |-----------|-----------|-----------|
+      |  Integração | prod-integra-apim | Publicação e gerenciamento de APIs   |
+      |  Entrada e Proteção | prod-awg, Prod-Politica_Geral_WAF | Gateway de aplicações e política de firewall web  |
+      |  Rede | prod-integra-network, NSGs, IPs Públicos |  Conectividade e controle de tráfego   |
+      |  Segurança | prod-integra-key, prod-awg-identity | Segredos, certificados e identidade gerenciada   |
+      |  Observalidade | Application Insights, Log Analytics, alertas | Monitoramento, telemetria e notificações |
+      |  DNS | ped.rs.gov.br | Resolução privada de nomes  |
       
 
 
 
-           Tabelas:
-           | Camada | Recursos Encontrados | Função |
-           |-----------|-----------|-----------|
-           |  Valor 1 | Valor 2 |     |
+
+
+
 
 
 
